@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>2893aa43-9b94-412b-88c4-f0d2615954b5</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Unik.Onboarding.Application\Unik.Onboarding.Application.csproj" />
+    <ProjectReference Include="..\Unik.Onboarding.Domain\Unik.Onboarding.Domain.csproj" />
+    <ProjectReference Include="..\Unik.Onboarding.Infrastructure\Unik.Onboarding.Infrastructure.csproj" />
+    <ProjectReference Include="..\Unik.SqlServerContext.Migrations\Unik.SqlServerContext.Migrations.csproj" />
+    <ProjectReference Include="..\Unik.SqlServerContext\Unik.SqlServerContext.csproj" />
+    <ProjectReference Include="..\Unik.WebApp.UserContext.Migrations\Unik.WebApp.UserContext.Migrations.csproj" />
+    <ProjectReference Include="..\Unik.WebApp.UserContext\Unik.WebApp.UserContext.csproj" />
+  </ItemGroup>
+
+</Project>

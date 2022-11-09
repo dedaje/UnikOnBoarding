@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Unik.Onboarding.Application\Unik.Onboarding.Application.csproj" />
+    <ProjectReference Include="..\Unik.Onboarding.Domain\Unik.Onboarding.Domain.csproj" />
+    <ProjectReference Include="..\Unik.SqlServerContext\Unik.SqlServerContext.csproj" />
+  </ItemGroup>
+
+</Project>
