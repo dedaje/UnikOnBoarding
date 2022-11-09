@@ -1,17 +1,41 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using UnikOnBoarding.Areas.Identity.Data;
+using Unik.SqlServerContext;
+using Unik.WebApp.UserContext;
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("WebAppUserDbContextConnection") ?? throw new InvalidOperationException("Connection string 'WebAppUserDbContextConnection' not found.");
 
+// Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.WebApp.UserContext.Migrations
+// Update-Database -Context WebAppUserDbContext
+var connectionString = builder.Configuration.GetConnectionString("WebAppUserDbConnection") ?? throw new InvalidOperationException("Connection string 'WebAppUserDbConnection' not found.");
 builder.Services.AddDbContext<WebAppUserDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString,
+        x=> x.MigrationsAssembly("Unik.WebApp.UserContext.Migrations")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+    {
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 5;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequiredUniqueChars = 0;
+        options.Password.RequireUppercase = false;
+        options.SignIn.RequireConfirmedAccount = false;
+    })
     .AddEntityFrameworkStores<WebAppUserDbContext>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Clean Architecture
+
+
+//// Database
+//// Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.SqlServerContext.Migrations
+//// Update-Database -Context WebAppUserDbContext
+//builder.Services.AddDbContext<UnikContext>(
+//    options =>
+//        options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
+//            x=> x.MigrationsAssembly("Unik.WebApp.UserContext.Migrations")));
 
 var app = builder.Build();
 

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Identity\Data\" />
     <Folder Include="Infrastructure\Contract\Dto\" />
     <Folder Include="Pages\Onboarding\" />
   </ItemGroup>
@@ -22,6 +23,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Unik.Api\Unik.Api.csproj" />
+    <ProjectReference Include="..\Unik.Onboarding.Application\Unik.Onboarding.Application.csproj" />
+    <ProjectReference Include="..\Unik.Onboarding.Domain\Unik.Onboarding.Domain.csproj" />
+    <ProjectReference Include="..\Unik.Onboarding.Infrastructure\Unik.Onboarding.Infrastructure.csproj" />
+    <ProjectReference Include="..\Unik.SqlServerContext.Migrations\Unik.SqlServerContext.Migrations.csproj" />
+    <ProjectReference Include="..\Unik.SqlServerContext\Unik.SqlServerContext.csproj" />
+    <ProjectReference Include="..\Unik.WebApp.UserContext.Migrations\Unik.WebApp.UserContext.Migrations.csproj" />
+    <ProjectReference Include="..\Unik.WebApp.UserContext\Unik.WebApp.UserContext.csproj" />
   </ItemGroup>
 
 </Project>

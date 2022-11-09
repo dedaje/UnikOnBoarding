@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Implementation\" />
-    <Folder Include="Queries\Implementation\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Unik.Onboarding.Domain\Unik.Onboarding.Domain.csproj" />
   </ItemGroup>
 

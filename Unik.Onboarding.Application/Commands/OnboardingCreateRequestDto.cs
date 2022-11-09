@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unik.WebApp.UserContext
+namespace Unik.Onboarding.Application.Commands
 {
-    internal class ApplicationDbContext
+    public class OnboardingCreateRequestDto
     {
+
     }
 }

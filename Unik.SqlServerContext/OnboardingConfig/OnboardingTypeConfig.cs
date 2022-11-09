@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Unik.Onboarding.Domain.Model;
 
-namespace Unik.SqlServerContext.OnboardingConfig
+namespace Unik.SqlServerContext.OnboardingConfig;
+
+public class OnboardingTypeConfig : IEntityTypeConfiguration<OnboardingEntity>
 {
-    public class OnboardingTypeConfig
+    public void Configure(EntityTypeBuilder<OnboardingEntity> builder)
     {
-
+        builder.ToTable("Onboarding", "onboarding");
+        builder.HasKey(x => x.Id);
     }
 }
