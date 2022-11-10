@@ -4,11 +4,10 @@ using Unik.SqlServerContext.OnboardingConfig;
 
 namespace Unik.SqlServerContext;
 
-public class UnikContext : DbContext
+public class UnikDbContext : DbContext
 {
-    public UnikContext(DbContextOptions<UnikContext> options) : base(options)
+    public UnikDbContext(DbContextOptions<UnikDbContext> options) : base(options)
     {
-        
     }
 
     public DbSet<OnboardingEntity> OnboardingEntities { get; set; }

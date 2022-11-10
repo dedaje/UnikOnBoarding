@@ -11,9 +11,9 @@ namespace Unik.Onboarding.Application.Repositories
     public interface IOnboardingRepository
     {
         void Add(OnboardingEntity onboarding);
-        IEnumerable<OnboardingQueryResultDto> GetAll(string userId);
-        OnboardingEntity Load(int id, string userId);
+        IEnumerable<OnboardingQueryResultDto> GetAll(string specificUserId);
+        OnboardingEntity Load(int id);
         void Update(OnboardingEntity model);
-        OnboardingQueryResultDto Get(int id, string userId);
+        OnboardingQueryResultDto Get(int id, string specificUserId);
     }
 }

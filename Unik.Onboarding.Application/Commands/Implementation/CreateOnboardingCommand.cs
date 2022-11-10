@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unik.Onboarding.Application.Repositories;
-using Unik.Onboarding.Domain.Model.DomainServices;
+using Unik.Onboarding.Domain.DomainServices;
+using Unik.Onboarding.Domain.Model;
 
 namespace Unik.Onboarding.Application.Commands.Implementation
 {
@@ -21,7 +22,8 @@ namespace Unik.Onboarding.Application.Commands.Implementation
 
         void ICreateOnboardingCommand.Create(OnboardingCreateRequestDto onboardingCreateRequestDto)
         {
-            throw new NotImplementedException();
+            var onboarding = new OnboardingEntity(_domainService, onboardingCreateRequestDto.UserId, onboardingCreateRequestDto.SpecificUserId, onboardingCreateRequestDto.ProjektNavn);
+            _onboardingRepository.Add(onboarding);
         }
     }
 }

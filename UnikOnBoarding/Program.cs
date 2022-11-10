@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Unik.Api.Controllers;
 using Unik.SqlServerContext;
 using Unik.WebApp.UserContext;
+using UnikOnBoarding.Infrastructure.Contract;
+using UnikOnBoarding.Infrastructure.Implementation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.WebApp.UserContext.Migrations
@@ -24,10 +28,15 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddEntityFrameworkStores<WebAppUserDbContext>();
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Onboarding");
+});
 
-// Clean Architecture
-
+// IHttpClientFactory
+//ops find ud af hvordan man fixer at api ikke peger på WebApp altså semesterproject for os og istedet peger på det rigtige
+builder.Services.AddHttpClient<IUnikService, UnikService>(
+    client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
 
 //// Database
 //// Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.SqlServerContext.Migrations

@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unik.Onboarding.Application.Repositories;
+﻿using Unik.Onboarding.Application.Repositories;
 
-namespace Unik.Onboarding.Application.Queries.Implementation
+namespace Unik.Onboarding.Application.Queries.Implementation;
+
+public class OnboardingGetAllQuery : IOnboardingGetAllQuery
 {
-    public class OnboardingGetAllQuery : IOnboardingGetAllQuery
+    private readonly IOnboardingRepository _repository;
+
+    public OnboardingGetAllQuery(IOnboardingRepository repository)
     {
-        private readonly IOnboardingRepository _repository;
+        _repository = repository;
+    }
 
-        public OnboardingGetAllQuery(IOnboardingRepository repository)
-        {
-            _repository = repository;
-        }
-
-        IEnumerable<OnboardingQueryResultDto> IOnboardingGetAllQuery.GetAll(string userId)
-        {
-            return _repository.GetAll(userId);
-        }
+    IEnumerable<OnboardingQueryResultDto> IOnboardingGetAllQuery.GetAll(string specificUserId)
+    {
+        return _repository.GetAll(specificUserId);
     }
 }

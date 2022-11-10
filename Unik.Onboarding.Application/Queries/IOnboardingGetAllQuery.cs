@@ -8,6 +8,6 @@ namespace Unik.Onboarding.Application.Queries
 {
     public interface IOnboardingGetAllQuery
     {
-        IEnumerable<OnboardingQueryResultDto> GetAll(string userId);
+        IEnumerable<OnboardingQueryResultDto> GetAll(string specificUserId);
     }
 }

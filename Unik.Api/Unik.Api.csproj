@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Unik.Onboarding.Application\Unik.Onboarding.Application.csproj" />
     <ProjectReference Include="..\Unik.Onboarding.Domain\Unik.Onboarding.Domain.csproj" />
     <ProjectReference Include="..\Unik.Onboarding.Infrastructure\Unik.Onboarding.Infrastructure.csproj" />

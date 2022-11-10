@@ -3,11 +3,12 @@ using Unik.Onboarding.Application.Commands.Implementation;
 using Unik.Onboarding.Application.Queries;
 using Unik.Onboarding.Application.Queries.Implementation;
 using Unik.Onboarding.Application.Repositories;
-using Unik.Onboarding.Domain.Model.DomainServices;
 using Unik.Onboarding.Infrastructure.DomainServices;
 using Unik.Onboarding.Infrastructure.Repositories;
+using Unik.Onboarding.Domain.DomainServices;
 using Unik.SqlServerContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.DataProtection.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,15 +21,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Clean Architecture
-//TODO: tilføj services
+builder.Services.AddScoped<ICreateOnboardingCommand, CreateOnboardingCommand>();
+builder.Services.AddScoped<IEditOnboardingCommand, EditOnboardingCommand>();
+builder.Services.AddScoped<IOnboardingRepository, OnboardingRepository>();
+builder.Services.AddScoped<IOnboardingGetAllQuery, OnboardingGetAllQuery>();
+builder.Services.AddScoped<IOnboardingGetQuery, OnboardingGetQuery>();
+builder.Services.AddScoped<IOnboardingDomainService, OnboardingDomainService>();
+
 
 // Database
-// Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.SqlServerContext.Migrations
-// Update-Database -Context WebAppUserDbContext
-builder.Services.AddDbContext<UnikContext>(
+// Add-Migration InitialMigration -Context UnikDbContext -Project Unik.SqlServerContext.Migrations
+// Update-Database -Context UnikDbContext
+builder.Services.AddDbContext<UnikDbContext>(
     options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
-            x => x.MigrationsAssembly("Unik.WebApp.UserContext.Migrations")));
+            x => x.MigrationsAssembly("Unik.SqlServerContext.Migrations")));
 
 var app = builder.Build();
 

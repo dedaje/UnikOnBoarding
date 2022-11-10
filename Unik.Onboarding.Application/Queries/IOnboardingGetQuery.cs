@@ -8,6 +8,6 @@ namespace Unik.Onboarding.Application.Queries
 {
     public interface IOnboardingGetQuery
     {
-        OnboardingQueryResultDto Get(int id, string userId);
+        OnboardingQueryResultDto Get(int id, string specificUserId);
     }
 }

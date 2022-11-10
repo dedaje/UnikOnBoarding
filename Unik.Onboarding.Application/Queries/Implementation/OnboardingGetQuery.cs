@@ -16,9 +16,9 @@ namespace Unik.Onboarding.Application.Queries.Implementation
             _repository = repository;
         }
 
-        OnboardingQueryResultDto IOnboardingGetQuery.Get(int id, string userId)
+        OnboardingQueryResultDto IOnboardingGetQuery.Get(int id, string specificUserId)
         {
-            return _repository.Get(id, userId);
+            return _repository.Get(id, specificUserId);
         }
     }
 }

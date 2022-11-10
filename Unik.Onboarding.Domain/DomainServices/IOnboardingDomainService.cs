@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unik.Onboarding.Domain.Model.DomainServices
+namespace Unik.Onboarding.Domain.DomainServices
 {
     public interface IOnboardingDomainService
     {
-        //TODO
+        bool userExistsInProject(int id, List<string> userId, string specificUserId);
     }
 }
