@@ -8,6 +8,6 @@ namespace Unik.Onboarding.Domain.DomainServices
 {
     public interface IOnboardingDomainService
     {
-        bool userExistsInProject(int id, List<string> userId, string specificUserId);
+        //bool userExistsInProject(int id, List<string> userId, string specificUserId);
     }
 }

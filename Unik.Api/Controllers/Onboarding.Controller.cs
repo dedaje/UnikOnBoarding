@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
-using Unik.Onboarding.Application.Commands;
 using Unik.Onboarding.Application.Commands.Implementation;
-using Unik.Onboarding.Application.Queries;
+using Unik.Onboarding.Application.Commands.Onboarding;
 using Unik.Onboarding.Application.Queries.Implementation;
+using Unik.Onboarding.Application.Queries.Onboarding;
 
 namespace Unik.Api.Controllers
 {

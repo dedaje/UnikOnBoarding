@@ -1,15 +1,14 @@
-using Unik.Onboarding.Application.Commands;
 using Unik.Onboarding.Application.Commands.Implementation;
-using Unik.Onboarding.Application.Queries;
-using Unik.Onboarding.Application.Queries.Implementation;
-using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Infrastructure.DomainServices;
 using Unik.Onboarding.Infrastructure.Repositories;
 using Unik.Onboarding.Domain.DomainServices;
 using Unik.SqlServerContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.DataProtection.Repositories;
-
+using Unik.Onboarding.Application.Queries.Onboarding;
+using Unik.Onboarding.Application.Queries.Implementation.Onboarding;
+using Unik.Onboarding.Application.Repositories.Onboarding;
+using Unik.Onboarding.Application.Commands.Onboarding;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +27,13 @@ builder.Services.AddScoped<IOnboardingGetAllQuery, OnboardingGetAllQuery>();
 builder.Services.AddScoped<IOnboardingGetQuery, OnboardingGetQuery>();
 builder.Services.AddScoped<IOnboardingDomainService, OnboardingDomainService>();
 
+// Database
+// Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.WebApp.UserContext.Migrations
+// Update-Database -Context WebAppUserDbContext
+
+// Database
+// Add-Migration InitialMigration -Context LevSundtContext -Project LevSundt.SqlServerContext.Migrations
+// Update-Database -Context LevSundtContext
 
 // Database
 // Add-Migration InitialMigration -Context UnikDbContext -Project Unik.SqlServerContext.Migrations

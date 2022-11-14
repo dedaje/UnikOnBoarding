@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unik.Onboarding.Application.Repositories;
+using Unik.Onboarding.Application.Commands.Onboarding;
+using Unik.Onboarding.Application.Repositories.Onboarding;
 
 namespace Unik.Onboarding.Application.Commands.Implementation
 {
