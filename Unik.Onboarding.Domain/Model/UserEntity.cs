@@ -20,7 +20,7 @@ public class UserEntity : IdentityUser
         RoleId = roleId;
     }
 
-    public int UserId { get; } // PK
+    public int UserId { get; private set; } // PK
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }

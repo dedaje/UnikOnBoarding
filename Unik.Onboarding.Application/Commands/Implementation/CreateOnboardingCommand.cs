@@ -23,7 +23,7 @@ namespace Unik.Onboarding.Application.Commands.Implementation
 
         void ICreateOnboardingCommand.Create(OnboardingCreateRequestDto onboardingCreateRequestDto)
         {
-            var onboarding = new OnboardingEntity(_domainService, onboardingCreateRequestDto.UserId, onboardingCreateRequestDto.SpecificUserId, onboardingCreateRequestDto.ProjektNavn);
+            var onboarding = new OnboardingEntity(/*_domainService,*/ onboardingCreateRequestDto.ProjektNavn);
             _onboardingRepository.Add(onboarding);
         }
     }

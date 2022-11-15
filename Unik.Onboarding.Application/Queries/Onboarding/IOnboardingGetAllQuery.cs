@@ -9,6 +9,6 @@ namespace Unik.Onboarding.Application.Queries.Onboarding
     public interface IOnboardingGetAllQuery
     {
         //Gets all the projects that the logged in user is assigned to
-        IEnumerable<OnboardingQueryResultDto> GetAllProjects(int userId); // This GetAll needs the userId of the user that's logged in currently
+        IEnumerable<OnboardingQueryResultDto> GetAllProjects(); // This GetAll needs the userId of the user that's logged in currently
     }
 }

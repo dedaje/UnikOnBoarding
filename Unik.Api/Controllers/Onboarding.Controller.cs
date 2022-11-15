@@ -29,9 +29,9 @@ namespace Unik.Api.Controllers
         [HttpGet("Onboarding/{specificUserId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<OnboardingQueryResultDto>> Get(string specificUserId)
+        public ActionResult<IEnumerable<OnboardingQueryResultDto>> Get()
         {
-            var result = _onboardingGetAllQuery.GetAll(specificUserId).ToList();
+            var result = _onboardingGetAllQuery.GetAllProjects().ToList();
             if (!result.Any())
 
                 return NotFound();
@@ -44,9 +44,9 @@ namespace Unik.Api.Controllers
         [HttpGet("{id}/{specificUserId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<OnboardingQueryResultDto> Get(int id, string specificUserId)
+        public ActionResult<OnboardingQueryResultDto> Get(int projectId)
         {
-            var result = _onboardingGetQuery.Get(id, specificUserId);
+            var result = _onboardingGetQuery.GetProject(projectId);
 
 
             return result;
@@ -73,24 +73,24 @@ namespace Unik.Api.Controllers
 
         }
 
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult PutAdd([FromBody] OnboardingEditRequestDto request)
-        {
-            try
-            {
-                _editOnboardingCommand.AddUser(request);
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
+        //[Consumes(MediaTypeNames.Application.Json)]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //public ActionResult PutAdd([FromBody] OnboardingEditRequestDto request)
+        //{
+        //    try
+        //    {
+        //        _editOnboardingCommand.AddUser(request);
+        //        return Ok();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.Message);
 
-            }
+        //    }
 
 
-        }
+        //}
 
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -111,24 +111,24 @@ namespace Unik.Api.Controllers
 
         }
 
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult PutRemove([FromBody] OnboardingEditRequestDto request)
-        {
-            try
-            {
-                _editOnboardingCommand.RemoveUser(request);
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
+        //[Consumes(MediaTypeNames.Application.Json)]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //public ActionResult PutRemove([FromBody] OnboardingEditRequestDto request)
+        //{
+        //    try
+        //    {
+        //        _editOnboardingCommand.RemoveUser(request);
+        //        return Ok();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.Message);
 
-            }
+        //    }
 
 
-        }
+        //}
 
         // DELETE api/<Onboarding>/5
         [HttpDelete("{id}")]

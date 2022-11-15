@@ -8,6 +8,6 @@ namespace Unik.Onboarding.Application.Queries.Onboarding
 {
     public interface IOnboardingGetQuery
     {
-        OnboardingQueryResultDto GetProject(int projectId, int userId); // This Gets a logged in user's specific project they're assigned to
+        OnboardingQueryResultDto GetProject(int projectId); // This Gets a logged in user's specific project they're assigned to
     }
 }

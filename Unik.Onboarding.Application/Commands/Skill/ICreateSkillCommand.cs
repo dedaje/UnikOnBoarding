@@ -8,6 +8,6 @@ namespace Unik.Onboarding.Application.Commands.Skill
 {
     public interface ICreateSkillCommand
     {
-        void Create(SkillCreateRequestDto request)
+        void Create(SkillCreateRequestDto request);
     }
 }

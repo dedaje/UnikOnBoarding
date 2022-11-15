@@ -20,7 +20,7 @@ public class OnboardingEntity
         //if (_domainService.userExistsInProject(ProjectId, UserId, SpecificUserId)) throw new ArgumentException("Den bruger eksisterer allerede i det projekt");
     }
 
-    public int ProjectId { get; } // PK
+    public int ProjectId { get; private set; } // PK
     public string ProjectName { get; private set; }
 
     public DateTime DateCreated { get; }

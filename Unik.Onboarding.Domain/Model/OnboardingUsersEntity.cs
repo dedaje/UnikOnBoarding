@@ -16,6 +16,7 @@ public class OnboardingUsersEntity
         UserId = userId;
     }
 
+    public int Id { get; private set; }
     [ForeignKey("ProjectId")] public OnboardingEntity OnboardingEntity { get; set; }
     public int ProjectId { get; private set; }
     [ForeignKey("UserId")] public UserEntity UserEntity { get; set; }

@@ -17,17 +17,17 @@ namespace Unik.Onboarding.Application.Commands.Implementation
             _repository = repository;
         }
 
-        void IEditOnboardingCommand.AddUser(OnboardingEditRequestDto requestDto)
-        {
-            //Read
-            var model = _repository.Load(requestDto.Id);
-            //DoIt
+        //void IEditOnboardingCommand.AddUser(OnboardingEditRequestDto requestDto)
+        //{
+        //    //Read
+        //    var model = _repository.Load(requestDto.Id);
+        //    //DoIt
 
-            model.AddUser(); //requestDto.UserId, requestDto.SpecificUserId, requestDto.RowVersion
+        //    model.AddUser(); //requestDto.UserId, requestDto.SpecificUserId, requestDto.RowVersion
 
-            //Save
-            _repository.Update(model);
-        }
+        //    //Save
+        //    _repository.Update(model);
+        //}
 
         void IEditOnboardingCommand.Edit(OnboardingEditRequestDto requestDto)
         {
@@ -35,22 +35,22 @@ namespace Unik.Onboarding.Application.Commands.Implementation
             var model = _repository.Load(requestDto.Id);
             //DoIt
 
-            model.Edit(requestDto.UserId, requestDto.ProjektNavn, requestDto.RowVersion);
+            model.Edit(requestDto.ProjektNavn, requestDto.RowVersion);
 
             //Save
             _repository.Update(model);
         }
 
-        void IEditOnboardingCommand.RemoveUser(OnboardingEditRequestDto requestDto)
-        {
-            //Read
-            var model = _repository.Load(requestDto.Id);
-            //DoIt
+        //void IEditOnboardingCommand.RemoveUser(OnboardingEditRequestDto requestDto)
+        //{
+        //    //Read
+        //    var model = _repository.Load(requestDto.Id);
+        //    //DoIt
 
-            model.RemoveUser(requestDto.UserId, requestDto.SpecificUserId, requestDto.RowVersion);
+        //    model.RemoveUser(requestDto.UserId, requestDto.SpecificUserId, requestDto.RowVersion);
 
-            //Save
-            _repository.Update(model);
-        }
+        //    //Save
+        //    _repository.Update(model);
+        //}
     }
 }

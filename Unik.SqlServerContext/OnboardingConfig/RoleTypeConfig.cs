@@ -4,7 +4,7 @@ using Unik.Onboarding.Domain.Model;
 
 namespace Unik.SqlServerContext.OnboardingConfig;
 
-public class RoleTypeConfig
+public class RoleTypeConfig : IEntityTypeConfiguration<RoleEntity>
 {
     public void Configure(EntityTypeBuilder<RoleEntity> builder)
     {

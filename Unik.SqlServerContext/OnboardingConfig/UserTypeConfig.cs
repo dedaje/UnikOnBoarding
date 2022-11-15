@@ -4,7 +4,7 @@ using Unik.Onboarding.Domain.Model;
 
 namespace Unik.SqlServerContext.OnboardingConfig;
 
-public class UserTypeConfig
+public class UserTypeConfig : IEntityTypeConfiguration<UserEntity>
 {
     public void Configure(EntityTypeBuilder<UserEntity> builder)
     {

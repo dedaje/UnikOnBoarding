@@ -13,8 +13,8 @@ public class OnboardingDomainService : IOnboardingDomainService
         _db = db;
     }
 
-    bool IOnboardingDomainService.userExistsInProject(int id, List<string> userId, string specificUserId)
-    {
-        return _db.OnboardingEntities.AsNoTracking().ToList().Any(a => a.Id == id && userId.Contains(specificUserId));
-    }
+    //bool IOnboardingDomainService.userExistsInProject()
+    //{
+    //    return _db.OnboardingEntities.AsNoTracking().ToList().Any(a => a.Id == id && userId.Contains(specificUserId));
+    //}
 }

@@ -12,8 +12,8 @@ public class OnboardingGetAllQuery : IOnboardingGetAllQuery
         _repository = repository;
     }
 
-    IEnumerable<OnboardingQueryResultDto> IOnboardingGetAllQuery.GetAllProjects(int userId)
+    IEnumerable<OnboardingQueryResultDto> IOnboardingGetAllQuery.GetAllProjects()
     {
-        return _repository.GetAllProjects(userId);
+        return _repository.GetAllProjects();
     }
 }
