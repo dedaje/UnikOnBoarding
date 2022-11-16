@@ -26,7 +26,7 @@ public class UserEntity : IdentityUser
     public string Email { get; private set; }
     public int Phone { get; private set; }
     [ForeignKey("RoleId")] public RoleEntity RoleEntity { get; set; }
-    public int RoleId { get; set; }
+    public int RoleId { get; private set; }
 
     [Timestamp] public byte[] RowVersion { get; private set; }
 
@@ -39,6 +39,6 @@ public class UserEntity : IdentityUser
         RoleId = roleId;
         RowVersion = rowVersion;
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

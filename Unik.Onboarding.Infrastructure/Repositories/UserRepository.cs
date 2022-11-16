@@ -1,4 +1,5 @@
-﻿using Unik.Onboarding.Application.Queries.User;
+﻿using Microsoft.EntityFrameworkCore;
+using Unik.Onboarding.Application.Queries.User;
 using Unik.Onboarding.Application.Repositories.User;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
@@ -22,22 +23,57 @@ public class UserRepository : IUserRepository
 
     IEnumerable<UserQueryResultDto> IUserRepository.GetAllByRole(int roleId)
     {
-        throw new NotImplementedException();
+        foreach (var entity in _db.UserEntities.AsNoTracking().Where(a => a.RoleId == roleId).ToList())
+            yield return new UserQueryResultDto
+            {
+                UserId = entity.UserId,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                Email = entity.Email,
+                Phone = entity.Phone,
+                RoleId = entity.RoleId,
+                RowVersion = entity.RowVersion
+            };
     }
 
     IEnumerable<UserQueryResultDto> IUserRepository.GetAllUsers()
     {
-        throw new NotImplementedException();
+        foreach (var entity in _db.UserEntities.AsNoTracking().ToList())
+            yield return new UserQueryResultDto
+            {
+                UserId = entity.UserId,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                Email = entity.Email,
+                Phone = entity.Phone,
+                RoleId = entity.RoleId,
+                RowVersion = entity.RowVersion
+            };
     }
 
     UserQueryResultDto IUserRepository.GetUser(int userId)
     {
-        throw new NotImplementedException();
+        var dbEntity = _db.UserEntities.AsNoTracking().FirstOrDefault(a => a.UserId == userId);
+        if (dbEntity == null) throw new Exception("Denne bruger findes ikke i databasen");
+
+        return new UserQueryResultDto
+        {
+            UserId = dbEntity.UserId,
+            FirstName = dbEntity.FirstName,
+            LastName = dbEntity.LastName,
+            Email = dbEntity.Email,
+            Phone = dbEntity.Phone,
+            RoleId = dbEntity.RoleId,
+            RowVersion = dbEntity.RowVersion
+        };
     }
 
     UserEntity IUserRepository.Load(int userId)
     {
-        throw new NotImplementedException();
+        var dbEntity = _db.UserEntities.AsNoTracking().FirstOrDefault(a => a.UserId == userId);
+        if (dbEntity == null) throw new Exception("Denne bruger findes ikke i databasen");
+
+        return dbEntity;
     }
 
     void IUserRepository.Update(UserEntity model)

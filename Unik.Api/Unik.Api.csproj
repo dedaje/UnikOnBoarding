@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -29,6 +29,7 @@
     <ProjectReference Include="..\Unik.SqlServerContext\Unik.SqlServerContext.csproj" />
     <ProjectReference Include="..\Unik.WebApp.UserContext.Migrations\Unik.WebApp.UserContext.Migrations.csproj" />
     <ProjectReference Include="..\Unik.WebApp.UserContext\Unik.WebApp.UserContext.csproj" />
+    <ProjectReference Include="..\UnikOnBoarding\UnikOnBoarding.csproj" />
   </ItemGroup>
 
 </Project>

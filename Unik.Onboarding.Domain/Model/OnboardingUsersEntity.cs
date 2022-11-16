@@ -30,6 +30,6 @@ public class OnboardingUsersEntity
         UserId = userId;
         RowVersion = rowVersion;
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

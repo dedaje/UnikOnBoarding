@@ -14,7 +14,7 @@ public class RoleEntity
         RoleName = roleName;
     }
 
-    public int RoleId { get; } // PK
+    public int RoleId { get; private set; } // PK
     public string RoleName { get; private set; }
 
     [Timestamp] public byte[] RowVersion { get; private set; }
@@ -24,6 +24,6 @@ public class RoleEntity
         RoleName = roleName;
         RowVersion = rowVersion;
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

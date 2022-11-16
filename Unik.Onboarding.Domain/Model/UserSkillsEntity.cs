@@ -16,6 +16,7 @@ public class UserSkillsEntity
         SkillId = skillId;
     }
 
+    public int Id { get; private set; }
     [ForeignKey("UserId")] public UserEntity UserEntity { get; set; }
     public int UserId { get; private set; }
     [ForeignKey("SkillId")] public SkillsEntity SkillsEntity { get; set; }
@@ -29,6 +30,6 @@ public class UserSkillsEntity
         SkillId = skillId;
         RowVersion = rowVersion;
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

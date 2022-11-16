@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Unik.Onboarding.Application.Commands.Role
 {
-    public interface IEditRoleRequestCommand
+    public interface ICreateRoleCommand
     {
-        void Edit(RoleEditRequestDto request);
+        void Create(RoleCreateRequestDto request);
     }
 }

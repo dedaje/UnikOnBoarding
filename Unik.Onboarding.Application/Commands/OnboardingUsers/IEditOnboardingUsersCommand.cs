@@ -8,6 +8,6 @@ namespace Unik.Onboarding.Application.Commands.OnboardingUsers
 {
     public interface IEditOnboardingUsersCommand
     {
-        void Edit(OnboardingUsersCreateRequestDto request);
+        void Edit(OnboardingUsersEditRequestDto request);
     }
 }

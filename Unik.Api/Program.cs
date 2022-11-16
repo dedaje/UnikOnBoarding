@@ -1,14 +1,38 @@
-using Unik.Onboarding.Application.Commands.Implementation;
-using Unik.Onboarding.Infrastructure.DomainServices;
-using Unik.Onboarding.Infrastructure.Repositories;
-using Unik.Onboarding.Domain.DomainServices;
-using Unik.SqlServerContext;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.DataProtection.Repositories;
-using Unik.Onboarding.Application.Queries.Onboarding;
-using Unik.Onboarding.Application.Queries.Implementation.Onboarding;
-using Unik.Onboarding.Application.Repositories.Onboarding;
+using Unik.Onboarding.Application.Commands.Implementation.Onboarding;
+using Unik.Onboarding.Application.Commands.Implementation.OnboardingUsers;
+using Unik.Onboarding.Application.Commands.Implementation.Role;
+using Unik.Onboarding.Application.Commands.Implementation.Skill;
+using Unik.Onboarding.Application.Commands.Implementation.User;
+using Unik.Onboarding.Application.Commands.Implementation.UserSkills;
 using Unik.Onboarding.Application.Commands.Onboarding;
+using Unik.Onboarding.Application.Commands.OnboardingUsers;
+using Unik.Onboarding.Application.Commands.Role;
+using Unik.Onboarding.Application.Commands.Skill;
+using Unik.Onboarding.Application.Commands.User;
+using Unik.Onboarding.Application.Commands.UserSkills;
+using Unik.Onboarding.Application.Queries.Implementation.Onboarding;
+using Unik.Onboarding.Application.Queries.Implementation.OnboardingUsers;
+using Unik.Onboarding.Application.Queries.Implementation.Role;
+using Unik.Onboarding.Application.Queries.Implementation.Skill;
+using Unik.Onboarding.Application.Queries.Implementation.User;
+using Unik.Onboarding.Application.Queries.Implementation.UserSkills;
+using Unik.Onboarding.Application.Queries.Onboarding;
+using Unik.Onboarding.Application.Queries.OnboardingUsers;
+using Unik.Onboarding.Application.Queries.Role;
+using Unik.Onboarding.Application.Queries.Skill;
+using Unik.Onboarding.Application.Queries.User;
+using Unik.Onboarding.Application.Queries.UserSkills;
+using Unik.Onboarding.Application.Repositories.Onboarding;
+using Unik.Onboarding.Application.Repositories.OnboardingUsers;
+using Unik.Onboarding.Application.Repositories.Role;
+using Unik.Onboarding.Application.Repositories.Skill;
+using Unik.Onboarding.Application.Repositories.User;
+using Unik.Onboarding.Application.Repositories.UserSkills;
+using Unik.Onboarding.Infrastructure.Repositories;
+using Unik.SqlServerContext;
+
+//using UnikOnBoarding;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,23 +44,45 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Clean Architecture
+builder.Services.AddScoped<IOnboardingRepository, OnboardingRepository>();
 builder.Services.AddScoped<ICreateOnboardingCommand, CreateOnboardingCommand>();
 builder.Services.AddScoped<IEditOnboardingCommand, EditOnboardingCommand>();
-builder.Services.AddScoped<IOnboardingRepository, OnboardingRepository>();
 builder.Services.AddScoped<IOnboardingGetAllQuery, OnboardingGetAllQuery>();
 builder.Services.AddScoped<IOnboardingGetQuery, OnboardingGetQuery>();
-builder.Services.AddScoped<IOnboardingDomainService, OnboardingDomainService>();
+//builder.Services.AddScoped<IOnboardingDomainService, OnboardingDomainService>();
+
+builder.Services.AddScoped<IOnboardingUsersRepository, OnboardingUsersRepository>();
+builder.Services.AddScoped<ICreateOnboardingUsersCommand, CreateOnboardingUsersCommand>();
+builder.Services.AddScoped<IEditOnboardingUsersCommand, EditOnboardingUsersCommand>();
+builder.Services.AddScoped<IOnboardingUsersGetAllQuery, OnboardingUsersGetAllQuery>();
+builder.Services.AddScoped<IOnboardingUsersGetQuery, OnboardingUsersGetQuery>();
+
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<ICreateRoleCommand, CreateRoleCommand>();
+builder.Services.AddScoped<IEditRoleCommand, EditRoleCommand>();
+builder.Services.AddScoped<IRoleGetAllQuery, RoleGetAllQuery>();
+builder.Services.AddScoped<IRoleGetQuery, RoleGetQuery>();
+
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+builder.Services.AddScoped<ICreateSkillCommand, CreateSkillCommand>();
+builder.Services.AddScoped<IEditSkillCommand, EditSkillCommand>();
+builder.Services.AddScoped<ISkillGetAllQuery, SkillGetAllQuery>();
+builder.Services.AddScoped<ISkillGetQuery, SkillGetQuery>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICreateUserCommand, CreateUserCommand>();
+builder.Services.AddScoped<IEditUserCommand, EditUserCommand>();
+builder.Services.AddScoped<IUserGetAllQuery, UserGetAllQuery>();
+builder.Services.AddScoped<IUserGetQuery, UserGetQuery>();
+
+builder.Services.AddScoped<IUserSkillsRepository, UserSkillsRepository>();
+builder.Services.AddScoped<ICreateUserSkillsCommand, CreateUserSkillsCommand>();
+builder.Services.AddScoped<IEditUserSkillsCommand, EditUserSkillsCommand>();
+builder.Services.AddScoped<IUserSkillsGetAllQuery, UserSkillsGetAllQuery>();
+builder.Services.AddScoped<IUserSkillsGetQuery, UserSkillsGetQuery>();
 
 // Database
-// Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.WebApp.UserContext.Migrations
-// Update-Database -Context WebAppUserDbContext
-
-// Database
-// Add-Migration InitialMigration -Context LevSundtContext -Project LevSundt.SqlServerContext.Migrations
-// Update-Database -Context LevSundtContext
-
-// Database
-// Add-Migration InitialMigration -Context UnikDbContext -Project Unik.SqlServerContext.Migrations
+// Add-Migration InitialMigrationDomain -Context UnikDbContext -Project Unik.SqlServerContext.Migrations
 // Update-Database -Context UnikDbContext
 builder.Services.AddDbContext<UnikDbContext>(
     options =>

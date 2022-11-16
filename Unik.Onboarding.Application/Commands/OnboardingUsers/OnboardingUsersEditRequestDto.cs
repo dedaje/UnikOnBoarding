@@ -9,8 +9,9 @@ using Unik.Onboarding.Domain.Model;
 
 namespace Unik.Onboarding.Application.Commands.OnboardingUsers
 {
-    public class OnboardingEditRequestDto
+    public class OnboardingUsersEditRequestDto
     {
+        public int Id { get; set; }
         public int ProjectId { get; set; }
         public int UserId { get; set; }
         public byte[] RowVersion { get; set; }

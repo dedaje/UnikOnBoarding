@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Unik.Api\Unik.Api.csproj" />
     <ProjectReference Include="..\Unik.Onboarding.Application\Unik.Onboarding.Application.csproj" />
     <ProjectReference Include="..\Unik.Onboarding.Domain\Unik.Onboarding.Domain.csproj" />
     <ProjectReference Include="..\Unik.Onboarding.Infrastructure\Unik.Onboarding.Infrastructure.csproj" />

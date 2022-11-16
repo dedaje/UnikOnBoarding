@@ -24,6 +24,6 @@ public class SkillsEntity
         SkillName = skillName;
         RowVersion = rowVersion;
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

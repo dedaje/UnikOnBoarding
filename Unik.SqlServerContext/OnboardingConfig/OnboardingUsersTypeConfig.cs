@@ -9,6 +9,6 @@ public class OnboardingUsersTypeConfig : IEntityTypeConfiguration<OnboardingUser
     public void Configure(EntityTypeBuilder<OnboardingUsersEntity> builder)
     {
         builder.ToTable("OnboardingUsers", "onboardingUsers");
-        //builder.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
     }
 }

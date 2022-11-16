@@ -8,6 +8,7 @@ namespace Unik.Onboarding.Application.Commands.UserSkills
 {
     public class UserSkillsCreateRequestDto
     {
+        public int UserId { get; set; }
         public int SkillId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Unik.Onboarding.Application.Queries.Skill;
+﻿using Microsoft.EntityFrameworkCore;
+using Unik.Onboarding.Application.Queries.Skill;
 using Unik.Onboarding.Application.Repositories.Skill;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
@@ -22,17 +23,34 @@ public class SkillRepository : ISkillRepository
 
     IEnumerable<SkillQueryResultDto> ISkillRepository.GetAllSkills()
     {
-        throw new NotImplementedException();
+        foreach (var entity in _db.SkillsEntities.AsNoTracking().ToList())
+            yield return new SkillQueryResultDto
+            {
+                SkillId = entity.SkillId,
+                SkillName = entity.SkillName,
+                RowVersion = entity.RowVersion
+            };
     }
 
     SkillQueryResultDto ISkillRepository.GetSkill(int skillId)
     {
-        throw new NotImplementedException();
+        var dbEntity = _db.SkillsEntities.AsNoTracking().FirstOrDefault(a => a.SkillId == skillId);
+        if (dbEntity == null) throw new Exception("Denne kompetence findes ikke i databasen");
+
+        return new SkillQueryResultDto
+        {
+            SkillId = dbEntity.SkillId,
+            SkillName = dbEntity.SkillName,
+            RowVersion = dbEntity.RowVersion
+        };
     }
 
     SkillsEntity ISkillRepository.Load(int skillId)
     {
-        throw new NotImplementedException();
+        var dbEntity = _db.SkillsEntities.AsNoTracking().FirstOrDefault(a => a.SkillId == skillId);
+        if (dbEntity == null) throw new Exception("Denne kompetence findes ikke i databasen");
+
+        return dbEntity;
     }
 
     void ISkillRepository.Update(SkillsEntity model)

@@ -23,17 +23,35 @@ public class OnboardingUsersRepository : IOnboardingUsersRepository
 
     IEnumerable<OnboardingUsersQueryResultDto> IOnboardingUsersRepository.GetAllOnboardingUsers(int projectId)
     {
-        throw new NotImplementedException();
+        foreach (var entity in _db.OnboardingUsersEntities.AsNoTracking().Where(a => a.ProjectId == projectId).ToList())
+            yield return new OnboardingUsersQueryResultDto
+            {
+                Id = entity.Id,
+                ProjectId = entity.ProjectId,
+                RowVersion = entity.RowVersion,
+                UserId = entity.UserId
+            };
     }
 
     OnboardingUsersQueryResultDto IOnboardingUsersRepository.GetOnboardingUser(int projectId, int userId)
     {
-        throw new NotImplementedException();
+        var dbEntity = _db.OnboardingUsersEntities.AsNoTracking()
+            .FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
+        if (dbEntity == null) throw new Exception("Denne bruger findes ikke i dette projekt");
+
+        return new OnboardingUsersQueryResultDto
+        {
+            Id = dbEntity.Id,
+            ProjectId = dbEntity.ProjectId,
+            RowVersion = dbEntity.RowVersion,
+            UserId = dbEntity.UserId
+        };
     }
 
     OnboardingUsersEntity IOnboardingUsersRepository.Load(int projectId, int userId)
     {
-        var dbEntity = _db.OnboardingUsersEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
+        var dbEntity = _db.OnboardingUsersEntities.AsNoTracking()
+            .FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
         if (dbEntity == null) throw new Exception("Det projekt findes ikke i databasen"); //TODO: opdater
 
         return dbEntity;
