@@ -25,7 +25,7 @@ public class Onboarding : ControllerBase
     }
 
     // GET: api/<Onboarding>
-    [HttpGet("api/Onboarding/")]
+    [HttpGet] //("api/Onboarding/")
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<IEnumerable<OnboardingQueryResultDto>> Get() // GetAll
@@ -39,7 +39,7 @@ public class Onboarding : ControllerBase
     }
 
     // GET: api/<Onboarding>
-    [HttpGet("api/Onboarding/{projectId}")]
+    [HttpGet("{projectId}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<OnboardingQueryResultDto> Get(int projectId) // Get

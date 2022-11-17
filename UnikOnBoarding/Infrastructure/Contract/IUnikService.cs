@@ -6,7 +6,7 @@ namespace UnikOnBoarding.Infrastructure.Contract
     {
         Task Create(OnboardingCreateRequestDto dto);
         Task Edit(OnboardingEditRequestDto dto);
-        Task<OnboardingQueryResultDto> Get(int projectId);
-        Task<IEnumerable<OnboardingQueryResultDto>> GetAll();
+        Task<OnboardingQueryResultDto?> Get(int projectId);
+        Task<IEnumerable<OnboardingQueryResultDto>?> GetAll();
     }
 }
