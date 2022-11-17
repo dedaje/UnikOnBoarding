@@ -17,9 +17,9 @@ namespace UnikOnBoarding.Pages.Onboarding
 
         public async Task OnGet()
         {
-            var businessModel = await _unikService.GetAll(User.Identity?.Name ?? String.Empty);
+            var businessModel = await _unikService.GetAll(/*User.Identity?.Name ?? String.Empty*/);
 
-            businessModel.ToList().ForEach(dto => IndexViewModel.Add(new OnboardingIndexViewModel { Id = dto.Id, Date = dto.Date , ProjektNavn = dto.ProjektNavn}));
+            businessModel.ToList().ForEach(dto => IndexViewModel.Add(new OnboardingIndexViewModel { ProjectId = dto.ProjectId, Date = dto.Date , ProjectName = dto.ProjectName}));
         }
     }
 }

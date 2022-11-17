@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Unik.Onboarding.Domain.Model;
 
-public class UserEntity : IdentityUser
+public class UserEntity //: IdentityUser
 {
     // For Entity Framework only!!!
     internal UserEntity()

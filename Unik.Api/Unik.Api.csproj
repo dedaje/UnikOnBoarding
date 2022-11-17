@@ -27,9 +27,6 @@
     <ProjectReference Include="..\Unik.Onboarding.Infrastructure\Unik.Onboarding.Infrastructure.csproj" />
     <ProjectReference Include="..\Unik.SqlServerContext.Migrations\Unik.SqlServerContext.Migrations.csproj" />
     <ProjectReference Include="..\Unik.SqlServerContext\Unik.SqlServerContext.csproj" />
-    <ProjectReference Include="..\Unik.WebApp.UserContext.Migrations\Unik.WebApp.UserContext.Migrations.csproj" />
-    <ProjectReference Include="..\Unik.WebApp.UserContext\Unik.WebApp.UserContext.csproj" />
-    <ProjectReference Include="..\UnikOnBoarding\UnikOnBoarding.csproj" />
   </ItemGroup>
 
 </Project>

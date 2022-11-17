@@ -23,7 +23,7 @@ public class OnboardingEntity
     public int ProjectId { get; private set; } // PK
     public string ProjectName { get; private set; }
 
-    public DateTime DateCreated { get; }
+    public DateTime DateCreated { get; private set; }
 
     //public DateTime? DateModified { get; private set; }
     [Timestamp] public byte[] RowVersion { get; private set; }

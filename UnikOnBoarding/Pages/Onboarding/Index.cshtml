@@ -22,16 +22,16 @@
                 foreach (var onboarding in Model.IndexViewModel)
                 {
                     <tr>
-                        <td> @onboarding.Id </td>
+                        <td> @onboarding.ProjectId </td>
                         <td>@onboarding.Date</td>
-                        <td>@onboarding.ProjektNavn</td>
+                        <td>@onboarding.ProjectName</td>
                         <td>
                             <!-- <snippet_Edit> -->
-                            <a asp-page="./Edit" asp-route-id="@onboarding.Id">Edit</a>
+                            <a asp-page="./Edit" asp-route-id="@onboarding.ProjectId">Edit</a>
                             <!-- </snippet_Edit> -->
                             |
                             <!-- <snippet_Delete> -->
-                            <a type="submit" asp-page-handler="delete" asp-route-id="@onboarding.Id">delete</a>
+                            <a type="submit" asp-page-handler="delete" asp-route-id="@onboarding.ProjectId">delete</a>
                             <!-- </snippet_Delete> -->
                         </td>
                     </tr>

@@ -2,9 +2,9 @@
 {
     public class OnboardingQueryResultDto
     {
-        public int Id { get; set; }
-        public List<string> UserId { get; set; }
+        public int ProjectId { get; set; }
+        public string ProjectName { get; set; }
         public DateTime Date { get; set; }
-        public string ProjektNavn { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }
