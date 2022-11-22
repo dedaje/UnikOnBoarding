@@ -1,5 +1,5 @@
 ﻿using Unik.Onboarding.Application.Commands.User;
-using Unik.Onboarding.Application.Repositories.User;
+using Unik.Onboarding.Application.Repositories;
 
 namespace Unik.Onboarding.Application.Commands.Implementation.User;
 
@@ -15,11 +15,10 @@ public class EditUserCommand : IEditUserCommand
     void IEditUserCommand.Edit(UserEditRequestDto request)
     {
         //Read
-        var model = _repository.Load(request.UserId);
+        var model = _repository.Load(request.Id);
 
         //DoIt
-        model.Edit(request.FirstName, request.LastName, request.Email, request.Phone, request.RoleId,
-            request.RowVersion);
+        model.Edit(request.UserId, request.Name, request.Phone, request.RoleId, request.RowVersion);
 
         //Save
         _repository.Update(model);

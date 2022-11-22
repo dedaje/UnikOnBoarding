@@ -1,58 +1,89 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net.Mime;
+using Microsoft.AspNetCore.Mvc;
 using Unik.Onboarding.Application.Commands.Role;
 using Unik.Onboarding.Application.Queries.Role;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Unik.Api.Controllers
+namespace Unik.Api.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class Role : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class Role : ControllerBase
+    private readonly ICreateRoleCommand _createRoleCommand;
+    private readonly IEditRoleCommand _editRoleCommand;
+    private readonly IRoleGetAllQuery _roleGetAllQuery;
+    private readonly IRoleGetQuery _roleGetQuery;
+
+    public Role(ICreateRoleCommand createRoleCommand, IEditRoleCommand editRoleCommand,
+        IRoleGetAllQuery roleGetAllQuery, IRoleGetQuery roleGetQuery)
     {
-        private readonly ICreateRoleCommand _createRoleCommand;
-        private readonly IEditRoleCommand _editRoleCommand;
-        private readonly IRoleGetAllQuery _roleGetAllQuery;
-        private readonly IRoleGetQuery _roleGetQuery;
+        _createRoleCommand = createRoleCommand;
+        _editRoleCommand = editRoleCommand;
+        _roleGetAllQuery = roleGetAllQuery;
+        _roleGetQuery = roleGetQuery;
+    }
 
-        public Role(ICreateRoleCommand createRoleCommand, IEditRoleCommand editRoleCommand, IRoleGetAllQuery roleGetAllQuery, IRoleGetQuery roleGetQuery)
+    // GET: api/<Role>
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<IEnumerable<RoleQueryResultDto>> Get() // GetAll
+    {
+        var result = _roleGetAllQuery.GetAllRoles().ToList();
+        if (!result.Any())
+
+            return NotFound();
+
+        return result.ToList();
+    }
+
+    // GET api/<Role>/5
+    [HttpGet("{roleId}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<RoleQueryResultDto> Get(int roleId) //Get
+    {
+        var result = _roleGetQuery.GetRole(roleId);
+
+
+        return result;
+    }
+
+    // POST api/<Role>
+    [HttpPost]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult Post(RoleCreateRequestDto request)
+    {
+        try
         {
-            _createRoleCommand = createRoleCommand;
-            _editRoleCommand = editRoleCommand;
-            _roleGetAllQuery = roleGetAllQuery;
-            _roleGetQuery = roleGetQuery;
+            _createRoleCommand.Create(request);
+            return Ok();
         }
-
-        // GET: api/<Role>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        catch (Exception e)
         {
-            return new string[] { "value1", "value2" };
+            return BadRequest(e.Message);
         }
+    }
 
-        // GET api/<Role>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+    // PUT api/<Role>/5
+    [HttpPut("{id}")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult Put([FromBody] RoleEditRequestDto request)
+    {
+        try
         {
-            return "value";
+            _editRoleCommand.Edit(request);
+            return Ok();
         }
-
-        // POST api/<Role>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        catch (Exception e)
         {
-        }
-
-        // PUT api/<Role>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<Role>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return BadRequest(e.Message);
         }
     }
 }

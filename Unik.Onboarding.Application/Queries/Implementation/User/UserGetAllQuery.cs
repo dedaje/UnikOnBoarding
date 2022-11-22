@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unik.Onboarding.Application.Queries.User;
-using Unik.Onboarding.Application.Repositories.User;
+using Unik.Onboarding.Application.Repositories;
 
 namespace Unik.Onboarding.Application.Queries.Implementation.User
 {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 using Unik.Onboarding.Application.Commands.Skill;
 using Unik.Onboarding.Application.Queries.Skill;
 
@@ -23,36 +24,65 @@ namespace Unik.Api.Controllers
             _skillGetQuery = skillGetQuery;
         }
 
-        // GET: api/<Skill>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET: api/<Onboarding>
+        [HttpGet] //("api/Onboarding/")
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<SkillQueryResultDto>> Get() // GetAll
         {
-            return new string[] { "value1", "value2" };
+            var result = _skillGetAllQuery.GetAllSkills().ToList();
+            if (!result.Any())
+
+                return NotFound();
+
+            return result.ToList();
         }
 
-        // GET api/<Skill>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<Onboarding>
+        [HttpGet("{skillId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<SkillQueryResultDto> Get(int skillId) // Get
         {
-            return "value";
+            var result = _skillGetQuery.GetSkill(skillId);
+
+
+            return result;
         }
 
-        // POST api/<Skill>
+        // POST api/<Onboarding>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult Post(SkillCreateRequestDto request) // Create
         {
+            try
+            {
+                _createSkillCommand.Create(request);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        // PUT api/<Skill>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult Put([FromBody] SkillEditRequestDto request) //Edit
         {
-        }
-
-        // DELETE api/<Skill>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            try
+            {
+                _editSkillCommand.Edit(request);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Application.Queries.UserSkills;
-using Unik.Onboarding.Application.Repositories.UserSkills;
+using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
 
@@ -21,7 +21,7 @@ public class UserSkillsRepository : IUserSkillsRepository
         _db.SaveChanges();
     }
 
-    IEnumerable<UserSkillsQueryResultDto> IUserSkillsRepository.GetAllUserSkills(int userId)
+    IEnumerable<UserSkillsQueryResultDto> IUserSkillsRepository.GetAllUserSkills(string userId)
     {
         foreach (var entity in _db.UserSkillsEntities.AsNoTracking().Where(a => a.UserId == userId).ToList())
             yield return new UserSkillsQueryResultDto
@@ -33,7 +33,7 @@ public class UserSkillsRepository : IUserSkillsRepository
             };
     }
 
-    UserSkillsQueryResultDto IUserSkillsRepository.GetUserSkill(int userId, int skillId)
+    UserSkillsQueryResultDto IUserSkillsRepository.GetUserSkill(string userId, int skillId)
     {
         var dbEntity = _db.UserSkillsEntities.AsNoTracking()
             .FirstOrDefault(a => a.UserId == userId && a.SkillId == skillId);
@@ -48,7 +48,7 @@ public class UserSkillsRepository : IUserSkillsRepository
         };
     }
 
-    UserSkillsEntity IUserSkillsRepository.Load(int userId, int skillId)
+    UserSkillsEntity IUserSkillsRepository.Load(string userId, int skillId)
     {
         var dbEntity = _db.UserSkillsEntities.AsNoTracking()
             .FirstOrDefault(a => a.UserId == userId && a.SkillId == skillId);

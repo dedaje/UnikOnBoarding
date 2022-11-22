@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unik.Onboarding.Application.Queries.OnboardingUsers;
-using Unik.Onboarding.Application.Repositories.OnboardingUsers;
+﻿using Unik.Onboarding.Application.Queries.OnboardingUsers;
+using Unik.Onboarding.Application.Repositories;
 
-namespace Unik.Onboarding.Application.Queries.Implementation.OnboardingUsers
+namespace Unik.Onboarding.Application.Queries.Implementation.OnboardingUsers;
+
+public class OnboardingUsersGetQuery : IOnboardingUsersGetQuery
 {
-    public class OnboardingUsersGetQuery : IOnboardingUsersGetQuery
+    private readonly IOnboardingUsersRepository _repository;
+
+    public OnboardingUsersGetQuery(IOnboardingUsersRepository repository)
     {
-        private readonly IOnboardingUsersRepository _repository;
+        _repository = repository;
+    }
 
-        public OnboardingUsersGetQuery(IOnboardingUsersRepository repository)
-        {
-            _repository = repository;
-        }
-
-        OnboardingUsersQueryResultDto IOnboardingUsersGetQuery.GetOnboardingUser(int projectId, int userId)
-        {
-            return _repository.GetOnboardingUser(projectId, userId);
-        }
+    OnboardingUsersQueryResultDto IOnboardingUsersGetQuery.GetOnboardingUser(int projectId, string userId)
+    {
+        return _repository.GetOnboardingUser(projectId, userId);
     }
 }

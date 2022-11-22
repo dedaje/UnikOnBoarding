@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Application.Queries.Onboarding;
-using Unik.Onboarding.Application.Repositories.Onboarding;
+using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
 
@@ -21,18 +21,15 @@ public class OnboardingRepository : IOnboardingRepository
         _db.SaveChanges();
     }
 
-    OnboardingEntity IOnboardingRepository.Load(int projectId) // Load metoden er til at hente data for Commands
+    IEnumerable<OnboardingQueryResultDto> IOnboardingRepository.GetAllProjects()
     {
-        var dbEntity = _db.OnboardingEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId);
-        if (dbEntity == null) throw new Exception("Det projekt findes ikke i databasen");
-
-        return dbEntity;
-    }
-
-    void IOnboardingRepository.Update(OnboardingEntity model)
-    {
-        _db.Update(model);
-        _db.SaveChanges();
+        foreach (var entity in _db.OnboardingEntities.AsNoTracking().ToList())
+            yield return new OnboardingQueryResultDto
+            {
+                ProjectId = entity.ProjectId,
+                Date = entity.DateCreated,
+                ProjectName = entity.ProjectName
+            };
     }
 
     OnboardingQueryResultDto IOnboardingRepository.GetProject(int projectId)
@@ -49,14 +46,17 @@ public class OnboardingRepository : IOnboardingRepository
         };
     }
 
-    IEnumerable<OnboardingQueryResultDto> IOnboardingRepository.GetAllProjects()
+    OnboardingEntity IOnboardingRepository.Load(int projectId) // Load metoden er til at hente data for Commands
     {
-        foreach (var entity in _db.OnboardingEntities.AsNoTracking().ToList())
-            yield return new OnboardingQueryResultDto
-            {
-                ProjectId = entity.ProjectId,
-                Date = entity.DateCreated,
-                ProjectName = entity.ProjectName
-            };
+        var dbEntity = _db.OnboardingEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId);
+        if (dbEntity == null) throw new Exception("Det projekt findes ikke i databasen");
+
+        return dbEntity;
+    }
+
+    void IOnboardingRepository.Update(OnboardingEntity model)
+    {
+        _db.Update(model);
+        _db.SaveChanges();
     }
 }

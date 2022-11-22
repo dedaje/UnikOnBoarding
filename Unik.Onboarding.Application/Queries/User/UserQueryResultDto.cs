@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unik.Onboarding.Domain.Model;
+﻿namespace Unik.Onboarding.Application.Queries.User;
 
-namespace Unik.Onboarding.Application.Queries.User
+public class UserQueryResultDto
 {
-    public class UserQueryResultDto
-    {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public int Phone { get; set; }
-        public int RoleId { get; set; }
-        public byte[] RowVersion { get; set; }
-    }
+    public string UserId { get; set; }
+    public string Name { get; set; }
+    public int Phone { get; set; }
+    public int RoleId { get; set; }
+    public byte[] RowVersion { get; set; }
 }

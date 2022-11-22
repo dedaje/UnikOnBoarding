@@ -1,5 +1,5 @@
 ﻿using Unik.Onboarding.Application.Commands.User;
-using Unik.Onboarding.Application.Repositories.User;
+using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 
 namespace Unik.Onboarding.Application.Commands.Implementation.User;
@@ -15,7 +15,7 @@ public class CreateUserCommand : ICreateUserCommand
 
     void ICreateUserCommand.Create(UserCreateRequestDto request)
     {
-        var user = new UserEntity(request.FirstName, request.LastName, request.Email, request.Phone, request.RoleId);
+        var user = new UserEntity(request.UserId, request.Name, request.Phone, request.RoleId);
         _repository.Add(user);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 using Unik.Onboarding.Application.Commands.User;
+using Unik.Onboarding.Application.Queries.Implementation.User;
 using Unik.Onboarding.Application.Queries.User;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -24,35 +26,78 @@ namespace Unik.Api.Controllers
         }
 
         // GET: api/<User>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("{roleId}")] //("api/User/")
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<UserQueryResultDto>> Get(int roleId) // GetAllByRole
         {
-            return new string[] { "value1", "value2" };
+            var result = _userGetAllQuery.GetAllByRole(roleId).ToList();
+            if (!result.Any())
+
+                return NotFound();
+
+            return result.ToList();
         }
 
-        // GET api/<User>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<User>
+        [HttpGet] //("api/User/")
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<UserQueryResultDto>> Get() // GetAllUsers
         {
-            return "value";
+            var result = _userGetAllQuery.GetAllUsers().ToList();
+            if (!result.Any())
+
+                return NotFound();
+
+            return result.ToList();
+        }
+
+        // GET: api/<User>
+        [HttpGet("{userId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<UserQueryResultDto> Get(string userId) // Get
+        {
+            var result = _userGetQuery.GetUser(userId);
+
+
+            return result;
         }
 
         // POST api/<User>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult Post(UserCreateRequestDto request) // Create
         {
+            try
+            {
+                _createUserCommand.Create(request);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        // PUT api/<User>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult PutEdit([FromBody] UserEditRequestDto request) //Edit
         {
-        }
-
-        // DELETE api/<User>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            try
+            {
+                _editUserCommand.Edit(request);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

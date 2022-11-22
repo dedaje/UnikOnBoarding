@@ -1,5 +1,5 @@
 ﻿using Unik.Onboarding.Application.Commands.Role;
-using Unik.Onboarding.Application.Repositories.Role;
+using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 
 namespace Unik.Onboarding.Application.Commands.Implementation.Role;

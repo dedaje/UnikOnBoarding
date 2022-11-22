@@ -44,7 +44,7 @@ namespace Unik.Api.Controllers
         [HttpGet("Onboarding/{projectId}/{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<OnboardingUsersQueryResultDto> Get(int projectId, int userId)
+        public ActionResult<OnboardingUsersQueryResultDto> Get(int projectId, string userId)
         {
             var result = _onboardingUsersGetQuery.GetOnboardingUser(projectId, userId);
 

@@ -12,6 +12,6 @@ namespace Unik.Onboarding.Application.Commands.OnboardingUsers
     public class OnboardingUsersCreateRequestDto
     {
         public int ProjectId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

@@ -15,6 +15,7 @@ public class UnikDbContext : DbContext
     public DbSet<OnboardingUsersEntity> OnboardingUsersEntities { get; set; }
     public DbSet<RoleEntity> RoleEntities { get; set; }
     public DbSet<SkillsEntity> SkillsEntities { get; set; }
+    public DbSet<TaskEntity> TaskEntities { get; set; }
     public DbSet<UserEntity> UserEntities { get; set; }
     public DbSet<UserSkillsEntity> UserSkillsEntities { get; set; }
 
@@ -24,6 +25,7 @@ public class UnikDbContext : DbContext
         builder.ApplyConfiguration(new OnboardingUsersTypeConfig());
         builder.ApplyConfiguration(new RoleTypeConfig());
         builder.ApplyConfiguration(new SkillTypeConfig());
+        builder.ApplyConfiguration(new TaskTypeConfig());
         builder.ApplyConfiguration(new UserTypeConfig());
         builder.ApplyConfiguration(new UserSkillsTypeConfig());
     }

@@ -23,12 +23,7 @@ using Unik.Onboarding.Application.Queries.Role;
 using Unik.Onboarding.Application.Queries.Skill;
 using Unik.Onboarding.Application.Queries.User;
 using Unik.Onboarding.Application.Queries.UserSkills;
-using Unik.Onboarding.Application.Repositories.Onboarding;
-using Unik.Onboarding.Application.Repositories.OnboardingUsers;
-using Unik.Onboarding.Application.Repositories.Role;
-using Unik.Onboarding.Application.Repositories.Skill;
-using Unik.Onboarding.Application.Repositories.User;
-using Unik.Onboarding.Application.Repositories.UserSkills;
+using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Infrastructure.Repositories;
 using Unik.SqlServerContext;
 
@@ -92,11 +87,11 @@ builder.Services.AddDbContext<UnikDbContext>(
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Application.Queries.OnboardingUsers;
-using Unik.Onboarding.Application.Repositories.OnboardingUsers;
+using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
 
@@ -33,7 +33,7 @@ public class OnboardingUsersRepository : IOnboardingUsersRepository
             };
     }
 
-    OnboardingUsersQueryResultDto IOnboardingUsersRepository.GetOnboardingUser(int projectId, int userId)
+    OnboardingUsersQueryResultDto IOnboardingUsersRepository.GetOnboardingUser(int projectId, string userId)
     {
         var dbEntity = _db.OnboardingUsersEntities.AsNoTracking()
             .FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
@@ -48,7 +48,7 @@ public class OnboardingUsersRepository : IOnboardingUsersRepository
         };
     }
 
-    OnboardingUsersEntity IOnboardingUsersRepository.Load(int projectId, int userId)
+    OnboardingUsersEntity IOnboardingUsersRepository.Load(int projectId, string userId)
     {
         var dbEntity = _db.OnboardingUsersEntities.AsNoTracking()
             .FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);

@@ -12,7 +12,7 @@ namespace Unik.Onboarding.Application.Queries.UserSkills
     public class UserSkillsQueryResultDto
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int SkillId { get; set; }
         public byte[] RowVersion { get; set; }
     }

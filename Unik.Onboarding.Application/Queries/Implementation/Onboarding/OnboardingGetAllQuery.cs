@@ -1,5 +1,5 @@
 ﻿using Unik.Onboarding.Application.Queries.Onboarding;
-using Unik.Onboarding.Application.Repositories.Onboarding;
+using Unik.Onboarding.Application.Repositories;
 
 namespace Unik.Onboarding.Application.Queries.Implementation.Onboarding;
 

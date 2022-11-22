@@ -23,7 +23,5 @@ public class RoleEntity
     {
         RoleName = roleName;
         RowVersion = rowVersion;
-
-        //throw new NotImplementedException();
     }
 }

@@ -8,6 +8,6 @@ namespace Unik.Onboarding.Application.Queries.UserSkills
 {
     public interface IUserSkillsGetAllQuery
     {
-        IEnumerable<UserSkillsQueryResultDto> GetAllUserSkills(int userId);
+        IEnumerable<UserSkillsQueryResultDto> GetAllUserSkills(string userId);
     }
 }

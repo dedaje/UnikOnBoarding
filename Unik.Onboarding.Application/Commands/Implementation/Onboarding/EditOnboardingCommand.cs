@@ -1,5 +1,5 @@
 ﻿using Unik.Onboarding.Application.Commands.Onboarding;
-using Unik.Onboarding.Application.Repositories.Onboarding;
+using Unik.Onboarding.Application.Repositories;
 
 namespace Unik.Onboarding.Application.Commands.Implementation.Onboarding;
 
@@ -15,10 +15,10 @@ public class EditOnboardingCommand : IEditOnboardingCommand
     void IEditOnboardingCommand.Edit(OnboardingEditRequestDto requestDto)
     {
         //Read
-        var model = _repository.Load(requestDto.Id);
+        var model = _repository.Load(requestDto.ProjectId);
 
         //DoIt
-        model.Edit(requestDto.ProjektNavn, requestDto.RowVersion);
+        model.Edit(requestDto.ProjectName, requestDto.RowVersion);
 
         //Save
         _repository.Update(model);

@@ -14,7 +14,7 @@ public class SkillsEntity
         SkillName = skillName;
     }
 
-    public int SkillId { get; } // PK
+    public int SkillId { get; private set; } // PK
     public string SkillName { get; private set; }
 
     [Timestamp] public byte[] RowVersion { get; private set; }
@@ -23,7 +23,5 @@ public class SkillsEntity
     {
         SkillName = skillName;
         RowVersion = rowVersion;
-
-        //throw new NotImplementedException();
     }
 }

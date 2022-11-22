@@ -5,7 +5,7 @@ using Unik.Onboarding.Application.Queries.Onboarding;
 
 namespace Unik.Api.Controllers;
 
-[Route("api/Onboarding")]
+[Route("api/[controller]")]
 [ApiController]
 public class Onboarding : ControllerBase
 {
@@ -15,8 +15,9 @@ public class Onboarding : ControllerBase
     private readonly IOnboardingGetQuery _onboardingGetQuery;
 
     // constructor
-    public Onboarding(IOnboardingGetAllQuery onboardingGetAllQuery, ICreateOnboardingCommand createOnboardingCommand,
-        IEditOnboardingCommand editOnboardingCommand, IOnboardingGetQuery onboardingGetQuery)
+    public Onboarding(ICreateOnboardingCommand createOnboardingCommand,
+        IEditOnboardingCommand editOnboardingCommand, IOnboardingGetAllQuery onboardingGetAllQuery,
+        IOnboardingGetQuery onboardingGetQuery)
     {
         _onboardingGetAllQuery = onboardingGetAllQuery;
         _createOnboardingCommand = createOnboardingCommand;
