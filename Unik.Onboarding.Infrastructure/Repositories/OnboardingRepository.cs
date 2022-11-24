@@ -28,7 +28,8 @@ public class OnboardingRepository : IOnboardingRepository
             {
                 ProjectId = entity.ProjectId,
                 Date = entity.DateCreated,
-                ProjectName = entity.ProjectName
+                ProjectName = entity.ProjectName,
+                RowVersion = entity.RowVersion
             };
     }
 
@@ -42,7 +43,8 @@ public class OnboardingRepository : IOnboardingRepository
         {
             ProjectId = dbEntity.ProjectId,
             Date = dbEntity.DateCreated,
-            ProjectName = dbEntity.ProjectName
+            ProjectName = dbEntity.ProjectName, 
+            RowVersion = dbEntity.RowVersion
         };
     }
 

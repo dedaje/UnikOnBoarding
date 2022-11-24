@@ -26,10 +26,11 @@ public class UserRepository : IUserRepository
         foreach (var entity in _db.UserEntities.AsNoTracking().Where(a => a.RoleId == roleId).ToList())
             yield return new UserQueryResultDto
             {
+                Id = entity.Id,
                 UserId = entity.UserId,
                 Name = entity.Name,
-                Phone = entity.Phone,
-                RoleId = entity.RoleId,
+                Phone = (int)entity.Phone,
+                RoleId = (int)entity.RoleId,
                 RowVersion = entity.RowVersion
             };
     }
@@ -39,10 +40,11 @@ public class UserRepository : IUserRepository
         foreach (var entity in _db.UserEntities.AsNoTracking().ToList())
             yield return new UserQueryResultDto
             {
+                Id = entity.Id,
                 UserId = entity.UserId,
                 Name = entity.Name,
-                Phone = entity.Phone,
-                RoleId = entity.RoleId,
+                Phone = (int)entity.Phone,
+                RoleId = (int)entity.RoleId,
                 RowVersion = entity.RowVersion
             };
     }
@@ -54,10 +56,11 @@ public class UserRepository : IUserRepository
 
         return new UserQueryResultDto
         {
+            Id = dbEntity.Id,
             UserId = dbEntity.UserId,
             Name = dbEntity.Name,
-            Phone = dbEntity.Phone,
-            RoleId = dbEntity.RoleId,
+            Phone = (int)dbEntity.Phone,
+            RoleId = (int)dbEntity.RoleId,
             RowVersion = dbEntity.RowVersion
         };
     }

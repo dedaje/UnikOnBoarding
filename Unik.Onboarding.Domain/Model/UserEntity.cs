@@ -10,7 +10,7 @@ public class UserEntity
     {
     }
 
-    public UserEntity(string userId, string name, int phone, int roleId)
+    public UserEntity(string userId, string? name, int? phone, int? roleId)
     {
         UserId = userId;
         Name = name;
@@ -20,10 +20,10 @@ public class UserEntity
 
     public int Id { get; private set; }
     public string UserId { get; private set; } // Email
-    public string Name { get; private set; }
-    public int Phone { get; private set; }
+    public string? Name { get; private set; }
+    public int? Phone { get; private set; }
     [ForeignKey("RoleId")] public RoleEntity RoleEntity { get; set; }
-    public int RoleId { get; private set; }
+    public int? RoleId { get; private set; }
 
     [Timestamp] public byte[] RowVersion { get; private set; }
 
