@@ -1,0 +1,42 @@
+﻿@page
+@model UnikOnBoarding.Pages.MakeNewProjectModel
+@{
+}
+<div class="form-group">
+<form action="/action_page.php">
+    <article>
+        <h1>Nyt project</h1>
+    </article>
+    <div class="mb-3 mt-3">
+            <h3><label for="Project_navn" class="form-label">Project navn:</label></h3>
+        <input type="text" class="form-control" id="Project_navn" placeholder="Project navn" name="Project_navn">
+    </div>
+
+      
+        @*   eller det her*@
+
+        <h3><label for="sel1">Teknikker</label></h3>
+        <label class="checkbox-inline">
+            <input type="checkbox" value="">per
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" value="">lars
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" value="">rasmus
+        </label>
+        <br />
+       
+
+        <h3><label for="sel1">Kunde</label></h3>
+        <select class="form-control" id="sel1">
+            <option>Lejerbo</option>
+            <option>Øster bo</option>
+            <option>Nord bo</option>
+            <option>Syd bo</option>
+        </select>
+    <br />
+        <br />
+    <button type="submit" class="btn btn-primary">Opret</button>
+</form>
+</div>

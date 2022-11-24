@@ -1,0 +1,199 @@
+﻿@page
+@model UnikOnBoarding.Pages.KalenderModel
+@{
+}
+
+<div class="flex-shrink-0 p-3 bg-white fixed-top" style="width: 20%;">
+    <a href="Kalender" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap" /></svg>
+        <span class="fs-5 fw-semibold">Kalender</span>
+    </a>
+    <a href="#1jan2023">
+        <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+
+                <button class="btn btn-toggle align-items-center rounded collapsed">
+                    1 - Jan - 2023
+
+                </button>
+
+            </li>
+    </a>
+    <a href="#2jan2023">
+        <li class="border-top my-3"></li>
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                2 - Jan - 2023
+            </button>
+
+        </li>
+    </a>
+    <li class="border-top my-3"></li>
+    <a href="#3jan2023">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                3 - Jan - 2023
+            </button>
+
+        </li>
+
+    </a>
+    <li class="border-top my-3"></li>
+    <a href="#4jan2023">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                4 - Jan - 2023
+            </button>
+
+        </li>
+        <li class="border-top my-3"></li>
+    </a>
+  
+
+   
+</div>
+
+
+
+
+
+
+<section class="list-group" id="1jan2023">
+    <article>
+        <h2>Sælger</h2>
+
+        <section>
+            <article>
+                @* enkelt opgave eksempel*@
+                <article class="list-group-item list-group-item-action">
+                    <h2>1 - Jan - 2023</h2
+                           @*person*@
+                    <article class="list-group-item list-group-item-action"><h5> Tim Rasmusen: </h5>
+                        <p class="border-top my-3"></p>
+
+                        <a href="#" class="close" style="color:red" data-dismiss="alert" aria-label="close">&times;</a>
+
+                        <p>
+                           8.00 - 11.00: scrum møde
+                            
+                                
+                          
+                        </p>
+                        <button data-bs-toggle="collapse" class="btn btn-success float-right" data-bs-target="#beskrivelse1">Se beskrivelse</button>
+
+                        <article id="beskrivelse1" class="collapse">
+                            <h3>scrum møde</h3>
+                            <p>Under mødet vil vi blive præsenteret for opgaven</p>
+                        </article>
+                     
+                    
+                        <br />
+                       
+                        <p class="border-top my-3"></p>
+                        <a href="#" class="close" style="color:red" data-dismiss="alert" aria-label="close">&times;</a>
+
+                        <p>11.00 - 13.00: Salg via fremmøde</p>
+                        <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#beskrivelse2">Se beskrivelse</button>
+
+                        <article id="beskrivelse2" class="collapse">
+                            <h4>scrum møde</h4>
+                            <p>Under mødet vil vi blive præsenteret for opgaven</p>
+                        </article>
+                        <p class="border-top my-3"></p>
+
+                        <a href="#" class="close" style="color:red" data-dismiss="alert" aria-label="close">&times;</a>
+
+                        <p>13.00 - 17.00: oplæring af nye salgsmedarbejder</p>
+                        
+                        <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#beskrivelse3">Se beskrivelse</button>
+
+                        <article id="beskrivelse3" class="collapse">
+                            <h4>scrum møde</h4>
+                            <p>Under mødet vil vi blive præsenteret for opgaven</p>
+                        </article>
+                        <p class="border-top my-3"></p>
+                         @*person*@
+                         
+                         @*person*@
+                       <h5> per persen: </h5>
+
+                        <a href="#" class="close" style="color:red" data-dismiss="alert" aria-label="close">&times;</a>
+
+                        <p>
+                           8.00 - 11.00: scrum møde
+                           </p>
+                        <button data-bs-toggle="collapse" class="btn btn-success float-right" data-bs-target="#beskrivelse1">Se beskrivelse</button>
+
+                        <article id="beskrivelse1" class="collapse">
+                            <h3>scrum møde</h3>
+                            <p>Under mødet vil vi blive præsenteret for opgaven</p>
+                        </article>
+                     
+                    
+                        <br />
+                       
+                        <p class="border-top my-3"></p>
+                        <a href="#" class="close" style="color:red" data-dismiss="alert" aria-label="close">&times;</a>
+
+                        <p>11.00 - 13.00: Salg via fremmøde</p>
+                        <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#beskrivelse2">Se beskrivelse</button>
+
+                        <article id="beskrivelse2" class="collapse">
+                            <h4>scrum møde</h4>
+                            <p>Under mødet vil vi blive præsenteret for opgaven</p>
+                        </article>
+                        <p class="border-top my-3"></p>
+
+                        <a href="#" class="close" style="color:red" data-dismiss="alert" aria-label="close">&times;</a>
+
+                        <p>13.00 - 17.00: oplæring af nye salgsmedarbejder</p>
+                        
+                        <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#beskrivelse3">Se beskrivelse</button>
+
+                        <article id="beskrivelse3" class="collapse">
+                            <h4>scrum møde</h4>
+                            <p>Under mødet vil vi blive præsenteret for opgaven</p>
+                        </article>
+                        <p class="border-top my-3"></p>
+                         @*person*@
+                        <br />
+                        @*´ændringer*@
+                         <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#ændringer">ændringer</button>
+                    <article id="ændringer" class="collapse">
+                        <h4>Skriv ændringen til dagen</h4>
+                        <p> </p>
+                        <br />
+                        <form action="/action_page.php">
+                            <h3><label for="sel1">Vælg mindst en</label></h3>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">Syg
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">ikke tilgængelig på telefon
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">transport problemer
+                            </label>
+                            
+                            <br />
+
+                            <br />
+                            <button type="submit" class="btn btn-success">Ret kalender</button>
+                        </form>
+                        @*´ændringer*@
+                        <br />
+                    </article>
+                    </article>
+                    <br />
+                       
+                    @* enkelt opgave eksempel*@
+                    
+             
+                   
+                    @*ændringer til  dagen*@
+                    
+                </article>
+            </article>
+        </section>
+        </article>
+</section>

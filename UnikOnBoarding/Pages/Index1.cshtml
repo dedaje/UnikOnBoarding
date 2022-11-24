@@ -1,0 +1,451 @@
+﻿@page
+@model UnikOnBoarding.Pages.Index1Model
+@{
+}
+
+<div class="flex-shrink-0 p-3 bg-white fixed-top" style="width: 20%;">
+    <a href="Index1" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap" /></svg>
+        <span class="fs-5 fw-semibold">Project1</span>
+    </a>
+    <a href="#sælger">
+    <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+            
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Sælger
+            </button>
+            
+        </li>
+    </a>
+    <a href="#teknikker">
+        <li class="border-top my-3"></li>
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Teknikker
+            </button>
+           
+        </li>
+        </a>
+        <li class="border-top my-3"></li>
+    <a href="#Converter">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Converter
+            </button>
+           
+        </li>
+        
+        </a>
+    <li class="border-top my-3"></li>
+    <a href="#Konsulent">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Konsulent
+            </button>
+
+        </li>
+        <li class="border-top my-3"></li>
+    </a>
+    </ul>
+
+    <a href="Kontakt">
+        <p class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Kontakt info
+            </button>
+
+        </p>
+        <p class="border-top my-3"></p>
+    </a>
+    </ul>
+</div>
+
+
+
+
+
+        <section class="list-group" id="sælger">
+            <article>
+        <h2>Sælger</h2>
+                
+                <section>
+        <article id="Sælg_opg1">
+            <article class="list-group-item list-group-item-action">
+                        <h2>opg1</h2>
+                        <p>her kunne være en beskrivelse af opgaven</p>
+                        <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek">Se detaljer</button>
+                   <article id="tek" class="collapse">
+                        <h3>Titel</h3>
+                        <p>Her kunne der være plads til uddybelse af problemet  </p>
+                        <br />
+                             
+                        <form action="/action_page.php">
+                                   @* til arbejderne*@
+                                    <section class="input-group mb-3">
+                                        <article class="input-group-text">
+                                            <input type="checkbox">
+                                        </article>
+                                        <input type="text" class="form-control" placeholder="Some text">
+                                    </section>
+                                    @* til arbejderne*@
+                          
+                                  
+                                 <button type="submit" class="btn btn-success">Opgave gennemført</button>
+
+                        </form>
+                        <br />
+                            @*booking*@
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#booking">Opret booking</button>
+
+                            <article id="booking" class="collapse">
+                                <h3>Booking</h3>
+                                <section>
+                            <label class="checkbox-inline"><input type="checkbox" value="">Kompetence</label>
+                            <label class="checkbox-inline"><input type="checkbox" value="">Kompetence 2</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="">Kompetence 3</label>
+                            </section>
+                                <br />
+                                <form>
+                                  @*  stqart dato*@
+                                <section class="form-inline">
+                                <div class="form-group">
+                                    <label for="dato">start dato</label>
+                                        <input type="dato" class="form-control" id="dato">
+                                </div>
+                                <div class="form-group">
+                                    <label for="timer">timer:</label>
+                                        <input type="timer" class="form-control" id="timer">
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Hele dagen</label>
+                                </div>
+                                  
+                                </section>
+                                @*  stqart dato*@
+                                <br />
+                               @* slut dato*@
+                                <section class="form-inline">
+                                    <div class="form-group">
+                                        <label for="slutdato">slut dato</label>
+                                        <input type="slutdato" class="form-control" id="slutdato">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="timer">timer:</label>
+                                        <input type="timer" class="form-control" id="timer">
+                                    </div>
+                                </section>
+                                @* slut dato*@
+                                <br />@*
+                                ledige personer*@
+                                <label for="sel1">Medarbejder:</label>
+                                <select class="form-control" id="sel1">
+                                    <option>per</option>
+                                    <option>tim</option>
+                                    <option>lars</option>
+                                    <option>søren</option>
+                                </select>
+                                @*
+                                ledige personer*@
+                                <br />
+                                    <button type="submit" class="btn btn-success">Tilføj booking</button>
+                                </form>
+                            </article>
+
+                            @*booking*@
+
+                   </article>
+            </article>
+        </article>
+                    <article id="Sælg_opg2">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg2</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek2">Se detaljer</button>
+                            <article id="tek2" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+                        </article>
+                    </article>
+                    <article id="Sælg_opg3">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg3</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek3">Se detaljer</button>
+                            <article id="tek3" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+                          
+                        </article>
+                    </article>
+                    <br />
+                    <artical class="list-group-item list-group-item-action">
+
+                        <h3><span class="glyphicon glyphicon-plus"></span> Tilføj opgaver: </h3>
+                    </artical>
+                </section>
+    </article>
+           
+</section>
+
+        <p class="border-top my-3"></p>
+        <section class="list-group" id="teknikker">
+            <article>
+                <h2>Teknikker</h2>
+
+                <section>
+                    <article id="Tek_opg1">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg1</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek">Se detaljer</button>
+                            <article id="tek" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                <form action="/action_page.php">
+                                    @* til arbejderne*@
+                                    <section class="input-group mb-3">
+                                        <article class="input-group-text">
+                                            <input type="checkbox">
+                                        </article>
+                                        <input type="text" class="form-control" placeholder="Some text">
+                                    </section>
+                                    @* til arbejderne*@
+                                    <button type="submit" class="btn btn-success">Opgave gennemført</button>
+                                </form>
+                            </article>
+                        </article>
+                    </article>
+                    <article id="Tek_opg1">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg2</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek2">Se detaljer</button>
+                            <article id="tek2" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+                        </article>
+                    </article>
+                    <article id="Tek_opg1">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg3</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek3">Se detaljer</button>
+                            <article id="tek3" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+
+                        </article>
+                    </article>
+                    <br />
+                    <artical class="list-group-item list-group-item-action">
+
+                        <h3><span class="glyphicon glyphicon-plus"></span> Tilføj opgaver: </h3>
+                    </artical>
+                </section>
+            </article>
+        </section>
+        <p class="border-top my-3"></p>
+
+        <section class="list-group" id="Converter">
+            <article>
+                <h2>Converter</h2>
+
+                <section>
+                    <article id="Con_opg1">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg1</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek">Se detaljer</button>
+                            <article id="tek" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                <form action="/action_page.php">
+                                    @* til arbejderne*@
+                                    <section class="input-group mb-3">
+                                        <article class="input-group-text">
+                                            <input type="checkbox">
+                                        </article>
+                                        <input type="text" class="form-control" placeholder="Some text">
+                                    </section>
+                                    @* til arbejderne*@
+                                    <button type="submit" class="btn btn-success">Opgave gennemført</button>
+                                </form>
+                            </article>
+                        </article>
+                    </article>
+                    <article id="Con_opg2">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg2</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek2">Se detaljer</button>
+                            <article id="tek2" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+                        </article>
+                    </article>
+                    <article id="Con_opg3">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg3</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek3">Se detaljer</button>
+                            <article id="tek3" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+
+                        </article>
+                    </article>
+                    <br />
+                    <artical class="list-group-item list-group-item-action">
+
+                        <h3><span class="glyphicon glyphicon-plus"></span> Tilføj opgaver: </h3>
+                    </artical>
+                </section>
+            </article>
+        </section>
+        <p class="border-top my-3"></p>
+
+        <section class="list-group" id="Konsulent">
+            <article>
+                <h2>Konsulent</h2>
+
+                <section>
+                    <article id="Kon_opg1">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg1</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek">Se detaljer</button>
+                            <article id="tek" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                <form action="/action_page.php">
+                                    @* til arbejderne*@
+                                    <section class="input-group mb-3">
+                                        <article class="input-group-text">
+                                            <input type="checkbox">
+                                        </article>
+                                        <input type="text" class="form-control" placeholder="Some text">
+                                    </section>
+                                    @* til arbejderne*@
+                                    <button type="submit" class="btn btn-success">Opgave gennemført</button>
+                                </form>
+                            </article>
+                        </article>
+                    </article>
+                    <article id="Kon_opg2">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg2</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek2">Se detaljer</button>
+                            <article id="tek2" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+                        </article>
+                    </article>
+                    <article id="Kon_opg3">
+                        <article class="list-group-item list-group-item-action">
+                            <h2>opg3</h2>
+                            <p>her kunne være en beskrivelse af opgaven</p>
+                            <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek3">Se detaljer</button>
+                            <article id="tek3" class="collapse">
+                                <h3>Titel</h3>
+                                <p>Her kunne der være plads til uddybelse af problemet  </p>
+                                <br />
+                                @* til arbejderne*@
+                                <section class="input-group mb-3">
+                                    <article class="input-group-text">
+                                        <input type="checkbox">
+                                    </article>
+                                    <input type="text" class="form-control" placeholder="Some text">
+                                </section>
+                                @* til arbejderne*@
+                            </article>
+
+                        </article>
+                    </article>
+                    <br />
+                    <artical class="list-group-item list-group-item-action">
+
+                        <h3><span class="glyphicon glyphicon-plus"></span> Tilføj opgaver: </h3>
+                    </artical>
+                </section>
+            </article>
+        </section>
+
+        <p class="border-top my-3"></p>
+
+
+  

@@ -1,0 +1,135 @@
+﻿@page
+@model UnikOnBoarding.Pages.KontaktModel
+@{
+}
+
+<div class="flex-shrink-0 p-3 bg-white fixed-top" style="width: 20%;">
+    <a href="Index1" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap" /></svg>
+        <span class="fs-5 fw-semibold">Project1</span>
+    </a>
+    <a href="Index1#sælger">
+        <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+
+                <button class="btn btn-toggle align-items-center rounded collapsed">
+                    Sælger
+                </button>
+
+            </li>
+    </a>
+    <a href="Index1#teknikker">
+        <li class="border-top my-3"></li>
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Teknikker
+            </button>
+
+        </li>
+    </a>
+    <li class="border-top my-3"></li>
+    <a href="Index1#Converter">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Converter
+            </button>
+
+        </li>
+
+    </a>
+    <li class="border-top my-3"></li>
+    <a href="Index1#Konsulent">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Konsulent
+            </button>
+
+        </li>
+        <li class="border-top my-3"></li>
+    </a>
+    </ul>
+
+    <a href="Kontakt">
+        <p class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Kontakt info
+            </button>
+
+        </p>
+        <p class="border-top my-3"></p>
+    </a>
+    </ul>
+</div>
+@*
+sidebar færdig*@
+
+<section class="list-group" id="sælger">
+    <article>
+        <h2>Sælger</h2>
+
+        
+            <article>
+                <article class="list-group-item list-group-item-action">
+                    <h4>Navn: Tim Rasmusen</h4>
+                    <h4>Tlf: 72727272</h4>
+                    <h4>Email: hej@gmail.com</h4>
+                    </article>
+               
+            </article>
+    </article>
+            <br />
+    <article id="Sælg_opg1">
+        <article class="list-group-item list-group-item-action">
+            <h4>Navn: Tim Rasmusen</h4>
+            <h4>Tlf: 72727272</h4>
+            <h4>Email: hej@gmail.com</h4>
+        </article>
+
+    </article>
+    </article>
+    <br />
+            @*   til admin*@
+            <artical class="list-group-item list-group-item-action">
+
+                <h3><span class="glyphicon glyphicon-plus"></span> Tilføj Sælger: </h3>
+            </artical>
+            @*   til admin*@
+    <p class="border-top my-3"></p>
+        </section>
+ @*
+   sælger færdig*@
+<section class="list-group" id="teknikker">
+    <article>
+        <h2>Teknikker</h2>
+
+
+        <article>
+            <article class="list-group-item list-group-item-action">
+                <h4>Navn: Tim Rasmusen</h4>
+                <h4>Tlf: 72727272</h4>
+                <h4>Email: hej@gmail.com</h4>
+            </article>
+
+        </article>
+    </article>
+    <br />
+    <article>
+        <article class="list-group-item list-group-item-action">
+            <h4>Navn: Tim Rasmusen</h4>
+            <h4>Tlf: 72727272</h4>
+            <h4>Email: hej@gmail.com</h4>
+        </article>
+
+    </article>
+    </article>
+
+    <br />
+    @*   til admin*@
+    <artical class="list-group-item list-group-item-action">
+
+        <h3><span class="glyphicon glyphicon-plus"></span> Tilføj Teknikker: </h3>
+    </artical>
+    @*   til admin*@
+    <p class="border-top my-3"></p>
+</section>
+

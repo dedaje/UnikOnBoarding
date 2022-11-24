@@ -1,0 +1,97 @@
+﻿@page
+@model UnikOnBoarding.Pages.ProjectOversigtModel
+@{
+}
+
+<div class="flex-shrink-0 p-3 bg-white fixed-top" style="width: 20%;">
+    <a href="Index1" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap" /></svg>
+        <span class="fs-5 fw-semibold">Project1</span>
+    </a>
+    <a href="#sælger">
+        <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+
+                <button class="btn btn-toggle align-items-center rounded collapsed">
+                    Project 1
+                </button>
+
+            </li>
+    </a>
+    <a href="#teknikker">
+        <li class="border-top my-3"></li>
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Project 2
+            </button>
+
+        </li>
+    </a>
+    <li class="border-top my-3"></li>
+    <a href="#Converter">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Project 3
+            </button>
+
+        </li>
+
+    </a>
+    <li class="border-top my-3"></li>
+    <a href="#Konsulent">
+        <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Project 4
+            </button>
+
+        </li>
+        <li class="border-top my-3"></li>
+    </a>
+    </ul>
+
+    <a href="Kontakt">
+        <p class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed">
+                Project 5
+            </button>
+
+        </p>
+        <p class="border-top my-3"></p>
+    </a>
+    </ul>
+</div>
+
+
+<section class="list-group" id="teknikker">
+    <article>
+        <h2>Oversigt over projecter</h2>
+
+      
+            <article id="Tek_opg1">
+                <article class="list-group-item list-group-item-action">
+                    <h2>project 1</h2>
+                    <p>her kunne være en beskrivelse af opgaven</p>
+                    <button data-bs-toggle="collapse" class="btn btn-success" data-bs-target="#tek">Se detaljer</button>
+                <a asp-page="/Index1">
+                <button class="btn btn-success" >Se projected</button>
+                </a>
+                    <article id="tek" class="collapse">
+                        <h3>Medarbejder</h3>
+                        <section>
+                        <p>lars - sælger </p>
+                    <p>søren - teknikker</p>
+                    <p>per - converter</p>
+                        <p>lasse - konsulent</p>
+                    </section>
+                        <br />
+                  @*  Index1#Konsulent*@
+                    </article>
+                </article>
+            </article>
+          
+            </article>
+            <br />
+          
+        </section>
+   
+<p class="border-top my-3"></p>
