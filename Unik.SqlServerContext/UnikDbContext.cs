@@ -11,22 +11,22 @@ public class UnikDbContext : DbContext
 
     }
 
-    public DbSet<OnboardingEntity> OnboardingEntities { get; set; }
-    public DbSet<OnboardingUsersEntity> OnboardingUsersEntities { get; set; }
-    public DbSet<RoleEntity> RoleEntities { get; set; }
-    public DbSet<SkillsEntity> SkillsEntities { get; set; }
+    public DbSet<ProjectEntity> ProjectEntities { get; set; }
+    //public DbSet<OnboardingUsersEntity> OnboardingUsersEntities { get; set; }
+    //public DbSet<RoleEntity> RoleEntities { get; set; }
+    //public DbSet<SkillsEntity> SkillsEntities { get; set; }
     public DbSet<TaskEntity> TaskEntities { get; set; }
-    public DbSet<UserEntity> UserEntities { get; set; }
-    public DbSet<UserSkillsEntity> UserSkillsEntities { get; set; }
+    //public DbSet<UserEntity> UserEntities { get; set; }
+    //public DbSet<UserSkillsEntity> UserSkillsEntities { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new OnboardingTypeConfig());
-        builder.ApplyConfiguration(new OnboardingUsersTypeConfig());
-        builder.ApplyConfiguration(new RoleTypeConfig());
-        builder.ApplyConfiguration(new SkillTypeConfig());
+        //builder.ApplyConfiguration(new OnboardingUsersTypeConfig());
+        //builder.ApplyConfiguration(new RoleTypeConfig());
+        //builder.ApplyConfiguration(new SkillTypeConfig());
         builder.ApplyConfiguration(new TaskTypeConfig());
-        builder.ApplyConfiguration(new UserTypeConfig());
-        builder.ApplyConfiguration(new UserSkillsTypeConfig());
+        //builder.ApplyConfiguration(new UserTypeConfig());
+        //builder.ApplyConfiguration(new UserSkillsTypeConfig());
     }
 }

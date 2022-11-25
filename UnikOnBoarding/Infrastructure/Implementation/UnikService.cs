@@ -12,12 +12,12 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             _httpClient = httpClient;
         }
 
-        async Task IUnikService.Create(OnboardingCreateRequestDto dto)
+        async Task IUnikService.Create(ProjectCreateRequestDto dto)
         {
             await _httpClient.PostAsJsonAsync($"api/Onboarding", dto);
         }
 
-        async Task IUnikService.Edit(OnboardingEditRequestDto dto)
+        async Task IUnikService.Edit(ProjectEditRequestDto dto)
         {
             var response = await _httpClient.PostAsJsonAsync($"api/Onboarding", dto);
             if (response.IsSuccessStatusCode) return;
@@ -26,14 +26,14 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             throw new Exception(messege);
         }
 
-        async Task<OnboardingQueryResultDto?> IUnikService.Get(int projectId)
+        async Task<ProjectQueryResultDto?> IUnikService.GetProject(string userId, int projectId)
         {
-            return await _httpClient.GetFromJsonAsync<OnboardingQueryResultDto>($"api/Onboarding/{projectId}/");
+            return await _httpClient.GetFromJsonAsync<ProjectQueryResultDto>($"api/Onboarding/{userId}/{projectId}/");
         }
 
-        async Task<IEnumerable<OnboardingQueryResultDto>?> IUnikService.GetAll()
+        async Task<IEnumerable<ProjectQueryResultDto>?> IUnikService.GetAllProjects(string userId)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<OnboardingQueryResultDto>>($"api/Onboarding/");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Onboarding/{userId}/");
         }
     }
 }

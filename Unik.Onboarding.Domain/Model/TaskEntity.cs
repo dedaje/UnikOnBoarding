@@ -22,7 +22,7 @@ public class TaskEntity
     public string TaskName { get; private set; }
     public string TaskDescription { get; private set; }
     public DateTime DateCreated { get; private set; }
-    [ForeignKey("ProjectId")]public OnboardingEntity OnboardingEntity { get; set; }
+    [ForeignKey("ProjectId")]public ProjectEntity OnboardingEntity { get; set; }
     public int ProjectId { get; private set; }
     [ForeignKey("RoleId")] public RoleEntity RoleEntity { get; set; }
     public int RoleId { get; private set; }

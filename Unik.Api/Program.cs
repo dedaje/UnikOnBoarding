@@ -39,11 +39,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Clean Architecture
-builder.Services.AddScoped<IOnboardingRepository, OnboardingRepository>();
-builder.Services.AddScoped<ICreateOnboardingCommand, CreateOnboardingCommand>();
-builder.Services.AddScoped<IEditOnboardingCommand, EditOnboardingCommand>();
-builder.Services.AddScoped<IOnboardingGetAllQuery, OnboardingGetAllQuery>();
-builder.Services.AddScoped<IOnboardingGetQuery, OnboardingGetQuery>();
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<ICreateProjectCommand, CreateProjectCommand>();
+builder.Services.AddScoped<IEditProjectCommand, EditProjectCommand>();
+builder.Services.AddScoped<IProjectGetAllQuery, OnboardingGetAllQuery>();
+builder.Services.AddScoped<IProjectGetQuery, OnboardingGetQuery>();
 //builder.Services.AddScoped<IOnboardingDomainService, OnboardingDomainService>();
 
 builder.Services.AddScoped<IOnboardingUsersRepository, OnboardingUsersRepository>();

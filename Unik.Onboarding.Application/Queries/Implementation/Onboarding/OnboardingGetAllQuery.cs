@@ -3,16 +3,16 @@ using Unik.Onboarding.Application.Repositories;
 
 namespace Unik.Onboarding.Application.Queries.Implementation.Onboarding;
 
-public class OnboardingGetAllQuery : IOnboardingGetAllQuery
+public class OnboardingGetAllQuery : IProjectGetAllQuery
 {
-    private readonly IOnboardingRepository _repository;
+    private readonly IProjectRepository _repository;
 
-    public OnboardingGetAllQuery(IOnboardingRepository repository)
+    public OnboardingGetAllQuery(IProjectRepository repository)
     {
         _repository = repository;
     }
 
-    IEnumerable<OnboardingQueryResultDto> IOnboardingGetAllQuery.GetAllProjects()
+    IEnumerable<ProjectQueryResultDto> IProjectGetAllQuery.GetAllProjects()
     {
         return _repository.GetAllProjects();
     }

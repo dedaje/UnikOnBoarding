@@ -4,9 +4,9 @@ namespace UnikOnBoarding.Infrastructure.Contract
 {
     public interface IUnikService
     {
-        Task Create(OnboardingCreateRequestDto dto);
-        Task Edit(OnboardingEditRequestDto dto);
-        Task<OnboardingQueryResultDto?> Get(int projectId);
-        Task<IEnumerable<OnboardingQueryResultDto>?> GetAll();
+        Task Create(ProjectCreateRequestDto dto);
+        Task Edit(ProjectEditRequestDto dto);
+        Task<ProjectQueryResultDto?> GetProject(string userId, int projectId);
+        Task<IEnumerable<ProjectQueryResultDto>?> GetAllProjects(string userId);
     }
 }

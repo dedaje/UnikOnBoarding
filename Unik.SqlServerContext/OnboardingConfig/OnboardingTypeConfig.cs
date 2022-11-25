@@ -4,11 +4,11 @@ using Unik.Onboarding.Domain.Model;
 
 namespace Unik.SqlServerContext.OnboardingConfig;
 
-public class OnboardingTypeConfig : IEntityTypeConfiguration<OnboardingEntity>
+public class OnboardingTypeConfig : IEntityTypeConfiguration<ProjectEntity>
 {
-    public void Configure(EntityTypeBuilder<OnboardingEntity> builder)
+    public void Configure(EntityTypeBuilder<ProjectEntity> builder)
     {
-        builder.ToTable("Onboarding", "onboarding");
-        builder.HasKey(x => x.ProjectId);
+        builder.ToTable("Project", "project");
+        builder.HasKey(x => x.Id);
     }
 }
