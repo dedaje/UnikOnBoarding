@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
 
-namespace UnikOnBoarding.Pages.Onboarding
+namespace UnikOnBoarding.Pages.Project
 {
     public class EditModel : PageModel
     {

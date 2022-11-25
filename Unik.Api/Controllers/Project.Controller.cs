@@ -1,7 +1,9 @@
 ﻿using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
-using Unik.Onboarding.Application.Commands.Onboarding;
-using Unik.Onboarding.Application.Queries.Onboarding;
+using Unik.Onboarding.Application.Commands.Implementation.Project;
+using Unik.Onboarding.Application.Commands.Project;
+using Unik.Onboarding.Application.Queries.Implementation.Project;
+using Unik.Onboarding.Application.Queries.Project;
 
 namespace Unik.Api.Controllers;
 
@@ -9,29 +11,29 @@ namespace Unik.Api.Controllers;
 [ApiController]
 public class Project : ControllerBase
 {
-    private readonly ICreateProjectCommand _createOnboardingCommand;
-    private readonly IEditProjectCommand _editOnboardingCommand;
-    private readonly IProjectGetAllQuery _onboardingGetAllQuery;
-    private readonly IProjectGetQuery _onboardingGetQuery;
+    private readonly ICreateProjectCommand _createProjectCommand;
+    private readonly IEditProjectCommand _editProjectCommand;
+    private readonly IProjectGetAllQuery _projectGetAllQuery;
+    private readonly IProjectGetQuery _projectGetQuery;
 
     // constructor
-    public Project(ICreateProjectCommand createOnboardingCommand,
-        IEditProjectCommand editOnboardingCommand, IProjectGetAllQuery onboardingGetAllQuery,
-        IProjectGetQuery onboardingGetQuery)
+    public Project(ICreateProjectCommand createProjectCommand,
+        IEditProjectCommand editProjectCommand, IProjectGetAllQuery projectGetAllQuery,
+        IProjectGetQuery projectGetQuery)
     {
-        _onboardingGetAllQuery = onboardingGetAllQuery;
-        _createOnboardingCommand = createOnboardingCommand;
-        _editOnboardingCommand = editOnboardingCommand;
-        _onboardingGetQuery = onboardingGetQuery;
+        _projectGetAllQuery = projectGetAllQuery;
+        _createProjectCommand = createProjectCommand;
+        _editProjectCommand = editProjectCommand;
+        _projectGetQuery = projectGetQuery;
     }
 
-    // GET: api/<Onboarding>
-    [HttpGet("{userId}")] //("api/Onboarding/")
+    // GET: api/<Project>
+    [HttpGet("{userId}")] //("api/Project/")
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<IEnumerable<ProjectQueryResultDto>> Get(string userId) // GetAll
     {
-        var result = _onboardingGetAllQuery.GetAllProjects(userId).ToList();
+        var result = _projectGetAllQuery.GetAllProjects(userId).ToList();
         if (!result.Any())
 
             return NotFound();
@@ -39,19 +41,19 @@ public class Project : ControllerBase
         return result.ToList();
     }
 
-    // GET: api/<Onboarding>
+    // GET: api/<Project>
     [HttpGet("{userId}/{projectId}/")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<ProjectQueryResultDto> Get(string userId, int projectId) // Get
     {
-        var result = _onboardingGetQuery.GetProject(userId, projectId);
+        var result = _projectGetQuery.GetProject(userId, projectId);
 
 
         return result;
     }
 
-    // POST api/<Onboarding>
+    // POST api/<Project>
     [HttpPost]
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -60,7 +62,7 @@ public class Project : ControllerBase
     {
         try
         {
-            _createOnboardingCommand.Create(request);
+            _createProjectCommand.Create(request);
             return Ok();
         }
         catch (Exception e)
@@ -77,7 +79,7 @@ public class Project : ControllerBase
     {
         try
         {
-            _editOnboardingCommand.Edit(request);
+            _editProjectCommand.Edit(request);
             return Ok();
         }
         catch (Exception e)

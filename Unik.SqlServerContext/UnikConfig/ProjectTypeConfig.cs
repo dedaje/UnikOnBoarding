@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Unik.Onboarding.Domain.Model;
 
-namespace Unik.SqlServerContext.OnboardingConfig;
+namespace Unik.SqlServerContext.UnikConfig;
 
-public class OnboardingTypeConfig : IEntityTypeConfiguration<ProjectEntity>
+public class ProjectTypeConfig : IEntityTypeConfiguration<ProjectEntity>
 {
     public void Configure(EntityTypeBuilder<ProjectEntity> builder)
     {

@@ -1,4 +1,4 @@
-﻿using Unik.Onboarding.Application.Queries.Onboarding;
+﻿using Unik.Onboarding.Application.Queries.Project;
 using Unik.Onboarding.Domain.Model;
 
 namespace Unik.Onboarding.Application.Repositories;

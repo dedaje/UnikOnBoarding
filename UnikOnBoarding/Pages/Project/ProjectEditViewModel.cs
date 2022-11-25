@@ -1,4 +1,4 @@
-﻿namespace UnikOnBoarding.Pages.Onboarding;
+﻿namespace UnikOnBoarding.Pages.Project;
 
 public class ProjectEditViewModel
 {

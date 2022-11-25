@@ -1,21 +1,21 @@
-﻿using Unik.Onboarding.Application.Commands.Onboarding;
+﻿using Unik.Onboarding.Application.Commands.Project;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 
-namespace Unik.Onboarding.Application.Commands.Implementation.Onboarding;
+namespace Unik.Onboarding.Application.Commands.Implementation.Project;
 
 public class CreateProjectCommand : ICreateProjectCommand
 {
-    private readonly IProjectRepository _onboardingRepository;
+    private readonly IProjectRepository _repository;
 
-    public CreateProjectCommand(IProjectRepository onboardingRepository)
+    public CreateProjectCommand(IProjectRepository repository)
     {
-        _onboardingRepository = onboardingRepository;
+        _repository = repository;
     }
 
-    void ICreateProjectCommand.Create(ProjectCreateRequestDto onboardingCreateRequestDto)
+    void ICreateProjectCommand.Create(ProjectCreateRequestDto dto)
     {
-        var onboarding = new ProjectEntity(onboardingCreateRequestDto.ProjectId, onboardingCreateRequestDto.ProjectName);
-        _onboardingRepository.Add(onboarding);
+        var project = new ProjectEntity(dto.ProjectId, dto.ProjectName, dto.UserId);
+        _repository.Add(project);
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Unik.Onboarding.Domain.Model;
 
-namespace Unik.SqlServerContext.OnboardingConfig;
+namespace Unik.SqlServerContext.UnikConfig;
 
 public class TaskTypeConfig : IEntityTypeConfiguration<TaskEntity>
 {

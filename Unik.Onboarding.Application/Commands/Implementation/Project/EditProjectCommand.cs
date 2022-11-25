@@ -1,7 +1,7 @@
-﻿using Unik.Onboarding.Application.Commands.Onboarding;
+﻿using Unik.Onboarding.Application.Commands.Project;
 using Unik.Onboarding.Application.Repositories;
 
-namespace Unik.Onboarding.Application.Commands.Implementation.Onboarding;
+namespace Unik.Onboarding.Application.Commands.Implementation.Project;
 
 public class EditProjectCommand : IEditProjectCommand
 {

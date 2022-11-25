@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Unik.Onboarding.Application.Queries.Onboarding;
+using Unik.Onboarding.Application.Queries.Project;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;

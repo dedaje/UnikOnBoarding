@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UnikOnBoarding.Infrastructure.Contract;
-using UnikOnBoarding.Pages.Onboarding;
 
 namespace UnikOnBoarding.Pages.Project
 {

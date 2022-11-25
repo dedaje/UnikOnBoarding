@@ -9,19 +9,19 @@ public class ProjectEntity
     {
     }
 
-    public ProjectEntity(int projectId, string projectName)
+    public ProjectEntity(int projectId, string projectName, string userId)
     {
         ProjectId = projectId;
         ProjectName = projectName;
         DateAdded = DateTime.Now;
-        //UserId = userId;
+        UserId = userId;
     }
 
     public int Id { get; private set; } // PK
     public int ProjectId { get; private set; }
     public string ProjectName { get; private set; }
     public DateTime DateAdded { get; private set; }
-    public string? UserId { get; private set; }
+    public string UserId { get; private set; }
 
     [Timestamp] 
     public byte[] RowVersion { get; private set; }

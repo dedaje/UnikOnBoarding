@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Domain.Model;
-using Unik.SqlServerContext.OnboardingConfig;
+using Unik.SqlServerContext.UnikConfig;
 
 namespace Unik.SqlServerContext;
 
@@ -21,7 +21,7 @@ public class UnikDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.ApplyConfiguration(new OnboardingTypeConfig());
+        builder.ApplyConfiguration(new ProjectTypeConfig());
         //builder.ApplyConfiguration(new OnboardingUsersTypeConfig());
         //builder.ApplyConfiguration(new RoleTypeConfig());
         //builder.ApplyConfiguration(new SkillTypeConfig());

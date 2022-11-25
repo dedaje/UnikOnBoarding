@@ -24,7 +24,7 @@ public class TaskEntity
     public DateTime DateCreated { get; private set; }
     [ForeignKey("ProjectId")]public ProjectEntity OnboardingEntity { get; set; }
     public int ProjectId { get; private set; }
-    [ForeignKey("RoleId")] public RoleEntity RoleEntity { get; set; }
+    //[ForeignKey("RoleId")] public RoleEntity RoleEntity { get; set; }
     public int RoleId { get; private set; }
     public string UserId { get; private set; } // Email
     public byte[] RowVersion { get; private set; }

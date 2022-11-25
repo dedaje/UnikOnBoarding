@@ -1,4 +1,4 @@
-﻿namespace Unik.Onboarding.Application.Queries.Onboarding;
+﻿namespace Unik.Onboarding.Application.Queries.Project;
 
 public interface IProjectGetAllQuery
 {

@@ -1,4 +1,4 @@
-﻿namespace Unik.Onboarding.Application.Commands.Onboarding;
+﻿namespace Unik.Onboarding.Application.Commands.Project;
 
 public class ProjectEditRequestDto
 {
