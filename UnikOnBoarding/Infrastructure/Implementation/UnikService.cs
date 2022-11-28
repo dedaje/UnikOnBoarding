@@ -14,12 +14,18 @@ namespace UnikOnBoarding.Infrastructure.Implementation
 
         async Task IUnikService.Create(ProjectCreateRequestDto dto)
         {
-            await _httpClient.PostAsJsonAsync($"api/Project", dto);
+           var response = await _httpClient.PostAsJsonAsync($"api/Project", dto);
+
+           if (response.IsSuccessStatusCode) return;
+
+           var message = await response.Content.ReadAsStringAsync();
+           throw new Exception(message);
         }
 
         async Task IUnikService.Edit(ProjectEditRequestDto dto)
         {
             var response = await _httpClient.PostAsJsonAsync($"api/Project", dto);
+
             if (response.IsSuccessStatusCode) return;
 
             var messege = await response.Content.ReadAsStringAsync();

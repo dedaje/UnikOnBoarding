@@ -40,6 +40,7 @@ namespace UnikOnBoarding.Pages.Project
         {
             if (!ModelState.IsValid) return Page();
 
+            // Lav liste over alle projekter med et bestemt ProjektId? Vil alle felter blive ændret eller kun den første den finder?
 
             try
             {
