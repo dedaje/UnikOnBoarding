@@ -17,7 +17,7 @@ namespace UnikOnBoarding.Pages.Project
 
         public async Task OnGet()
         {
-            var businessModel = await _unikService.GetAllProjects(User.Identity?.Name ?? string.Empty); // User.Identity?.Name ?? String.Empty*
+            var businessModel = await _unikService.GetAllUserProjects(User.Identity?.Name ?? string.Empty); // User.Identity?.Name ?? String.Empty*
 
             businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new ProjectIndexViewModel
             {

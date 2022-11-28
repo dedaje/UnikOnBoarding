@@ -7,7 +7,7 @@ using Unik.Onboarding.Application.Queries.Project;
 
 namespace Unik.Api.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/")]
 [ApiController]
 public class Project : ControllerBase
 {
@@ -28,12 +28,26 @@ public class Project : ControllerBase
     }
 
     // GET: api/<Project>
-    [HttpGet("{userId}")] //("api/Project/")
+    [HttpGet("u/{userId}")] //("api/Project/")
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<IEnumerable<ProjectQueryResultDto>> Get(string userId) // GetAll
+    public ActionResult<IEnumerable<ProjectQueryResultDto>> Get(string userId) // GetAllUserProjects
     {
-        var result = _projectGetAllQuery.GetAllProjects(userId).ToList();
+        var result = _projectGetAllQuery.GetAllUserProjects(userId).ToList();
+        if (!result.Any())
+
+            return NotFound();
+
+        return result.ToList();
+    }
+
+    // GET: api/<Project>
+    [HttpGet("p/{projectId}")] //("api/Project/")
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<IEnumerable<ProjectQueryResultDto>> Get(int? projectId) // GetAllEditProjects
+    {
+        var result = _projectGetAllQuery.GetAllEditProjects(projectId).ToList();
         if (!result.Any())
 
             return NotFound();

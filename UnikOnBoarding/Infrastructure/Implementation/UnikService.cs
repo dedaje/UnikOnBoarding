@@ -37,9 +37,14 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             return await _httpClient.GetFromJsonAsync<ProjectQueryResultDto>($"api/Project/{userId}/{projectId}/");
         }
 
-        async Task<IEnumerable<ProjectQueryResultDto>?> IUnikService.GetAllProjects(string userId)
+        async Task<IEnumerable<ProjectQueryResultDto>?> IUnikService.GetAllUserProjects(string userId)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Project/{userId}/");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Project/u/{userId}/");
+        }
+
+        async Task<IEnumerable<ProjectQueryResultDto>?> IUnikService.GetAllEditProjects(int? projectId)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Project/p/{projectId}/");
         }
     }
 }

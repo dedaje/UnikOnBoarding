@@ -21,9 +21,23 @@ public class ProjectRepository : IProjectRepository
         _db.SaveChanges();
     }
 
-    IEnumerable<ProjectQueryResultDto> IProjectRepository.GetAllProjects(string userId)
+    IEnumerable<ProjectQueryResultDto> IProjectRepository.GetAllUserProjects(string userId)
     {
         foreach (var entity in _db.ProjectEntities.AsNoTracking().Where(a => a.UserId == userId).ToList())
+            yield return new ProjectQueryResultDto
+            {
+                Id = entity.Id,
+                ProjectId = entity.ProjectId,
+                ProjectName = entity.ProjectName,
+                DateAdded = entity.DateAdded,
+                UserId = entity.UserId,
+                RowVersion = entity.RowVersion
+            };
+    }
+
+    IEnumerable<ProjectQueryResultDto> IProjectRepository.GetAllEditProjects(int? projectId)
+    {
+        foreach (var entity in _db.ProjectEntities.AsNoTracking().Where(a => a.ProjectId == projectId).ToList())
             yield return new ProjectQueryResultDto
             {
                 Id = entity.Id,
