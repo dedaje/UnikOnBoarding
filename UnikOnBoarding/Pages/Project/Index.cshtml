@@ -30,11 +30,12 @@
                     <td>@project.ProjectName</td>
                     <td>
                         <!-- <snippet_Edit> -->
-                        <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Edit</a>
+                        <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        @*<a type="submit" asp-page-handler="delete" asp-route-id="@project.ProjectId">delete</a>*@
+                        @*<a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>*@
+                        <a type="submit" asp-page-handler="delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
                     </td>
                 </tr>

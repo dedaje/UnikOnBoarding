@@ -46,5 +46,25 @@ namespace UnikOnBoarding.Infrastructure.Implementation
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Project/p/{projectId}/");
         }
+
+        async Task IUnikService.AddUser(AddUserRequestDto dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"api/User/AddUser", dto);
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+
+        async Task IUnikService.RemoveUser(RemoveUserRequestDto dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"api/User/RemoveUser", dto); //TODO
+            
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
     }
 }

@@ -26,17 +26,6 @@ namespace UnikOnBoarding.Pages.Project
 
             var dto = await _unikService.GetProject(User.Identity?.Name ?? string.Empty, projectId.Value);
 
-            //if (dto == null) return NotFound();
-
-            //ProjectModel = new ProjectEditViewModel
-            //{
-            //    //Id = dto.Id,
-            //    ProjectId = dto.ProjectId,
-            //    ProjectName = dto.ProjectName,
-            //    //DateAdded = dto.DateAdded,
-            //    RowVersion = dto.RowVersion,
-            //};
-
             return Page();
         }
 
@@ -46,14 +35,12 @@ namespace UnikOnBoarding.Pages.Project
 
             dto.ToList().ForEach(dt => ProjectModel.Add(new ProjectEditViewModel
             {
+                Id = dt.Id,
                 ProjectId = dt.ProjectId,
                 ProjectName = _ProjectName,
-                //RowVersion = dt.RowVersion,
             }));
 
             if (!ModelState.IsValid) return Page();
-
-            // Lav liste over alle projekter med et bestemt ProjektId? Vil alle felter blive ændret eller kun den første den finder?
 
             foreach (var item in ProjectModel)
             {
@@ -61,12 +48,9 @@ namespace UnikOnBoarding.Pages.Project
                 {
                     await _unikService.Edit(new ProjectEditRequestDto
                     {
-                        //Id = ProjectModel.Id,
+                        Id = item.Id,
                         ProjectId = item.ProjectId,
                         ProjectName = item.ProjectName,
-                        //DateAdded = ProjectModel.DateAdded,
-                        //UserId = User.Identity?.Name ?? string.Empty,
-                        //RowVersion = item.RowVersion
                     });
                 }
                 catch (Exception e)

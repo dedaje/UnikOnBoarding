@@ -9,5 +9,8 @@ namespace UnikOnBoarding.Infrastructure.Contract
         Task<ProjectQueryResultDto?> GetProject(string userId, int projectId);
         Task<IEnumerable<ProjectQueryResultDto>?> GetAllUserProjects(string userId);
         Task<IEnumerable<ProjectQueryResultDto>?> GetAllEditProjects(int? projectId);
+
+        Task AddUser(AddUserRequestDto dto);
+        Task RemoveUser(RemoveUserRequestDto dto);
     }
 }

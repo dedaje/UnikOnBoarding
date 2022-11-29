@@ -15,15 +15,15 @@ public class ProjectRepository : IProjectRepository
         _db = db;
     }
 
-    void IProjectRepository.Add(ProjectEntity onboarding)
+    void IProjectRepository.Add(ProjectEntity project)
     {
-        _db.Add(onboarding);
+        _db.Add(project);
         _db.SaveChanges();
     }
 
     IEnumerable<ProjectQueryResultDto> IProjectRepository.GetAllUserProjects(string userId)
     {
-        foreach (var entity in _db.ProjectEntities.AsNoTracking().Where(a => a.UserId == userId).ToList())
+        foreach (var entity in _db.ProjectEntities.AsNoTracking().Where(a => a.UserId == userId)/*.Distinct()*/.ToList())
             yield return new ProjectQueryResultDto
             {
                 Id = entity.Id,
@@ -65,9 +65,9 @@ public class ProjectRepository : IProjectRepository
         };
     }
 
-    ProjectEntity IProjectRepository.Load(int projectId) // Load metoden er til at hente data for Commands (do-while?)
+    ProjectEntity IProjectRepository.Load(int id) // Load metoden er til at hente data for Commands (do-while?)
     {
-        var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId);
+        var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.Id == id);
         if (dbEntity == null) throw new Exception("Det projekt findes ikke i databasen");
 
         return dbEntity;

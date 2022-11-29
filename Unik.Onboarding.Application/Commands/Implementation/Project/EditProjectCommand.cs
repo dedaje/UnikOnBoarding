@@ -15,16 +15,13 @@ public class EditProjectCommand : IEditProjectCommand
     void IEditProjectCommand.Edit(ProjectEditRequestDto requestDto)
     {
         //Read
-        var model = _repository.Load(requestDto.ProjectId);
+        var model = _repository.Load(requestDto.Id);
 
-        //do
-        //{
-            //DoIt
-            model.Edit(requestDto.ProjectName/*, requestDto.RowVersion*/);
+        //DoIt
+        model.Edit(requestDto.ProjectId, requestDto.ProjectName/*, requestDto.RowVersion*/);
 
-            //Save
-            _repository.Update(model);
-        //}
-        //while (model != null);
+        //Save
+        _repository.Update(model);
+
     }
 }

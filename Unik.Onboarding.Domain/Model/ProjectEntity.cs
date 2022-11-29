@@ -33,8 +33,9 @@ public class ProjectEntity
     //    RowVersion = rowVersion;
     //}
 
-    public void Edit(string projectName/*, byte[] rowVersion*/)
+    public void Edit(int projectId, string projectName/*, byte[] rowVersion*/)
     {
+        ProjectId = projectId;
         ProjectName = projectName;
         //UserId = userId;
         //RowVersion = rowVersion;
