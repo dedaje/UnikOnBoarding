@@ -68,7 +68,7 @@ public class Project : ControllerBase
     }
 
     // POST api/<Project>
-    [HttpPost]
+    [HttpPost("Create/")]
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -85,7 +85,7 @@ public class Project : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut("Edit/")]
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

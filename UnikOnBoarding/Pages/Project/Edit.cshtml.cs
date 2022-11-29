@@ -15,8 +15,8 @@ namespace UnikOnBoarding.Pages.Project
         }
 
         [BindProperty] public List<ProjectEditViewModel> ProjectModel { get; set; }
-        private int? _projectId;
-        public string _ProjectName { get; set; }
+        [BindProperty] public int? _projectId { get; set; }
+        [BindProperty] public string _ProjectName { get; set; }
 
         public async Task<IActionResult> OnGet(int? projectId)
         {
@@ -44,11 +44,11 @@ namespace UnikOnBoarding.Pages.Project
         {
             var dto = await _unikService.GetAllEditProjects(_projectId);
 
-            dto?.ToList().ForEach(dt => ProjectModel.Add(new ProjectEditViewModel
+            dto.ToList().ForEach(dt => ProjectModel.Add(new ProjectEditViewModel
             {
-                ProjectId = dt.Id,
+                ProjectId = dt.ProjectId,
                 ProjectName = _ProjectName,
-                RowVersion = dt.RowVersion,
+                //RowVersion = dt.RowVersion,
             }));
 
             if (!ModelState.IsValid) return Page();
@@ -66,7 +66,7 @@ namespace UnikOnBoarding.Pages.Project
                         ProjectName = item.ProjectName,
                         //DateAdded = ProjectModel.DateAdded,
                         //UserId = User.Identity?.Name ?? string.Empty,
-                        RowVersion = item.RowVersion
+                        //RowVersion = item.RowVersion
                     });
                 }
                 catch (Exception e)

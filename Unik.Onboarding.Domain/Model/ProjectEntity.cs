@@ -33,10 +33,10 @@ public class ProjectEntity
     //    RowVersion = rowVersion;
     //}
 
-    public void Edit(string projectName, byte[] rowVersion)
+    public void Edit(string projectName/*, byte[] rowVersion*/)
     {
         ProjectName = projectName;
         //UserId = userId;
-        RowVersion = rowVersion;
+        //RowVersion = rowVersion;
     }
 }

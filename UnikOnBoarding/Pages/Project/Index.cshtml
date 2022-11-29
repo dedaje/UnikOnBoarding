@@ -12,6 +12,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>Projekt ID</th>
             <th>Dato</th>
             <th>Projekt Navn</th>
             <th></th>
@@ -29,7 +30,7 @@
                     <td>@project.ProjectName</td>
                     <td>
                         <!-- <snippet_Edit> -->
-                        <a asp-page="./Edit" asp-route-id="@project.ProjectId">Edit</a>
+                        <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Edit</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->

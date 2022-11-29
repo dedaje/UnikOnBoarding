@@ -20,7 +20,7 @@ public class EditProjectCommand : IEditProjectCommand
         //do
         //{
             //DoIt
-            model.Edit(requestDto.ProjectName, requestDto.RowVersion);
+            model.Edit(requestDto.ProjectName/*, requestDto.RowVersion*/);
 
             //Save
             _repository.Update(model);

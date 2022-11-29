@@ -14,7 +14,7 @@ namespace UnikOnBoarding.Infrastructure.Implementation
 
         async Task IUnikService.Create(ProjectCreateRequestDto dto)
         {
-           var response = await _httpClient.PostAsJsonAsync($"api/Project", dto);
+           var response = await _httpClient.PostAsJsonAsync($"api/Project/Create", dto);
 
            if (response.IsSuccessStatusCode) return;
 
@@ -24,7 +24,7 @@ namespace UnikOnBoarding.Infrastructure.Implementation
 
         async Task IUnikService.Edit(ProjectEditRequestDto dto)
         {
-            var response = await _httpClient.PostAsJsonAsync($"api/Project", dto);
+            var response = await _httpClient.PutAsJsonAsync($"api/Project/Edit", dto);
 
             if (response.IsSuccessStatusCode) return;
 
