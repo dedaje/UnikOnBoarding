@@ -40,7 +40,11 @@
                         <!-- </snippet_Delete> -->
                             
                         </td>
-                        
+                        <td>
+                            <a asp-page="./Task/Index" asp-route-projectId="@project.ProjectId">Se opgaver</a>
+                            |
+                            <a asp-page="./Task/Create" asp-route-projectId="@project.ProjectId">Opret Opgave</a>
+                        </td>
                 </tr>
             }
         }
