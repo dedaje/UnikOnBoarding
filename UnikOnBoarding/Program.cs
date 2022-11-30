@@ -28,7 +28,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
 {
-    options.Conventions.AuthorizeFolder("/Onboarding");
+    options.Conventions.AuthorizeFolder("/Project");
 });
 
 // IHttpClientFactory

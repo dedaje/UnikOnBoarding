@@ -5,7 +5,7 @@ using Unik.SqlServerContext;
 
 namespace Unik.Onboarding.Infrastructure.Repositories;
 
-internal class UserRepository : IUserRepository
+public class UserRepository : IUserRepository
 {
     private readonly UnikDbContext _db;
 

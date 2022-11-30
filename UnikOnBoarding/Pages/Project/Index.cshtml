@@ -38,6 +38,11 @@
                         <a type="submit" asp-page-handler="delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
                     </td>
+                    <td>
+                        <a asp-page="./AddUser" asp-route-id="@project.Id">Tilføj bruger</a>
+                        |
+                        <a asp-page="./RemoveUser" asp-route-id="@project.Id">Fjern bruger</a>
+                    </td>
                 </tr>
             }
         }

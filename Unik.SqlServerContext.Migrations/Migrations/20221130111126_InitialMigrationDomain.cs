@@ -46,36 +46,23 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     ProjectId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RowVersion = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Task", x => x.TaskId);
-                    table.ForeignKey(
-                        name: "FK_Task_Project_ProjectId",
-                        column: x => x.ProjectId,
-                        principalSchema: "project",
-                        principalTable: "Project",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Task_ProjectId",
-                schema: "task",
-                table: "Task",
-                column: "ProjectId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Task",
-                schema: "task");
-
-            migrationBuilder.DropTable(
                 name: "Project",
                 schema: "project");
+
+            migrationBuilder.DropTable(
+                name: "Task",
+                schema: "task");
         }
     }
 }
