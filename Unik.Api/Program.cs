@@ -1,8 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Application.Commands.Implementation.Project;
+using Unik.Onboarding.Application.Commands.Implementation.Task;
 using Unik.Onboarding.Application.Commands.Project;
+using Unik.Onboarding.Application.Commands.Task;
 using Unik.Onboarding.Application.Queries.Implementation.Project;
+using Unik.Onboarding.Application.Queries.Implementation.Task;
 using Unik.Onboarding.Application.Queries.Project;
+using Unik.Onboarding.Application.Queries.Task;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Infrastructure.Repositories;
 using Unik.SqlServerContext;
@@ -25,6 +29,11 @@ builder.Services.AddScoped<IEditProjectCommand, EditProjectCommand>();
 builder.Services.AddScoped<IProjectGetAllQuery, ProjectGetAllQuery>();
 builder.Services.AddScoped<IProjectGetQuery, ProjectGetQuery>();
 //builder.Services.AddScoped<IOnboardingDomainService, OnboardingDomainService>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<ICreateTaskCommand, CreateTaskCommand>();
+builder.Services.AddScoped<IEditTaskCommand, EditTaskCommand>();
+builder.Services.AddScoped<ITaskGetAllQuery, TaskGetAllQuery>();
+builder.Services.AddScoped<ITaskGetQuery, TaskGetQuery>();
 
 // Database
 // Add-Migration InitialMigrationDomain -Context UnikDbContext -Project Unik.SqlServerContext.Migrations

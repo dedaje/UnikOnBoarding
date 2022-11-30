@@ -73,8 +73,10 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                         .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<string>("TaskDescription")
                         .IsRequired()
@@ -90,20 +92,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
 
                     b.HasKey("TaskId");
 
-                    b.HasIndex("ProjectId");
-
                     b.ToTable("Task", "task");
-                });
-
-            modelBuilder.Entity("Unik.Onboarding.Domain.Model.TaskEntity", b =>
-                {
-                    b.HasOne("Unik.Onboarding.Domain.Model.ProjectEntity", "OnboardingEntity")
-                        .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OnboardingEntity");
                 });
 #pragma warning restore 612, 618
         }

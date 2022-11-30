@@ -12,8 +12,8 @@ using Unik.WebApp.UserContext;
 namespace Unik.WebApp.UserContext.Migrations.Migrations
 {
     [DbContext(typeof(WebAppUserDbContext))]
-    [Migration("20221117085039_InitialMigrationUser")]
-    partial class InitialMigrationUser
+    [Migration("20221130101330_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

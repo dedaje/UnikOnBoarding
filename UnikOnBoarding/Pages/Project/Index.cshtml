@@ -28,6 +28,7 @@
                     <td> @project.ProjectId </td>
                     <td>@project.DateAdded</td>
                     <td>@project.ProjectName</td>
+                        
                     <td>
                         <!-- <snippet_Edit> -->
                         <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
@@ -37,11 +38,17 @@
                         @*<a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>*@
                         <a type="submit" asp-page-handler="delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
-                    </td>
+                            
+                        </td>
+                        
                 </tr>
             }
         }
+        
         </tbody>
     </table>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Voldtage en ko</a>
+  
+       
+   
 </form>
