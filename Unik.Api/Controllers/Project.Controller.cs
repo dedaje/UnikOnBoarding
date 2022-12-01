@@ -35,7 +35,6 @@ public class Project : ControllerBase
     {
         var result = _projectGetAllQuery.GetAllUserProjects(userId).ToList();
         if (!result.Any())
-
             return NotFound();
 
         return result.ToList();

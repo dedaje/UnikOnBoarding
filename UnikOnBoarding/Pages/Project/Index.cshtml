@@ -39,14 +39,14 @@
                         <!-- </snippet_Delete> -->
                     </td>
                     <td>
-                        <a asp-page="./AddUser" asp-route-id="@project.Id">Tilføj bruger</a>
+                        <a asp-page="./AddUser" asp-route-projectId="@project.ProjectId">Tilføj bruger</a>
                         |
-                        <a asp-page="./RemoveUser" asp-route-id="@project.Id">Fjern bruger</a>
+                        <a asp-page="./RemoveUser" asp-route-projectId="@project.ProjectId">Fjern bruger</a>
                     </td>
                 </tr>
             }
         }
         </tbody>
     </table>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="./Create">Create New</a>
 </form>

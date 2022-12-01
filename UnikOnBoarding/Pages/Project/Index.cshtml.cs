@@ -19,6 +19,8 @@ namespace UnikOnBoarding.Pages.Project
         {
             var businessModel = await _unikService.GetAllUserProjects(User.Identity?.Name ?? string.Empty); // User.Identity?.Name ?? String.Empty*
 
+            if (businessModel == null) return;
+
             businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new ProjectIndexViewModel
             {
                 Id = dto.Id,

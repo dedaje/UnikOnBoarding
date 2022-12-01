@@ -12,7 +12,7 @@ using Unik.SqlServerContext;
 namespace Unik.SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(UnikDbContext))]
-    [Migration("20221130111126_InitialMigrationDomain")]
+    [Migration("20221201081841_InitialMigrationDomain")]
     partial class InitialMigrationDomain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

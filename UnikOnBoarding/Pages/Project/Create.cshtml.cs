@@ -26,18 +26,21 @@ public class CreateModel : PageModel
     public async Task<IActionResult> OnPost()
     {
         ProjectModel.ProjectId = _db.ProjectEntities.Max(p => p.ProjectId) + 1;
+        ProjectModel.UserId = User.Identity?.Name ?? string.Empty;
 
         if (ProjectModel.ProjectId == null)
             ProjectModel.ProjectId = 1;
 
-        if (!ModelState.IsValid || !string.IsNullOrEmpty(ProjectModel.ProjectName) || !ProjectModel.ProjectId.HasValue) return Page();
+        //if (!ModelState.IsValid || !string.IsNullOrEmpty(ProjectModel.ProjectName) || !ProjectModel.ProjectId.HasValue) return Page();
 
         var dto = new ProjectCreateRequestDto
         {
             ProjectId = ProjectModel.ProjectId.Value,
             ProjectName = ProjectModel.ProjectName,
-            UserId = User.Identity?.Name ?? string.Empty
+            UserId = ProjectModel.UserId
         };
+
+        if (!ModelState.IsValid || string.IsNullOrEmpty(ProjectModel.ProjectName) || !ProjectModel.ProjectId.HasValue) return Page();
 
         try
         {

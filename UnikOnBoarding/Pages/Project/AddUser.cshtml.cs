@@ -21,17 +21,20 @@ namespace UnikOnBoarding.Pages.Project
         [BindProperty] public AddUserViewModel AddUserViewModel { get; set; } = new();
         //[BindProperty] public int _id { get; set; }
 
-        public ActionResult OnGet(int id)
+        public async Task<IActionResult> OnGet(int projectId)
         {
-            var model = _db.ProjectEntities.Find(id);
-            AddUserViewModel.Id = model.Id;
-            AddUserViewModel.ProjectId = model.ProjectId;
-            AddUserViewModel.ProjectName = model.ProjectName;
-            //if (projectId == null) return NotFound();
+            //var model = _db.ProjectEntities.Find(id);
+            //AddUserViewModel.Id = model.Id;
+            //AddUserViewModel.ProjectId = model.ProjectId;
+            //AddUserViewModel.ProjectName = model.ProjectName;
+            if (projectId == null) return NotFound();
 
-            //var dto = await _unikService.GetProject(User.Identity?.Name ?? string.Empty, projectId);
+            var dto = await _unikService.GetProject(User.Identity?.Name ?? string.Empty, projectId);
 
-            //if (dto == null) return NotFound();
+            if (dto == null) return NotFound();
+
+            AddUserViewModel.ProjectId = dto.ProjectId;
+            AddUserViewModel.ProjectName = dto.ProjectName;
 
             //var model = new AddUserViewModel
             //{
