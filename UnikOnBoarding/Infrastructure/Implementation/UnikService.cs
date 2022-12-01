@@ -32,7 +32,7 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             throw new Exception(messege);
         }
 
-        async Task<ProjectQueryResultDto?> IUnikService.GetProject(string userId, int projectId)
+        async Task<ProjectQueryResultDto?> IUnikService.GetProject(string userId, int? projectId)
         {
             return await _httpClient.GetFromJsonAsync<ProjectQueryResultDto>($"api/Project/{userId}/{projectId}/");
         }

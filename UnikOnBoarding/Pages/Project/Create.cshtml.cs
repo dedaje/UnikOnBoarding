@@ -31,8 +31,6 @@ public class CreateModel : PageModel
         if (ProjectModel.ProjectId == null)
             ProjectModel.ProjectId = 1;
 
-        //if (!ModelState.IsValid || !string.IsNullOrEmpty(ProjectModel.ProjectName) || !ProjectModel.ProjectId.HasValue) return Page();
-
         var dto = new ProjectCreateRequestDto
         {
             ProjectId = ProjectModel.ProjectId.Value,
