@@ -44,6 +44,11 @@
                         |
                         <a asp-page="./RemoveUser" asp-route-id="@project.Id">Fjern bruger</a>
                     </td>
+                        <td>
+                            <a asp-page="../Tasks/Index" asp-route-projectId="@project.ProjectId">Se Opgaver</a>
+                            |
+                            <a asp-page="../Tasks/Create" asp-route-projectId="@project.ProjectId">Tilføj Opgave</a>
+                        </td>
                 </tr>
             }
         }

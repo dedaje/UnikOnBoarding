@@ -1,4 +1,5 @@
-﻿using UnikOnBoarding.Infrastructure.Contract.Dto;
+﻿//using Unik.Onboarding.Application.Commands.Task;
+using UnikOnBoarding.Infrastructure.Contract.Dto;
 
 namespace UnikOnBoarding.Infrastructure.Contract
 {
@@ -12,5 +13,11 @@ namespace UnikOnBoarding.Infrastructure.Contract
 
         Task AddUser(AddUserRequestDto dto);
         Task RemoveUser(RemoveUserRequestDto dto);
+
+        Task CreateTask(TaskCreateRequestDto dto);
+        Task EditTask(TaskEditRequestDto dto);
+        Task<TaskQueryResultDto?> GetTask(int taskId);
+        Task<IEnumerable<TaskQueryResultDto>?> GetAllTasksByRole(int projectId, int roleId);
+        Task<IEnumerable<TaskQueryResultDto>?> GetAllTasksByUser(int projectId, string userId);
     }
 }

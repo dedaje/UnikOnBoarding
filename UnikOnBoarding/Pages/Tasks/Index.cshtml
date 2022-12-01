@@ -13,35 +13,31 @@
         <tr>
             <th>ID</th>
             <th>Projekt ID</th>
-            <th>Dato</th>
-            <th>Projekt Navn</th>
-            <th></th>
+            <th>Dato Tilføjet</th>
+            <th>Opgave Navn</th>
+            <th>Opgave Beskrivelse</th>
         </tr>
         </thead>
         <tbody>
         @if (Model.IndexViewModel.Any())
         {
-            foreach (var project in Model.IndexViewModel)
+            foreach (var task in Model.IndexViewModel)
             {
                 <tr>
-                    <td> @project.Id</td>
-                    <td> @project.ProjectId </td>
-                    <td>@project.DateAdded</td>
-                    <td>@project.ProjectName</td>
+                    <td> @task.TaskId</td>
+                        <td> @task.ProjectId </td>
+                        <td>@task.DateCreated</td>
+                        <td>@task.TaskName</td>
+                        <td>@task.TaskDescription</td>
                     <td>
                         <!-- <snippet_Edit> -->
-                        <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
+                        <a asp-page="./Edit" asp-route-taskId="@task.TaskId">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
                         @*<a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>*@
-                        <a type="submit" asp-page-handler="delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>
+                        <a type="submit" asp-page-handler="delete" asp-route-projectId="@task.TaskId">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
-                    </td>
-                    <td>
-                        <a asp-page="./AddUser" asp-route-id="@project.Id">Tilføj bruger</a>
-                        |
-                        <a asp-page="./RemoveUser" asp-route-id="@project.Id">Fjern bruger</a>
                     </td>
                 </tr>
             }

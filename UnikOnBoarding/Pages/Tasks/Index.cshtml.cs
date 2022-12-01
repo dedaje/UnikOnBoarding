@@ -15,16 +15,18 @@ namespace UnikOnBoarding.Pages.Tasks
 
         [BindProperty] public List<TaskIndexViewModel> IndexViewModel { get; set; } = new();
 
-        public async Task OnGet()
+        public async Task OnGet(int projectId)
         {
-            var businessModel = await _unikService.GetAllUserProjects(User.Identity?.Name ?? string.Empty); // User.Identity?.Name ?? String.Empty*
+            var businessModel = await _unikService.GetAllTasksByUser(projectId, User.Identity?.Name ?? string.Empty); // User.Identity?.Name ?? String.Empty*
 
             businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new TaskIndexViewModel
             {
                 TaskId = dto.TaskId,
+                TaskName = dto.TaskName,
+                TaskDescription = dto.TaskDescription,
+                DateCreated = dto.DateCreated,
                 ProjectId = dto.ProjectId,
-                DateAdded = dto.DateAdded,
-                TaskName = dto.ProjectName,
+                RoleId = dto.RoleId,
                 UserId = dto.UserId,
                 RowVersion = dto.RowVersion,
             }));

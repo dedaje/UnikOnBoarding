@@ -66,5 +66,40 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             var message = await response.Content.ReadAsStringAsync();
             throw new Exception(message);
         }
+
+        async Task IUnikService.CreateTask(TaskCreateRequestDto dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"api/Task/Create", dto);
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+
+        async Task IUnikService.EditTask(TaskEditRequestDto dto)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/Task/Edit", dto);
+
+            if (response.IsSuccessStatusCode) return;
+
+            var messege = await response.Content.ReadAsStringAsync();
+            throw new Exception(messege);
+        }
+
+        async Task<TaskQueryResultDto?> IUnikService.GetTask(int taskId)
+        {
+            return await _httpClient.GetFromJsonAsync<TaskQueryResultDto>($"api/Task/{taskId}/");
+        }
+
+        async Task<IEnumerable<TaskQueryResultDto>?> IUnikService.GetAllTasksByRole(int projectId, int roleId)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<TaskQueryResultDto>>($"api/Task/r/{projectId}/{roleId}/");
+        }
+
+        async Task<IEnumerable<TaskQueryResultDto>?> IUnikService.GetAllTasksByUser(int projectId, string userId)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<TaskQueryResultDto>>($"api/Task/u/{projectId}/{userId}/");
+        }
     }
 }
