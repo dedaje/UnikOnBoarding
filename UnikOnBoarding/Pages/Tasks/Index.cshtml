@@ -1,5 +1,5 @@
 ﻿@page
-@model UnikOnBoarding.Pages.Project.IndexModel
+@model UnikOnBoarding.Pages.Tasks.IndexModel
 @{
 }
 
@@ -14,7 +14,7 @@
             <th>ID</th>
             <th>Projekt ID</th>
             <th>Dato</th>
-            <th>Projekt</th>
+            <th>Projekt Navn</th>
             <th></th>
         </tr>
         </thead>
@@ -29,8 +29,7 @@
                     <td>@project.DateAdded</td>
                     <td>@project.ProjectName</td>
                     <td>
-                            
-                            <!-- <snippet_Edit> -->
+                        <!-- <snippet_Edit> -->
                         <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
