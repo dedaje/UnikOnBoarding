@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
 
-namespace UnikOnBoarding.Pages.Project
+namespace UnikOnBoarding.Pages.User
 {
     public class AddUserModel : PageModel
     {
@@ -52,7 +53,7 @@ namespace UnikOnBoarding.Pages.Project
                 return Page();
             }
 
-            return new RedirectToPageResult("/Project/Index");
+            return new RedirectToPageResult("/User/Index");
         }
     }
 }

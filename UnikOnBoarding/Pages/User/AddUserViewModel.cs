@@ -1,4 +1,4 @@
-﻿namespace UnikOnBoarding.Pages.Project
+﻿namespace UnikOnBoarding.Pages.User
 {
     public class AddUserViewModel
     {

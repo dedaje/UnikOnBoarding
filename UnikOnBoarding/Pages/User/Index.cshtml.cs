@@ -17,9 +17,10 @@ namespace UnikOnBoarding.Pages.User
         [BindProperty] public int? _projectId { get; set; }
         [BindProperty] public string? _projectName { get; set; }
 
-        public async Task OnGet(int? projectId)
+        public async Task OnGet(int? projectId, string? projectName)
         {
             _projectId = projectId;
+            _projectName = projectName;
 
             var businessModel = await _unikService.GetAllEditProjects(_projectId);
 
@@ -27,6 +28,7 @@ namespace UnikOnBoarding.Pages.User
 
             businessModel?.ToList().ForEach(dto => UserModel.Add(new UserViewModel
             {
+                Id = dto.Id,
                 ProjectId = dto.ProjectId,
                 ProjectName = dto.ProjectName,
                 DateAdded = dto.DateAdded,

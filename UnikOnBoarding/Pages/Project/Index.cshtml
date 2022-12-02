@@ -44,7 +44,7 @@
                         <a asp-page="./RemoveUser" asp-route-projectId="@project.ProjectId">Fjern bruger</a>
                     </td>
                     <td>
-                        <a asp-page="./User/Index" asp-route-projectId="@project.ProjectId">Se Tilmeldte Brugere</a>
+                        <a asp-page="../User/Index" asp-route-projectId="@project.ProjectId" asp-route-projectName="@project.ProjectName">Se Tilmeldte Brugere</a>
                     </td>
                 </tr>
             }
