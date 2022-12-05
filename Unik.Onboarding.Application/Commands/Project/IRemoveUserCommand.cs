@@ -2,5 +2,5 @@
 
 public interface IRemoveUserCommand
 {
-    void RemoveUser(RemoveUserRequestDto request);
+    void RemoveUser(string userId, int projectId);
 }

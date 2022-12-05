@@ -12,6 +12,7 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             _httpClient = httpClient;
         }
 
+        // Project
         async Task IUnikService.Create(ProjectCreateRequestDto dto)
         {
            var response = await _httpClient.PostAsJsonAsync($"api/Project/Create", dto);
@@ -28,8 +29,18 @@ namespace UnikOnBoarding.Infrastructure.Implementation
 
             if (response.IsSuccessStatusCode) return;
 
-            var messege = await response.Content.ReadAsStringAsync();
-            throw new Exception(messege);
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+
+        async Task IUnikService.Delete(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/Project/DeleteProject/{id}/");
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
         }
 
         async Task<ProjectQueryResultDto?> IUnikService.GetProject(string userId, int? projectId)
@@ -47,6 +58,7 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Project/p/{projectId}/");
         }
 
+        // User
         async Task IUnikService.AddUser(AddUserRequestDto dto)
         {
             var response = await _httpClient.PostAsJsonAsync($"api/User/AddUser", dto);
@@ -57,14 +69,20 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             throw new Exception(message);
         }
 
-        async Task IUnikService.RemoveUser(RemoveUserRequestDto dto)
+        async Task IUnikService.RemoveUser(string userId, int? projectId)
         {
-            var response = await _httpClient.PostAsJsonAsync($"api/User/RemoveUser", dto); //TODO
+            var response = await _httpClient.DeleteAsync($"api/User/RemoveUser/{userId}/{projectId}/");
             
             if (response.IsSuccessStatusCode) return;
 
             var message = await response.Content.ReadAsStringAsync();
             throw new Exception(message);
+        }
+
+        // Task
+        Task IUnikService.DeleteTask(int taskId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

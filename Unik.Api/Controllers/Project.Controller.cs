@@ -13,17 +13,19 @@ public class Project : ControllerBase
 {
     private readonly ICreateProjectCommand _createProjectCommand;
     private readonly IEditProjectCommand _editProjectCommand;
+    private readonly IDeleteProjectCommand _deleteProjectCommand;
     private readonly IProjectGetAllQuery _projectGetAllQuery;
     private readonly IProjectGetQuery _projectGetQuery;
 
     // constructor
     public Project(ICreateProjectCommand createProjectCommand,
-        IEditProjectCommand editProjectCommand, IProjectGetAllQuery projectGetAllQuery,
+        IEditProjectCommand editProjectCommand, IDeleteProjectCommand deleteProjectCommand, IProjectGetAllQuery projectGetAllQuery,
         IProjectGetQuery projectGetQuery)
     {
         _projectGetAllQuery = projectGetAllQuery;
         _createProjectCommand = createProjectCommand;
         _editProjectCommand = editProjectCommand;
+        _deleteProjectCommand = deleteProjectCommand;
         _projectGetQuery = projectGetQuery;
     }
 
@@ -93,6 +95,24 @@ public class Project : ControllerBase
         try
         {
             _editProjectCommand.Edit(request);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    // DELETE api/<Project>/5
+    [HttpDelete("DeleteProject/{id}/")]
+    //[Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<ProjectDeleteRequestDto> Delete(int id) // DeleteProject
+    {
+        try
+        {
+            _deleteProjectCommand.Delete(id);
             return Ok();
         }
         catch (Exception e)

@@ -20,7 +20,7 @@ public class UserRepository : IUserRepository
         _db.SaveChanges();
     }
 
-    ProjectEntity IUserRepository.Load(int projectId, string userId)
+    ProjectEntity IUserRepository.Load(string userId, int projectId)
     {
         var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
         if (dbEntity == null) throw new Exception("Denne bruger var ikke en del af projektet");

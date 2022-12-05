@@ -9,6 +9,6 @@ public interface IUserRepository
     //IEnumerable<ProjectQueryResultDto> GetAllUserProjects(string userId);
     //IEnumerable<ProjectQueryResultDto> GetAllEditProjects(int? projectId);
     //ProjectQueryResultDto GetProject(string userId, int projectId);
-    ProjectEntity Load(int projectId, string userId);
+    ProjectEntity Load(string userId, int projectId);
     //void Update(ProjectEntity model);
 }

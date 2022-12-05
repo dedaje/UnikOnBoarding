@@ -35,14 +35,14 @@
                         |
                         <!-- <snippet_Delete> -->
                         @*<a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>*@
-                        <a type="submit" asp-page-handler="delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>
+                        <a asp-page="./Delete" asp-route-projectId="@project.ProjectId" asp-route-projectName="@project.ProjectName">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
                     </td>
-                    <td>
+                    @*<td>
                         <a asp-page="./AddUser" asp-route-projectId="@project.ProjectId">Tilføj bruger</a>
                         |
                         <a asp-page="./RemoveUser" asp-route-projectId="@project.ProjectId">Fjern bruger</a>
-                    </td>
+                    </td>*@
                     <td>
                         <a asp-page="../User/Index" asp-route-projectId="@project.ProjectId" asp-route-projectName="@project.ProjectName">Se Tilmeldte Brugere</a>
                     </td>

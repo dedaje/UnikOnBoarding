@@ -12,9 +12,10 @@ public class RemoveUserCommand : IRemoveUserCommand
         _repository = repository;
     }
 
-    void IRemoveUserCommand.RemoveUser(RemoveUserRequestDto request)
+    void IRemoveUserCommand.RemoveUser(string userId, int projectId)
     {
-        var model = _repository.Load(request.ProjectId, request.UserId);
+        var model = _repository.Load(userId, projectId);
+
         _repository.RemoveUser(model);
     }
 }

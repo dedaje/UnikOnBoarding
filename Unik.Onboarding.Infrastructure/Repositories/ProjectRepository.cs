@@ -78,4 +78,10 @@ public class ProjectRepository : IProjectRepository
         _db.Update(model);
         _db.SaveChanges();
     }
+
+    void IProjectRepository.Delete(ProjectEntity model)
+    {
+        _db.Remove(model);
+        _db.SaveChanges();
+    }
 }

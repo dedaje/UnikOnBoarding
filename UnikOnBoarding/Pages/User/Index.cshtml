@@ -17,7 +17,7 @@
         <tr>
             <th>Projekt ID</th>
             <th>Projekt Navn</th>
-            |
+            
             <th>Email</th>
             <th>Dato Tilføjet</th>
             <th></th>
@@ -31,16 +31,16 @@
                 <tr>
                     <td> @user.ProjectId </td>
                     <td>@user.ProjectName</td>
-                    |
+                    
                     <td>@user.UserId</td>
                     <td>@user.DateAdded</td>
                     <td>
-                        <!-- <snippet_Edit> -->
+                        @*<!-- <snippet_Edit> -->
                         <a asp-page="./EditUser" asp-route-projectId="@user.ProjectId">Rediger Bruger</a>
                         <!-- </snippet_Edit> -->
-                        |
+                        |*@
                         <!-- <snippet_Delete> -->
-                        <a asp-page="./RemoveUser" asp-route-projectId="@user.ProjectId">Fjern Bruger</a>
+                            <a asp-page="./RemoveUser" asp-route-userId="@user.UserId" asp-route-projectId="@user.ProjectId">Fjern Bruger</a>
                         <!-- </snippet_Delete> -->
                     </td>
                     @*<td>

@@ -11,4 +11,5 @@ public interface IProjectRepository
     ProjectQueryResultDto GetProject(string userId, int projectId);
     ProjectEntity Load(int id);
     void Update(ProjectEntity model);
+    void Delete(ProjectEntity model);
 }

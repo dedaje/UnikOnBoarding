@@ -59,15 +59,15 @@ namespace Unik.Api.Controllers
         //}
 
         // DELETE api/<User>/5
-        [HttpDelete("RemoveUser/")]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [HttpDelete("RemoveUser/{userId}/{projectId}/")]
+        //[Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult Delete(RemoveUserRequestDto request) // RemoveUser
+        public ActionResult<RemoveUserRequestDto> Delete(string userId, int projectId) // RemoveUser
         {
             try
             {
-                _removeUserCommand.RemoveUser(request);
+                _removeUserCommand.RemoveUser(userId, projectId);
                 return Ok();
             }
             catch (Exception e)

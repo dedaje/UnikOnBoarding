@@ -14,13 +14,15 @@ namespace Unik.Api.Controllers
     {
         private readonly ICreateTaskCommand _createTaskCommand;
         private readonly IEditTaskCommand _editTaskCommand;
+        private readonly IDeleteTaskCommand _deleteTaskCommand;
         private readonly ITaskGetAllQuery _taskGetAllQuery;
         private readonly ITaskGetQuery _taskGetQuery;
 
-        public Task(ICreateTaskCommand createTaskCommand, IEditTaskCommand editTaskCommand, ITaskGetAllQuery taskGetAllQuery, ITaskGetQuery taskGetQuery)
+        public Task(ICreateTaskCommand createTaskCommand, IEditTaskCommand editTaskCommand, IDeleteTaskCommand deleteTaskCommand, ITaskGetAllQuery taskGetAllQuery, ITaskGetQuery taskGetQuery)
         {
             _createTaskCommand = createTaskCommand;
             _editTaskCommand = editTaskCommand;
+            _deleteTaskCommand = deleteTaskCommand;
             _taskGetAllQuery = taskGetAllQuery;
             _taskGetQuery = taskGetQuery;
         }
@@ -93,6 +95,24 @@ namespace Unik.Api.Controllers
             try
             {
                 _editTaskCommand.Edit(request);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        // DELETE api/<Task>/5
+        [HttpDelete("DeleteTask/")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult Delete(TaskDeleteRequestDto request) // DeleteTask
+        {
+            try
+            {
+                _deleteTaskCommand.Delete(request);
                 return Ok();
             }
             catch (Exception e)

@@ -53,7 +53,7 @@ namespace UnikOnBoarding.Pages.User
                 return Page();
             }
 
-            return new RedirectToPageResult("/User/Index");
+            return new RedirectToPageResult("/User/Index", "/User/Index", AddUserViewModel);
         }
     }
 }
