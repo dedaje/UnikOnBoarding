@@ -80,9 +80,14 @@ namespace UnikOnBoarding.Infrastructure.Implementation
         }
 
         // Task
-        Task IUnikService.DeleteTask(int taskId)
+        async Task IUnikService.DeleteTask(int id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.DeleteAsync($"api/Task/DeleteTask/{id}/");
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
         }
     }
 }

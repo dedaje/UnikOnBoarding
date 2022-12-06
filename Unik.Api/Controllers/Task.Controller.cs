@@ -104,15 +104,15 @@ namespace Unik.Api.Controllers
         }
 
         // DELETE api/<Task>/5
-        [HttpDelete("DeleteTask/")]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [HttpDelete("DeleteTask/{id}/")]
+        //[Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult Delete(TaskDeleteRequestDto request) // DeleteTask
+        public ActionResult<TaskDeleteRequestDto> Delete(int id) // DeleteTask
         {
             try
             {
-                _deleteTaskCommand.Delete(request);
+                _deleteTaskCommand.Delete(id);
                 return Ok();
             }
             catch (Exception e)

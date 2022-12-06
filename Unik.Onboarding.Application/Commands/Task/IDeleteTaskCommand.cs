@@ -2,5 +2,5 @@
 
 public interface IDeleteTaskCommand
 {
-    void Delete(TaskDeleteRequestDto request);
+    void Delete(int id);
 }

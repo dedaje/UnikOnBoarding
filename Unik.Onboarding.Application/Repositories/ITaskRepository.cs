@@ -11,4 +11,5 @@ public interface ITaskRepository
     TaskQueryResultDto GetTask(int taskId);
     TaskEntity Load(int taskId);
     void Update(TaskEntity model);
+    void Delete(TaskEntity model);
 }

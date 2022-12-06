@@ -86,4 +86,10 @@ public class TaskRepository : ITaskRepository
         _db.Update(model);
         _db.SaveChanges();
     }
+
+    void ITaskRepository.Delete(TaskEntity model)
+    {
+        _db.Remove(model);
+        _db.SaveChanges();
+    }
 }

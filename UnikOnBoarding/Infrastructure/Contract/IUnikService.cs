@@ -6,7 +6,7 @@ namespace UnikOnBoarding.Infrastructure.Contract
     {
         Task Create(ProjectCreateRequestDto dto);
         Task Edit(ProjectEditRequestDto dto);
-        Task/*<ProjectDeleteRequestDto?>*/ Delete(int id);
+        Task Delete(int id);
         Task<ProjectQueryResultDto?> GetProject(string userId, int? projectId);
         Task<IEnumerable<ProjectQueryResultDto>?> GetAllUserProjects(string userId);
         Task<IEnumerable<ProjectQueryResultDto>?> GetAllEditProjects(int? projectId);
@@ -14,6 +14,6 @@ namespace UnikOnBoarding.Infrastructure.Contract
         Task AddUser(AddUserRequestDto dto);
         Task RemoveUser(string userId, int? projectId);
 
-        Task DeleteTask(int taskId);
+        Task DeleteTask(int id);
     }
 }
