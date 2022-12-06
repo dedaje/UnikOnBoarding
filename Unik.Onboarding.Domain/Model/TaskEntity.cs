@@ -31,10 +31,10 @@ public class TaskEntity
     [Timestamp]
     public byte[] RowVersion { get; private set; }
 
-    public void Edit(string taskName, string taskDescription, byte[] rowVersion)
+    public void Edit(string taskName, string taskDescription/*, byte[] rowVersion*/)
     {
         TaskName = taskName;
         TaskDescription = taskDescription;
-        RowVersion = rowVersion;
+        //RowVersion = rowVersion;
     }
 }

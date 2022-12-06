@@ -1,5 +1,5 @@
 ﻿@page
-@model UnikOnBoarding.Pages.Tasks.EditModel
+@model UnikOnBoarding.Pages.Tasks.CreateModel
 @{
 }
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,12 +12,10 @@
         <form method="post">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <input type="hidden" asp-for="TaskModel.TaskId" class="form-control" />
-            <input type="hidden" asp-for="TaskModel.DateCreated" class="form-control" />
             <input type="hidden" asp-for="TaskModel.ProjectId" class="form-control" />
-            <input type="hidden" asp-for="TaskModel.RoleId" class="form-control" />
+            @*<input type="hidden" asp-for="TaskModel.RoleId" class="form-control" />*@
             <input type="hidden" asp-for="TaskModel.UserId" class="form-control" />
+            
             <div class="form-group">
                 <label asp-for="TaskModel.TaskName"></label>
                 <input asp-for="TaskModel.TaskName" class="form-control" />
@@ -26,9 +24,14 @@
                 <label asp-for="TaskModel.TaskDescription"></label>
                 <input asp-for="TaskModel.TaskDescription" class="form-control" />
                 <span asp-validation-for="TaskModel.TaskDescription" class="text-danger"></span>
+
+                <label asp-for="TaskModel.RoleId"></label>
+                <input asp-for="TaskModel.RoleId" class="form-control" />
+                <span asp-validation-for="TaskModel.RoleId" class="text-danger"></span>
+
             </div>
 
-            <button type="submit" class="btn btn-default">Opdater opgave</button>
+            <button type="submit" class="btn btn-default">Opret Opgave</button>
         </form>
     </div>
 </div>

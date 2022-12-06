@@ -21,28 +21,46 @@ namespace UnikOnBoarding.Pages.Tasks
             if (taskId == null) return NotFound();
             var dto = await _unikService.GetTask(taskId.Value);
 
-            TaskModel = new TaskEditViewModel { TaskName = dto.TaskName, TaskDescription = dto.TaskDescription, TaskId = dto.TaskId, RowVersion = dto.RowVersion };
+            TaskModel = new TaskEditViewModel 
+            {
+                TaskId = dto.TaskId,
+                TaskName = dto.TaskName, 
+                TaskDescription = dto.TaskDescription, 
+                DateCreated = dto.DateCreated,
+                ProjectId = dto.ProjectId,
+                RoleId = dto.RoleId,
+                UserId = User.Identity?.Name ?? String.Empty
+            };
 
             return Page();
         }
 
         public async Task<IActionResult> OnPost()
         {
+            
             if (!ModelState.IsValid) return Page();
 
-            await _unikService.EditTask(new TaskEditRequestDto 
+            try
             {
-                TaskId = TaskModel.TaskId,
-                TaskName = TaskModel.TaskName, 
-                TaskDescription = TaskModel.TaskDescription,
-                DateCreated = TaskModel.DateCreated,
-                ProjectId = TaskModel.ProjectId,
-                RoleId = TaskModel.RoleId,
-                UserId = User.Identity?.Name ?? String.Empty,
-                RowVersion = TaskModel.RowVersion 
-            });
+                await _unikService.EditTask(new TaskEditRequestDto
+                {
+                    TaskId = TaskModel.TaskId,
+                    TaskName = TaskModel.TaskName,
+                    TaskDescription = TaskModel.TaskDescription,
+                    DateCreated = TaskModel.DateCreated,
+                    ProjectId = TaskModel.ProjectId,
+                    RoleId = TaskModel.RoleId,
+                    UserId = TaskModel.UserId
+                    //RowVersion = TaskModel.RowVersion
+                });
+            }
+            catch(Exception e) 
+            {
+                ModelState.AddModelError(string.Empty, e.Message);
+                return Page();
+            }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../Project/Index");
         }
     }
 }
