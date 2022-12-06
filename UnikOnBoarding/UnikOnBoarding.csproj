@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Unik.Onboarding.Application\Unik.Onboarding.Application.csproj" />
     <ProjectReference Include="..\Unik.SqlServerContext.Migrations\Unik.SqlServerContext.Migrations.csproj" />
     <ProjectReference Include="..\Unik.SqlServerContext\Unik.SqlServerContext.csproj" />
     <ProjectReference Include="..\Unik.WebApp.UserContext.Migrations\Unik.WebApp.UserContext.Migrations.csproj" />

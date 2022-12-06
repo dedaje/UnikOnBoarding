@@ -14,7 +14,7 @@
             <th>ID</th>
             <th>Projekt ID</th>
             <th>Dato</th>
-            <th>Projekt Navn</th>
+            <th>Projekt</th>
             <th></th>
         </tr>
         </thead>
@@ -29,7 +29,8 @@
                     <td>@project.DateAdded</td>
                     <td>@project.ProjectName</td>
                     <td>
-                        <!-- <snippet_Edit> -->
+                            
+                            <!-- <snippet_Edit> -->
                         <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
@@ -46,6 +47,11 @@
                     <td>
                         <a asp-page="../User/Index" asp-route-projectId="@project.ProjectId" asp-route-projectName="@project.ProjectName">Se Tilmeldte Brugere</a>
                     </td>
+                        <td>
+                            <a asp-page="../Tasks/Index" asp-route-projectId="@project.ProjectId">Se Opgaver</a>
+                            |
+                            <a asp-page="../Tasks/Create" asp-route-projectId="@project.ProjectId">Tilføj Opgave</a>
+                        </td>
                 </tr>
             }
         }
