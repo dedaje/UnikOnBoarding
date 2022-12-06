@@ -29,29 +29,22 @@
                     <td>@project.DateAdded</td>
                     <td>@project.ProjectName</td>
                     <td>
-                            
-                            <!-- <snippet_Edit> -->
+                        <!-- <snippet_Edit> -->
                         <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        @*<a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>*@
                         <a asp-page="./Delete" asp-route-projectId="@project.ProjectId" asp-route-projectName="@project.ProjectName">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
                     </td>
-                    @*<td>
-                        <a asp-page="./AddUser" asp-route-projectId="@project.ProjectId">Tilføj bruger</a>
-                        |
-                        <a asp-page="./RemoveUser" asp-route-projectId="@project.ProjectId">Fjern bruger</a>
-                    </td>*@
                     <td>
                         <a asp-page="../User/Index" asp-route-projectId="@project.ProjectId" asp-route-projectName="@project.ProjectName">Se Tilmeldte Brugere</a>
                     </td>
-                        <td>
-                            <a asp-page="../Tasks/Index" asp-route-projectId="@project.ProjectId">Se Opgaver</a>
-                            |
-                            <a asp-page="../Tasks/Create" asp-route-projectId="@project.ProjectId">Tilføj Opgave</a>
-                        </td>
+                    <td>
+                        <a asp-page="../Tasks/Index" asp-route-projectId="@project.ProjectId">Se Opgaver</a>
+                        |
+                        <a asp-page="../Tasks/Create" asp-route-projectId="@project.ProjectId">Tilføj Opgave</a>
+                    </td>    
                 </tr>
             }
         }

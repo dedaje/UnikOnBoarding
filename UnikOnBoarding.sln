@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik.WebApp.UserContext.Mig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik.Api", "Unik.Api\Unik.Api.csproj", "{FB3FB633-EE1F-4CA2-8C13-91737EA79909}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik.Crosscut", "Unik.Crosscut\Unik.Crosscut.csproj", "{0ACB43A1-710A-4861-AF64-4DACA3A9422B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{FB3FB633-EE1F-4CA2-8C13-91737EA79909}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB3FB633-EE1F-4CA2-8C13-91737EA79909}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB3FB633-EE1F-4CA2-8C13-91737EA79909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ACB43A1-710A-4861-AF64-4DACA3A9422B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACB43A1-710A-4861-AF64-4DACA3A9422B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACB43A1-710A-4861-AF64-4DACA3A9422B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACB43A1-710A-4861-AF64-4DACA3A9422B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{72152C37-77F4-4DE8-9A66-301E8F33A770} = {493A16DA-E91F-4944-9DF4-E7EB1732969F}
 		{DE8DCCF8-8BEC-4136-83F0-3E82E6164A49} = {493A16DA-E91F-4944-9DF4-E7EB1732969F}
 		{10F969F6-9327-40AD-81FB-DC35D935C73D} = {493A16DA-E91F-4944-9DF4-E7EB1732969F}
+		{0ACB43A1-710A-4861-AF64-4DACA3A9422B} = {0EA3493B-B941-41E3-A4A4-5159EA5DFACC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CE1A52C-5670-45E5-A99B-B5698D5B971B}

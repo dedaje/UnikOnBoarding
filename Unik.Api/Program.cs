@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Unik.Crosscut.TransactionHandling.Implementation;
+using Unik.Crosscut.TransactionHandling;
 using Unik.Onboarding.Application.Commands.Implementation.Project;
 using Unik.Onboarding.Application.Commands.Implementation.Task;
 using Unik.Onboarding.Application.Commands.Project;
@@ -55,6 +57,12 @@ builder.Services.AddDbContext<UnikDbContext>(
     options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
             x => x.MigrationsAssembly("Unik.SqlServerContext.Migrations")));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(p =>
+{
+    var db = p.GetService<UnikDbContext>();
+    return new UnitOfWork(db);
+});
 
 var app = builder.Build();
 

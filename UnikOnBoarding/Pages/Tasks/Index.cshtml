@@ -25,18 +25,17 @@
             {
                 <tr>
                     <td> @task.TaskId</td>
-                        <td> @task.ProjectId </td>
-                        <td>@task.DateCreated</td>
-                        <td>@task.TaskName</td>
-                        <td>@task.TaskDescription</td>
+                    <td> @task.ProjectId </td>
+                    <td>@task.DateCreated</td>
+                    <td>@task.TaskName</td>
+                    <td>@task.TaskDescription</td>
                     <td>
                         <!-- <snippet_Edit> -->
                         <a asp-page="./Edit" asp-route-taskId="@task.TaskId">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        @*<a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>*@
-                        <a type="submit" asp-page-handler="delete" asp-route-projectId="@task.TaskId">Slet Projekt</a>
+                        <a asp-page="./Delete" asp-route-taskId="@task.TaskId">Slet Opgave</a>
                         <!-- </snippet_Delete> -->
                     </td>
                 </tr>
@@ -44,5 +43,4 @@
         }
         </tbody>
     </table>
-    @*<a asp-page="./Create" asp-route-ProjectId="@M">Create New</a>*@
 </form>
