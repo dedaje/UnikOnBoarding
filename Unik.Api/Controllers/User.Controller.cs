@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using Unik.Onboarding.Application.Commands.Implementation.Project;
-using Unik.Onboarding.Application.Commands.Project;
+using Unik.Onboarding.Application.Commands.User;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

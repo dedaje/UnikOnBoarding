@@ -12,7 +12,7 @@ public class UnikDbContext : DbContext
     }
 
     public DbSet<ProjectEntity> ProjectEntities { get; set; }
-    //public DbSet<OnboardingUsersEntity> OnboardingUsersEntities { get; set; }
+    public DbSet<UsersEntity> UserEntities { get; set; }
     //public DbSet<RoleEntity> RoleEntities { get; set; }
     //public DbSet<SkillsEntity> SkillsEntities { get; set; }
     public DbSet<TaskEntity> TaskEntities { get; set; }
@@ -21,11 +21,14 @@ public class UnikDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.ApplyConfiguration(new ProjectTypeConfig());
-        //builder.ApplyConfiguration(new OnboardingUsersTypeConfig());
+        builder
+            .ApplyConfiguration(new ProjectTypeConfig())
+            .ApplyConfiguration(new UserTypeConfig())
+            .ApplyConfiguration(new TaskTypeConfig());
+        //builder.ApplyConfiguration(new UserTypeConfig());
         //builder.ApplyConfiguration(new RoleTypeConfig());
         //builder.ApplyConfiguration(new SkillTypeConfig());
-        builder.ApplyConfiguration(new TaskTypeConfig());
+        //builder.ApplyConfiguration(new TaskTypeConfig());
         //builder.ApplyConfiguration(new UserTypeConfig());
         //builder.ApplyConfiguration(new UserSkillsTypeConfig());
     }

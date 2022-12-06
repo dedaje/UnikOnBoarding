@@ -14,11 +14,13 @@ public class ProjectGetAllQuery : IProjectGetAllQuery
 
     IEnumerable<ProjectQueryResultDto> IProjectGetAllQuery.GetAllUserProjects(string userId)
     {
-        return _repository.GetAllUserProjects(userId);
+        //return _repository.GetAllUserProjects(userId);
+        throw new NotImplementedException();
     }
 
     IEnumerable<ProjectQueryResultDto> IProjectGetAllQuery.GetAllEditProjects(int? projectId)
     {
-        return _repository.GetAllEditProjects(projectId);
+        //return _repository.GetAllEditProjects(projectId);
+        throw new NotImplementedException();
     }
 }

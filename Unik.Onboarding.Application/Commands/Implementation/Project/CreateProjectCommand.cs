@@ -1,4 +1,5 @@
 ﻿using Unik.Onboarding.Application.Commands.Project;
+using Unik.Onboarding.Application.Commands.User;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.DomainServices;
 using Unik.Onboarding.Domain.Model;
@@ -16,9 +17,12 @@ public class CreateProjectCommand : ICreateProjectCommand
         _domainService = domainService;
     }
 
-    void ICreateProjectCommand.Create(ProjectCreateRequestDto dto)
+    void ICreateProjectCommand.Create(ProjectCreateWithUserRequestDto request)
     {
-        var project = new ProjectEntity(dto.ProjectId, dto.ProjectName, dto.UserId, _domainService);
-        _repository.Add(project);
+        var project = new ProjectEntity(request.ProjectCreateRequestDto.Users, request.ProjectCreateRequestDto.ProjectName, _domainService);
+        var initialUser = new UsersEntity(request.AddUserRequestDto.Projects, request.AddUserRequestDto.UserId);
+        _repository.Add(project, initialUser);
+
+        //throw new NotImplementedException();
     }
 }

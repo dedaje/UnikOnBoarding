@@ -14,6 +14,8 @@ using Unik.Onboarding.Domain.DomainServices;
 using Unik.Onboarding.Infrastructure.DomainServices;
 using Unik.Onboarding.Infrastructure.Repositories;
 using Unik.SqlServerContext;
+using Unik.Onboarding.Application.Commands.User;
+using Unik.Onboarding.Application.Commands.Implementation.User;
 
 //using UnikOnBoarding;
 

@@ -1,6 +1,8 @@
-﻿namespace Unik.Onboarding.Application.Commands.Project;
+﻿using Unik.Onboarding.Application.Commands.User;
+
+namespace Unik.Onboarding.Application.Commands.Project;
 
 public interface ICreateProjectCommand
 {
-    void Create(ProjectCreateRequestDto request);
+    void Create(ProjectCreateWithUserRequestDto request);
 }

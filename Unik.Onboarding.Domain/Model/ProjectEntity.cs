@@ -12,31 +12,28 @@ public class ProjectEntity
     {
     }
 
-    public ProjectEntity(int projectId, string projectName, string userId, IProjectDomainService domainService)
+    public ProjectEntity(List<UsersEntity> users, string projectName, IProjectDomainService domainService)
     {
         _domainService = domainService;
-        ProjectId = projectId;
+        Users = users;
         ProjectName = projectName;
-        DateAdded = DateTime.Now;
-        UserId = userId;
+        DateCreated = DateTime.Now;
 
-        if (_domainService.projectAlreadyExists(projectId, userId)) throw new ArgumentException("Denne bruger findes allerede i dette projekt");
+        if (_domainService.projectAlreadyExists(projectName)) throw new ArgumentException("Et projekt med dette navn findes allerede i db");
     }
 
-    public int Id { get; private set; } // PK
-    public int ProjectId { get; private set; }
+    public int ProjectId { get; private set; } // PK
+    public List<UsersEntity> Users { get; private set; }
+    public List<TaskEntity> Tasks { get; private set; } = new List<TaskEntity>();
     public string ProjectName { get; private set; }
-    public DateTime DateAdded { get; private set; }
-    public string UserId { get; private set; }
+    public DateTime DateCreated { get; private set; }
 
     [Timestamp] 
     public byte[] RowVersion { get; private set; }
 
-    public void Edit(int projectId, string projectName/*, byte[] rowVersion*/)
+    public void Edit(string projectName, byte[] rowVersion)
     {
-        ProjectId = projectId;
         ProjectName = projectName;
-        //UserId = userId;
-        //RowVersion = rowVersion;
+        RowVersion = rowVersion;
     }
 }

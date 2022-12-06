@@ -1,4 +1,4 @@
-﻿namespace Unik.Onboarding.Application.Commands.Project;
+﻿namespace Unik.Onboarding.Application.Commands.User;
 
 public interface IRemoveUserCommand
 {

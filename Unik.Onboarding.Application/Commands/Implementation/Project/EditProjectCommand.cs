@@ -14,14 +14,16 @@ public class EditProjectCommand : IEditProjectCommand
 
     void IEditProjectCommand.Edit(ProjectEditRequestDto requestDto)
     {
-        //Read
-        var model = _repository.Load(requestDto.Id);
+        ////Read
+        //var model = _repository.Load(requestDto.Id);
 
-        //DoIt
-        model.Edit(requestDto.ProjectId, requestDto.ProjectName/*, requestDto.RowVersion*/);
+        ////DoIt
+        //model.Edit(requestDto.ProjectId, requestDto.ProjectName/*, requestDto.RowVersion*/);
 
-        //Save
-        _repository.Update(model);
+        ////Save
+        //_repository.Update(model);
+
+        throw new NotImplementedException();
 
     }
 }

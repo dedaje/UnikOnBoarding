@@ -16,21 +16,27 @@ public class UserRepository : IUserRepository
 
     void IUserRepository.AddUser(ProjectEntity user)
     {
-        _db.Add(user);
-        _db.SaveChanges();
+        //_db.Add(user);
+        //_db.SaveChanges();
+
+        throw new NotImplementedException();
     }
 
     ProjectEntity IUserRepository.Load(string userId, int projectId)
     {
-        var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
-        if (dbEntity == null) throw new Exception("Denne bruger var ikke en del af projektet");
+        //var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
+        //if (dbEntity == null) throw new Exception("Denne bruger var ikke en del af projektet");
 
-        return dbEntity;
+        //return dbEntity;
+
+        throw new NotImplementedException();
     }
 
     void IUserRepository.RemoveUser(ProjectEntity user)
     {
-        _db.Remove(user);
-        _db.SaveChanges();
+        //_db.Remove(user);
+        //_db.SaveChanges();
+
+        throw new NotImplementedException();
     }
 }

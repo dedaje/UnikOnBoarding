@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Unik.Onboarding.Application.Commands.Implementation.Project;
 using Unik.Onboarding.Application.Commands.Project;
+using Unik.Onboarding.Application.Commands.User;
 using Unik.Onboarding.Application.Queries.Implementation.Project;
 using Unik.Onboarding.Application.Queries.Project;
 
@@ -73,7 +74,7 @@ public class Project : ControllerBase
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult Post(ProjectCreateRequestDto request) // Create
+    public ActionResult Post(ProjectCreateWithUserRequestDto request) // Create
     {
         try
         {

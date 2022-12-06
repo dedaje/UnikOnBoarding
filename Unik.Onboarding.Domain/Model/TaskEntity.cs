@@ -9,32 +9,32 @@ public class TaskEntity
     {
     }
 
-    public TaskEntity(string taskName, string taskDescription, int projectId, int roleId, string userId)
+    public TaskEntity(string taskName, string taskDescription, ProjectEntity projects, int roleId, UsersEntity users)
     {
         TaskName = taskName;
         TaskDescription = taskDescription;
         DateCreated = DateTime.Now;
-        ProjectId = projectId;
+        Projects = projects;
         RoleId = roleId;
-        UserId = userId;
+        Users = users;
     }
 
     public int TaskId { get; private set; }
     public string TaskName { get; private set; }
     public string TaskDescription { get; private set; }
     public DateTime DateCreated { get; private set; }
-    //[ForeignKey("ProjectId")]public ProjectEntity OnboardingEntity { get; set; }
     public int ProjectId { get; private set; }
-    //[ForeignKey("RoleId")] public RoleEntity RoleEntity { get; set; }
-    public int RoleId { get; private set; }
-    public string UserId { get; private set; } // Email
+    public ProjectEntity Projects { get; private set; } // FK
+    public int RoleId { get; private set; } //TODO
+    public int UsersId { get; private set; }
+    public UsersEntity Users { get; private set; } // FK
     [Timestamp]
     public byte[] RowVersion { get; private set; }
 
-    public void Edit(string taskName, string taskDescription/*, byte[] rowVersion*/)
+    public void Edit(string taskName, string taskDescription, byte[] rowVersion)
     {
         TaskName = taskName;
         TaskDescription = taskDescription;
-        //RowVersion = rowVersion;
+        RowVersion = rowVersion;
     }
 }

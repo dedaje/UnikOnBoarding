@@ -1,7 +1,7 @@
-﻿using Unik.Onboarding.Application.Commands.Project;
+﻿using Unik.Onboarding.Application.Commands.User;
 using Unik.Onboarding.Application.Repositories;
 
-namespace Unik.Onboarding.Application.Commands.Implementation.Project;
+namespace Unik.Onboarding.Application.Commands.Implementation.User;
 
 public class RemoveUserCommand : IRemoveUserCommand
 {
@@ -14,8 +14,10 @@ public class RemoveUserCommand : IRemoveUserCommand
 
     void IRemoveUserCommand.RemoveUser(string userId, int projectId)
     {
-        var model = _repository.Load(userId, projectId);
+        //var model = _repository.Load(userId, projectId);
 
-        _repository.RemoveUser(model);
+        //_repository.RemoveUser(model);
+
+        throw new NotImplementedException();
     }
 }

@@ -2,5 +2,5 @@
 
 public interface IUserDomainService
 {
-    //bool userExistsInProject(int projectId, string userId);
+    //bool userExistsInProject(int projects, int id);
 }

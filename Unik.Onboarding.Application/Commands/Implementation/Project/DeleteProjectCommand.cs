@@ -14,8 +14,10 @@ public class DeleteProjectCommand : IDeleteProjectCommand
 
     void IDeleteProjectCommand.Delete(int id)
     {
-        var model = _repository.Load(id);
+        //var model = _repository.Load(id);
 
-        _repository.Delete(model);
+        //_repository.Delete(model);
+
+        throw new NotImplementedException();
     }
 }

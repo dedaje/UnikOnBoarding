@@ -15,7 +15,9 @@ public class CreateTaskCommand : ICreateTaskCommand
 
     void ICreateTaskCommand.Create(TaskCreateRequestDto request)
     {
-        var task = new TaskEntity(request.TaskName, request.TaskDescription, request.ProjectId, request.RoleId, request.UserId);
-        _repository.Add(task);
+        //var task = new TaskEntity(request.TaskName, request.TaskDescription, request.ProjectId, request.RoleId, request.UserId);
+        //_repository.Add(task);
+
+        throw new NotImplementedException();
     }
 }

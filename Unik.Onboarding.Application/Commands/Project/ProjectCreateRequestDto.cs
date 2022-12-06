@@ -1,8 +1,9 @@
-﻿namespace Unik.Onboarding.Application.Commands.Project;
+﻿using Unik.Onboarding.Domain.Model;
+
+namespace Unik.Onboarding.Application.Commands.Project;
 
 public class ProjectCreateRequestDto
 {
-    public int ProjectId { get; set; }
+    public List<UsersEntity> Users { get; set; }
     public string ProjectName { get; set; }
-    public string UserId { get; set; }
 }

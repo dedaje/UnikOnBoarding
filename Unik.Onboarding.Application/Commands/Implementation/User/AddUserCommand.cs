@@ -1,9 +1,9 @@
-﻿using Unik.Onboarding.Application.Commands.Project;
+﻿using Unik.Onboarding.Application.Commands.User;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.DomainServices;
 using Unik.Onboarding.Domain.Model;
 
-namespace Unik.Onboarding.Application.Commands.Implementation.Project;
+namespace Unik.Onboarding.Application.Commands.Implementation.User;
 
 public class AddUserCommand : IAddUserCommand
 {
@@ -18,7 +18,9 @@ public class AddUserCommand : IAddUserCommand
 
     void IAddUserCommand.AddUser(AddUserRequestDto request)
     {
-        var addUser = new ProjectEntity(request.ProjectId, request.ProjectName, request.UserId, _domainService);
-        _repository.AddUser(addUser);
+        //var addUser = new ProjectEntity(request.ProjectId, request.ProjectName, request.UserId, _domainService);
+        //_repository.AddUser(addUser);
+
+        throw new NotImplementedException();
     }
 }
