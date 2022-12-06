@@ -18,7 +18,7 @@ public class EditTaskCommand : IEditTaskCommand
         var model = _repository.Load(request.TaskId);
 
         //DoIt
-        model.Edit(request.TaskName, request.TaskDescription, request.RowVersion);
+        model.Edit(request.TaskName, request.TaskDescription/*, request.RowVersion*/);
 
         //Save
         _repository.Update(model);

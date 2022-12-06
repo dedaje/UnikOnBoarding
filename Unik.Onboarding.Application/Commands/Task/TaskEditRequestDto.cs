@@ -9,5 +9,5 @@ public class TaskEditRequestDto
     public int ProjectId { get; set; }
     public int RoleId { get; set; }
     public string UserId { get; set; } // Email
-    public byte[] RowVersion { get; set; }
+    //public byte[] RowVersion { get; set; }
 }

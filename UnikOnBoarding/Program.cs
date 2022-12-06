@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Unik.SqlServerContext;
 using Unik.WebApp.UserContext;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Implementation;
@@ -36,13 +37,13 @@ builder.Services.AddRazorPages(options =>
 builder.Services.AddHttpClient<IUnikService, UnikService>(
     client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
 
-//// Database
-//// Add-Migration InitialMigration -Context WebAppUserDbContext -Project Unik.SqlServerContext.Migrations
-//// Update-Database -Context WebAppUserDbContext
-//builder.Services.AddDbContext<UnikContext>(
-//    options =>
-//        options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
-//            x=> x.MigrationsAssembly("Unik.WebApp.UserContext.Migrations")));
+// Database
+// Add-Migration InitialMigration -Context UnikDbContext -Project Unik.SqlServerContext.Migrations
+// Update-Database -Context UnikDbContext
+builder.Services.AddDbContext<UnikDbContext>(
+    options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
+            x => x.MigrationsAssembly("Unik.SqlServerContext.Migrations")));
 
 var app = builder.Build();
 
