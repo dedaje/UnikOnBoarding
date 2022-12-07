@@ -16,6 +16,8 @@ using Unik.Onboarding.Infrastructure.Repositories;
 using Unik.SqlServerContext;
 using Unik.Onboarding.Application.Commands.User;
 using Unik.Onboarding.Application.Commands.Implementation.User;
+using Unik.Onboarding.Application.Queries.Implementation.User;
+using Unik.Onboarding.Application.Queries.User;
 
 //using UnikOnBoarding;
 
@@ -30,17 +32,21 @@ builder.Services.AddSwaggerGen();
 
 // Clean Architecture
 // Project
+builder.Services.AddScoped<IProjectDomainService, ProjectDomainService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<ICreateProjectCommand, CreateProjectCommand>();
 builder.Services.AddScoped<IEditProjectCommand, EditProjectCommand>();
+builder.Services.AddScoped<IRemoveUserFromProjectCommand, RemoveUserFromProjectCommand>();
 builder.Services.AddScoped<IDeleteProjectCommand, DeleteProjectCommand>();
 builder.Services.AddScoped<IProjectGetAllQuery, ProjectGetAllQuery>();
 builder.Services.AddScoped<IProjectGetQuery, ProjectGetQuery>();
 
 // User
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAddUserCommand, AddUserCommand>();
-builder.Services.AddScoped<IRemoveUserCommand, RemoveUserCommand>();
+builder.Services.AddScoped<ICreateUserCommand, CreateUserCommand>();
+builder.Services.AddScoped<IDeleteUserCommand, DeleteUserCommand>();
+builder.Services.AddScoped<IUserGetAllQuery, UserGetAllQuery>();
+builder.Services.AddScoped<IUserGetQuery, UserGetQuery>();
 
 // Task
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
@@ -49,8 +55,6 @@ builder.Services.AddScoped<IEditTaskCommand, EditTaskCommand>();
 builder.Services.AddScoped<IDeleteTaskCommand, DeleteTaskCommand>();
 builder.Services.AddScoped<ITaskGetAllQuery, TaskGetAllQuery>();
 builder.Services.AddScoped<ITaskGetQuery, TaskGetQuery>();
-
-builder.Services.AddScoped<IProjectDomainService, ProjectDomainService>();
 
 // Database
 // Add-Migration InitialMigrationDomain -Context UnikDbContext -Project Unik.SqlServerContext.Migrations

@@ -6,14 +6,14 @@ public class UsersEntity
 {
     //private readonly IUserDomainService _domainService;
 
+    // For Entity Framework only!!!
     internal UsersEntity()
     {
     }
 
-    public UsersEntity(List<ProjectEntity> projects, string userId/*, IUserDomainService domainService*/)
+    public UsersEntity(string userId)
     {
         //_domainService = domainService;
-        Projects = projects;
         UserId = userId;
 
         //if (_domainService.userExistsInProject(userId)) throw new ArgumentException("Denne bruger er allerede medlem af dette project");
@@ -26,9 +26,8 @@ public class UsersEntity
 
     [Timestamp] public byte[] RowVersion { get; private set; }
 
-    public void Edit(List<ProjectEntity> projects, string userId, byte[] rowVersion)
+    public void Edit(string userId, byte[] rowVersion)
     {
-        Projects = projects;
         UserId = userId;
         RowVersion = rowVersion;
     }

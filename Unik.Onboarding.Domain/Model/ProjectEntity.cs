@@ -12,10 +12,9 @@ public class ProjectEntity
     {
     }
 
-    public ProjectEntity(List<UsersEntity> users, string projectName, IProjectDomainService domainService)
+    public ProjectEntity(string projectName, IProjectDomainService domainService)
     {
         _domainService = domainService;
-        Users = users;
         ProjectName = projectName;
         DateCreated = DateTime.Now;
 

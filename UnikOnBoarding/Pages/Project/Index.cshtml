@@ -11,10 +11,9 @@
     <table class="table">
         <thead>
         <tr>
-            <th>ID</th>
             <th>Projekt ID</th>
-            <th>Dato</th>
-            <th>Projekt</th>
+            <th>Projekt Navn</th>
+            <th>Dato Oprettet</th>
             <th></th>
         </tr>
         </thead>
@@ -24,17 +23,16 @@
             foreach (var project in Model.IndexViewModel)
             {
                 <tr>
-                    <td> @project.Id</td>
                     <td> @project.ProjectId </td>
-                    <td>@project.DateAdded</td>
                     <td>@project.ProjectName</td>
+                    <td>@project.DateCreated</td>
                     <td>
                         <!-- <snippet_Edit> -->
                         <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        <a asp-page="./Delete" asp-route-projectId="@project.ProjectId" asp-route-projectName="@project.ProjectName">Slet Projekt</a>
+                        <a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
                     </td>
                     <td>

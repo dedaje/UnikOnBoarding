@@ -1,5 +1,6 @@
 ﻿using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Unik.Onboarding.Application.Commands.Implementation.Project;
 using Unik.Onboarding.Application.Commands.Project;
 using Unik.Onboarding.Application.Commands.User;
@@ -15,28 +16,30 @@ public class Project : ControllerBase
     private readonly ICreateProjectCommand _createProjectCommand;
     private readonly IEditProjectCommand _editProjectCommand;
     private readonly IDeleteProjectCommand _deleteProjectCommand;
+    private readonly IRemoveUserFromProjectCommand _removeUserFromProjectCommand;
     private readonly IProjectGetAllQuery _projectGetAllQuery;
     private readonly IProjectGetQuery _projectGetQuery;
 
     // constructor
-    public Project(ICreateProjectCommand createProjectCommand,
-        IEditProjectCommand editProjectCommand, IDeleteProjectCommand deleteProjectCommand, IProjectGetAllQuery projectGetAllQuery,
-        IProjectGetQuery projectGetQuery)
+    public Project(ICreateProjectCommand createProjectCommand, IEditProjectCommand editProjectCommand, 
+        IDeleteProjectCommand deleteProjectCommand, IRemoveUserFromProjectCommand removeUserFromProjectCommand, 
+        IProjectGetAllQuery projectGetAllQuery, IProjectGetQuery projectGetQuery)
     {
         _projectGetAllQuery = projectGetAllQuery;
         _createProjectCommand = createProjectCommand;
         _editProjectCommand = editProjectCommand;
         _deleteProjectCommand = deleteProjectCommand;
+        _removeUserFromProjectCommand = removeUserFromProjectCommand;
         _projectGetQuery = projectGetQuery;
     }
 
     // GET: api/<Project>
-    [HttpGet("u/{userId}")] //("api/Project/")
+    [HttpGet("{projectId}/{userId}/")] //("api/Project/")
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<IEnumerable<ProjectQueryResultDto>> Get(string userId) // GetAllUserProjects
+    public ActionResult<IEnumerable<ProjectUsersQueryResultDto>> Get(int projectId, int usersId) // GetAllUserProjects
     {
-        var result = _projectGetAllQuery.GetAllUserProjects(userId).ToList();
+        var result = _projectGetAllQuery.GetAllUserProjects(projectId, usersId).ToList();
         if (!result.Any())
             return NotFound();
 
@@ -44,12 +47,12 @@ public class Project : ControllerBase
     }
 
     // GET: api/<Project>
-    [HttpGet("p/{projectId}")] //("api/Project/")
+    [HttpGet("AllProjects/")] //("api/Project/")
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<IEnumerable<ProjectQueryResultDto>> Get(int? projectId) // GetAllEditProjects
+    public ActionResult<IEnumerable<ProjectQueryResultDto>> Get() // GetAllProjects
     {
-        var result = _projectGetAllQuery.GetAllEditProjects(projectId).ToList();
+        var result = _projectGetAllQuery.GetAllProjects().ToList();
         if (!result.Any())
 
             return NotFound();
@@ -58,19 +61,19 @@ public class Project : ControllerBase
     }
 
     // GET: api/<Project>
-    [HttpGet("{userId}/{projectId}/")]
+    [HttpGet("{projectId}/")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<ProjectQueryResultDto> Get(string userId, int projectId) // Get
+    public ActionResult<ProjectQueryResultDto> Get(int projectId) // Get
     {
-        var result = _projectGetQuery.GetProject(userId, projectId);
+        var result = _projectGetQuery.GetProject(projectId);
 
 
         return result;
     }
 
     // POST api/<Project>
-    [HttpPost("Create/")]
+    [HttpPost("CreateProject/")]
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -87,7 +90,7 @@ public class Project : ControllerBase
         }
     }
 
-    [HttpPut("Edit/")]
+    [HttpPut("EditProject/")]
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -105,15 +108,31 @@ public class Project : ControllerBase
     }
 
     // DELETE api/<Project>/5
-    [HttpDelete("DeleteProject/{id}/")]
-    //[Consumes(MediaTypeNames.Application.Json)]
+    [HttpDelete("RemoveUserFromProject/{userId}/{projectId}/")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<ProjectDeleteRequestDto> Delete(int id) // DeleteProject
+    public ActionResult<ProjectRemoveUserRequestDto> Delete(string userId, int projectId) // RemoveUserFromProject
     {
         try
         {
-            _deleteProjectCommand.Delete(id);
+            _removeUserFromProjectCommand.RemoveUserFromProject(userId, projectId);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    // DELETE api/<Project>/6
+    [HttpDelete("DeleteProject/{projectId}/")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<ProjectDeleteRequestDto> Delete(int projectId) // DeleteProject
+    {
+        try
+        {
+            _deleteProjectCommand.Delete(projectId);
             return Ok();
         }
         catch (Exception e)

@@ -14,10 +14,13 @@
             <div class="form-group">
                 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProjectWithUserModel.UserModel.Id" class="form-control" />
+                <input type="hidden" asp-for="ProjectWithUserModel.UserModel.UserId" class="form-control" />
+                <input type="hidden" asp-for="ProjectWithUserModel.UserModel.RowVersion" class="form-control" />
 
-                <label asp-for="ProjectModel.ProjectName"></label>
-                <input asp-for="ProjectModel.ProjectName" class="form-control" />
-                <span asp-validation-for="ProjectModel.ProjectName" class="text-danger"></span>
+                <label asp-for="ProjectWithUserModel.ProjectCreateModel.ProjectName"></label>
+                <input asp-for="ProjectWithUserModel.ProjectCreateModel.ProjectName" class="form-control" />
+                <span asp-validation-for="ProjectWithUserModel.ProjectCreateModel.ProjectName" class="text-danger"></span>
             </div>
 
             <button type="submit" class="btn btn-default">Tilføj Nyt Projekt</button>

@@ -2,5 +2,6 @@
 
 public interface IDeleteProjectCommand
 {
-    void Delete(int id);
+    void Delete(int projectId);
+    //void Delete(ProjectDeleteRequestDto request);
 }

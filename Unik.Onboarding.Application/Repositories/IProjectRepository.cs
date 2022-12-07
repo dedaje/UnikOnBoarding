@@ -5,11 +5,12 @@ namespace Unik.Onboarding.Application.Repositories;
 
 public interface IProjectRepository
 {
-    void Add(ProjectEntity project, UsersEntity initialUser);
-    IEnumerable<ProjectQueryResultDto> GetAllUserProjects(string userId);
-    IEnumerable<ProjectQueryResultDto> GetAllEditProjects(int? projectId);
-    ProjectQueryResultDto GetProject(string userId, int projectId);
-    ProjectEntity Load(int id);
-    void Update(ProjectEntity model);
-    void Delete(ProjectEntity model);
+    void CreateWithInitialUser(UsersEntity initialUserId, ProjectEntity project);
+    IEnumerable<ProjectUsersQueryResultDto> GetAllUserProjects(int? projectId, int? usersId); //TODO: Hører den til her?
+    IEnumerable<ProjectQueryResultDto> GetAllProjects();
+    ProjectQueryResultDto GetProject(int projectId);
+    ProjectEntity LoadProject(int projectId);
+    void UpdateProject(ProjectEntity model);
+    void RemoveUserFromProject(UsersEntity userId, ProjectEntity projectId);
+    void DeleteProject(ProjectEntity model);
 }

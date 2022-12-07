@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using Unik.Onboarding.Application.Commands.Implementation.Project;
+using Unik.Onboarding.Application.Commands.Implementation.User;
+using Unik.Onboarding.Application.Commands.Project;
 using Unik.Onboarding.Application.Commands.User;
+using Unik.Onboarding.Application.Queries.User;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,39 +14,55 @@ namespace Unik.Api.Controllers
     [ApiController]
     public class User : ControllerBase
     {
-        private readonly IAddUserCommand _addUserCommand;
-        private readonly IRemoveUserCommand _removeUserCommand;
+        private readonly ICreateUserCommand _addUserCommand;
+        private readonly IDeleteUserCommand _deleteUserCommand;
+        private readonly IUserGetAllQuery _userGetAllQuery;
+        private readonly IUserGetQuery _userGetQuery;
 
-        public User(IAddUserCommand addUserCommand, IRemoveUserCommand removeUserCommand)
+        public User(ICreateUserCommand addUserCommand, IDeleteUserCommand deleteUserCommand, IUserGetAllQuery userGetAllQuery, IUserGetQuery userGetQuery)
         {
             _addUserCommand = addUserCommand;
-            _removeUserCommand = removeUserCommand;
+            _deleteUserCommand = deleteUserCommand;
+            _userGetAllQuery = userGetAllQuery;
+            _userGetQuery = userGetQuery;
         }
 
         // GET: api/<User>
-        //[HttpGet]
-        //public IEnumerable<string> Get() // GetAll
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+        [HttpGet("AllUsers/")] //("api/Project/")
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<UserQueryResultDto>> Get() // GetAllUsers
+        {
+            var result = _userGetAllQuery.GetAllUsers().ToList();
+            if (!result.Any())
 
-        // GET api/<User>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id) // Get
-        //{
-        //    return "value";
-        //}
+                return NotFound();
+
+            return result.ToList();
+        }
+
+        // GET: api/<User>
+        [HttpGet("{userId}/")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<UserQueryResultDto> Get(string userId) // Get
+        {
+            var result = _userGetQuery.GetUser(userId);
+
+
+            return result;
+        }
 
         // POST api/<User>
         [HttpPost("AddUser/")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult Post(AddUserRequestDto request) // AddUser
+        public ActionResult Post(UserCreateRequestDto request) // AddUser
         {
             try
             {
-                _addUserCommand.AddUser(request);
+                _addUserCommand.CreateUser(request);
                 return Ok();
             }
             catch (Exception e)
@@ -59,15 +78,15 @@ namespace Unik.Api.Controllers
         //}
 
         // DELETE api/<User>/5
-        [HttpDelete("RemoveUser/{userId}/{projectId}/")]
+        [HttpDelete("DeleteUser/{userId}/")]
         //[Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<RemoveUserRequestDto> Delete(string userId, int projectId) // RemoveUser
+        public ActionResult<UserDeleteRequestDto> Delete(string userId) // RemoveUser
         {
             try
             {
-                _removeUserCommand.RemoveUser(userId, projectId);
+                _deleteUserCommand.DeleteUser(userId);
                 return Ok();
             }
             catch (Exception e)

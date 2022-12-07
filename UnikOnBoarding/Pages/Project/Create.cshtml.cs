@@ -3,46 +3,54 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Unik.SqlServerContext;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
+using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
+using UnikOnBoarding.Infrastructure.Contract.Dto.User;
+using UnikOnBoarding.Pages.User;
 
 namespace UnikOnBoarding.Pages.Project;
 
 public class CreateModel : PageModel
 {
-    private readonly UnikDbContext _db;
     private readonly IUnikService _unikService;
 
-    public CreateModel(IUnikService unikService, UnikDbContext db)
+    public CreateModel(IUnikService unikService)
     {
         _unikService = unikService;
-        _db = db;
     }
 
-    [BindProperty] public ProjectCreateViewModel ProjectModel { get; set; } = new();
+    [BindProperty] public ProjectCreateWithUserViewModel ProjectWithUserModel { get; set; } = new();
 
-    public void OnGet()
+    public async Task<IActionResult> OnGet()
     {
+        var user = await _unikService.GetUser(User.Identity?.Name ?? string.Empty);
+
+        if (user == null) return NotFound();
+
+        ProjectWithUserModel.UserModel = new UserIndexViewModel
+        {
+            Id = user.Id,
+            UserId = user.UserId,
+            RowVersion = user.RowVersion,
+        };
+
+        return Page();
     }
 
     public async Task<IActionResult> OnPost()
     {
-        ProjectModel.ProjectId = _db.ProjectEntities.Max(p => p.ProjectId) + 1;
-        ProjectModel.UserId = User.Identity?.Name ?? string.Empty;
+        if (!ModelState.IsValid) return Page();
 
-        if (ProjectModel.ProjectId == null)
-            ProjectModel.ProjectId = 1;
-
-        var dto = new ProjectCreateRequestDto
+        var dto = new ProjectCreateWithUserRequestDto
         {
-            ProjectId = ProjectModel.ProjectId.Value,
-            ProjectName = ProjectModel.ProjectName,
-            UserId = ProjectModel.UserId
+            ProjectCreateDto = new ProjectCreateRequestDto
+                {ProjectName = ProjectWithUserModel.ProjectCreateModel.ProjectName},
+            UserQueryDto = new UserQueryResultDto 
+                {Id = ProjectWithUserModel.UserModel.Id, UserId = ProjectWithUserModel.UserModel.UserId, RowVersion = ProjectWithUserModel.UserModel.RowVersion}
         };
-
-        if (!ModelState.IsValid || string.IsNullOrEmpty(ProjectModel.ProjectName) || !ProjectModel.ProjectId.HasValue) return Page();
 
         try
         {
-            await _unikService.Create(dto);
+            await _unikService.CreateProject(dto);
         }
         catch (Exception e)
         {

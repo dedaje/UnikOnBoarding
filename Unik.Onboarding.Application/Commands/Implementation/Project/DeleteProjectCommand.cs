@@ -12,12 +12,11 @@ public class DeleteProjectCommand : IDeleteProjectCommand
         _repository = repository;
     }
 
-    void IDeleteProjectCommand.Delete(int id)
+    void IDeleteProjectCommand.Delete(int projectId /*ProjectDeleteRequestDto request*/)
     {
-        //var model = _repository.Load(id);
+        var model = _repository.LoadProject(projectId);
+        //var model = _repository.LoadProject(request.ProjectId);
 
-        //_repository.Delete(model);
-
-        throw new NotImplementedException();
+        _repository.DeleteProject(model);
     }
 }

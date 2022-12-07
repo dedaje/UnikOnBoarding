@@ -5,6 +5,7 @@ namespace Unik.Onboarding.Domain.Model;
 
 public class TaskEntity
 {
+    // For Entity Framework only!!!
     internal TaskEntity()
     {
     }

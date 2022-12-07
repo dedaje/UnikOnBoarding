@@ -1,7 +1,7 @@
 ﻿namespace Unik.Onboarding.Application.Commands.User;
 
-public class RemoveUserRequestDto
+public class UserDeleteRequestDto
 {
-    public int ProjectId { get; set; }
+    public int Id { get; set; }
     public string UserId { get; set; }
 }

@@ -1,14 +1,14 @@
-﻿using Unik.Onboarding.Domain.Model;
+﻿using Unik.Onboarding.Application.Queries.User;
+using Unik.Onboarding.Domain.Model;
 
 namespace Unik.Onboarding.Application.Repositories;
 
 public interface IUserRepository
 {
-    void AddUser(ProjectEntity user);
-    void RemoveUser(ProjectEntity user);
-    //IEnumerable<ProjectQueryResultDto> GetAllUserProjects(string userId);
-    //IEnumerable<ProjectQueryResultDto> GetAllEditProjects(int? projectId);
-    //ProjectQueryResultDto GetProject(string userId, int projectId);
-    ProjectEntity Load(string userId, int projectId);
-    //void Update(ProjectEntity model);
+    void CreateUser(UsersEntity user);
+    IEnumerable<UserQueryResultDto> GetAllUsers();
+    UserQueryResultDto GetUser(string userId);
+    UsersEntity LoadUser(string userId);
+    //void UpdateUser(ProjectEntity model);
+    void DeleteUser(UsersEntity user);
 }

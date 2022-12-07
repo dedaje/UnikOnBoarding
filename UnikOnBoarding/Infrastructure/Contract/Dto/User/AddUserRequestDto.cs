@@ -1,4 +1,4 @@
-﻿namespace UnikOnBoarding.Infrastructure.Contract.Dto
+﻿namespace UnikOnBoarding.Infrastructure.Contract.Dto.User
 {
     public class AddUserRequestDto
     {

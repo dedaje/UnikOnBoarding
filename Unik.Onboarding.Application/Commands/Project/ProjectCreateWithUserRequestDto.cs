@@ -1,9 +1,9 @@
-﻿using Unik.Onboarding.Application.Commands.User;
+﻿using Unik.Onboarding.Application.Queries.User;
 
 namespace Unik.Onboarding.Application.Commands.Project;
 
 public class ProjectCreateWithUserRequestDto
 {
-    public ProjectCreateRequestDto ProjectCreateRequestDto { get; set; }
-    public AddUserRequestDto AddUserRequestDto { get; set; }
+    public ProjectCreateRequestDto ProjectCreateDto { get; set; }
+    public UserQueryResultDto UserQueryDto { get; set; }
 }

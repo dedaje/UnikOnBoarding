@@ -10,19 +10,20 @@ public class CreateProjectCommand : ICreateProjectCommand
 {
     private readonly IProjectRepository _repository;
     private readonly IProjectDomainService _domainService;
+    private readonly IUserRepository _userRepository;
 
-    public CreateProjectCommand(IProjectRepository repository, IProjectDomainService domainService)
+    public CreateProjectCommand(IProjectRepository repository, IProjectDomainService domainService, IUserRepository userRepository)
     {
         _repository = repository;
         _domainService = domainService;
+        _userRepository = userRepository;
     }
 
     void ICreateProjectCommand.Create(ProjectCreateWithUserRequestDto request)
     {
-        var project = new ProjectEntity(request.ProjectCreateRequestDto.Users, request.ProjectCreateRequestDto.ProjectName, _domainService);
-        var initialUser = new UsersEntity(request.AddUserRequestDto.Projects, request.AddUserRequestDto.UserId);
-        _repository.Add(project, initialUser);
+        var projectId = new ProjectEntity(request.ProjectCreateDto.ProjectName, _domainService);
+        var initialUserId = _userRepository.LoadUser(request.UserQueryDto.UserId);
 
-        //throw new NotImplementedException();
+        _repository.CreateWithInitialUser(initialUserId, projectId);
     }
 }

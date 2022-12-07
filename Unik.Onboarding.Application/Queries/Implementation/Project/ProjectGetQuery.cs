@@ -12,10 +12,10 @@ public class ProjectGetQuery : IProjectGetQuery
         _repository = repository;
     }
 
-    ProjectQueryResultDto IProjectGetQuery.GetProject(string userId, int projectId)
+    ProjectQueryResultDto IProjectGetQuery.GetProject(int projectId)
     {
-        //return _repository.GetProject(userId, projectId);
+        return _repository.GetProject(projectId);
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

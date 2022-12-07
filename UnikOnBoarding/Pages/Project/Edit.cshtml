@@ -14,11 +14,13 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input type="hidden" asp-for="_projectId" class="form-control" />
+            <input type="hidden" asp-for="ProjectEditModel.ProjectId" class="form-control" />
+            <input type="hidden" asp-for="ProjectEditModel.DateCreated" class="form-control" />
+            <input type="hidden" asp-for="ProjectEditModel.RowVersion" class="form-control" />
             <div class="form-group">
-                <label asp-for="_ProjectName"></label>
-                <input asp-for="_ProjectName" class="form-control" />
-                <span asp-validation-for="_ProjectName" class="text-danger"></span>
+                <label asp-for="ProjectEditModel.ProjectName"></label>
+                <input asp-for="ProjectEditModel.ProjectName" class="form-control" />
+                <span asp-validation-for="ProjectEditModel.ProjectName" class="text-danger"></span>
             </div>
 
             <button type="submit" class="btn btn-default">Opdater Projekt</button>

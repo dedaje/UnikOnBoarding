@@ -12,15 +12,15 @@ public class ProjectGetAllQuery : IProjectGetAllQuery
         _repository = repository;
     }
 
-    IEnumerable<ProjectQueryResultDto> IProjectGetAllQuery.GetAllUserProjects(string userId)
+    IEnumerable<ProjectUsersQueryResultDto> IProjectGetAllQuery.GetAllUserProjects(int projectId, int usersId)
     {
-        //return _repository.GetAllUserProjects(userId);
-        throw new NotImplementedException();
+        return _repository.GetAllUserProjects(projectId, usersId);
+        //throw new NotImplementedException();
     }
 
-    IEnumerable<ProjectQueryResultDto> IProjectGetAllQuery.GetAllEditProjects(int? projectId)
+    IEnumerable<ProjectQueryResultDto> IProjectGetAllQuery.GetAllProjects()
     {
-        //return _repository.GetAllEditProjects(projectId);
-        throw new NotImplementedException();
+        return _repository.GetAllProjects();
+        //throw new NotImplementedException();
     }
 }

@@ -3,6 +3,6 @@
 public interface IProjectGetAllQuery
 {
     //Gets all the projects that the logged in user is assigned to
-    IEnumerable<ProjectQueryResultDto> GetAllUserProjects(string userId); // This GetAll needs the userId of the user that's logged in currently
-    IEnumerable<ProjectQueryResultDto> GetAllEditProjects(int? projectId);
+    IEnumerable<ProjectUsersQueryResultDto> GetAllUserProjects(int projectId, int usersId); // TODO: Hører den til her?
+    IEnumerable<ProjectQueryResultDto> GetAllProjects();
 }

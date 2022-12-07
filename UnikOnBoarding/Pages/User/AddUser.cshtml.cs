@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis;
 using UnikOnBoarding.Infrastructure.Contract;
-using UnikOnBoarding.Infrastructure.Contract.Dto;
+using UnikOnBoarding.Infrastructure.Contract.Dto.User;
 
 namespace UnikOnBoarding.Pages.User
 {
@@ -21,7 +21,7 @@ namespace UnikOnBoarding.Pages.User
         {
             if (projectId == null) return NotFound();
 
-            var dto = await _unikService.GetProject(User.Identity?.Name ?? string.Empty, projectId);
+            var dto = await _unikService.GetProject(projectId);
 
             if (dto == null) return NotFound();
 
@@ -40,7 +40,7 @@ namespace UnikOnBoarding.Pages.User
 
             try
             {
-                await _unikService.AddUser(new AddUserRequestDto
+                await _unikService.CreateUser(new AddUserRequestDto
                 {
                     ProjectId = AddUserViewModel.ProjectId,
                     ProjectName = AddUserViewModel.ProjectName,

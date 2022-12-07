@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Unik.Onboarding.Application.Queries.User;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
@@ -14,29 +15,47 @@ public class UserRepository : IUserRepository
         _db = db;
     }
 
-    void IUserRepository.AddUser(ProjectEntity user)
+    void IUserRepository.CreateUser(UsersEntity user)
     {
-        //_db.Add(user);
-        //_db.SaveChanges();
-
-        throw new NotImplementedException();
+        _db.Add(user);
+        _db.SaveChanges();
     }
 
-    ProjectEntity IUserRepository.Load(string userId, int projectId)
+    IEnumerable<UserQueryResultDto> IUserRepository.GetAllUsers()
     {
-        //var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId && a.UserId == userId);
-        //if (dbEntity == null) throw new Exception("Denne bruger var ikke en del af projektet");
-
-        //return dbEntity;
-
-        throw new NotImplementedException();
+        foreach (var entity in _db.UserEntities.AsNoTracking().ToList())
+            yield return new UserQueryResultDto
+            {
+                Id = entity.Id,
+                UserId = entity.UserId,
+                RowVersion = entity.RowVersion
+            };
     }
 
-    void IUserRepository.RemoveUser(ProjectEntity user)
+    UserQueryResultDto IUserRepository.GetUser(string userId)
     {
-        //_db.Remove(user);
-        //_db.SaveChanges();
+        var dbEntity = _db.UserEntities.AsNoTracking().FirstOrDefault(a => a.UserId == userId);
+        if (dbEntity == null) throw new Exception("Denne bruger findes ikke i db");
 
-        throw new NotImplementedException();
+        return new UserQueryResultDto
+        {
+            Id = dbEntity.Id,
+            UserId = dbEntity.UserId,
+            RowVersion = dbEntity.RowVersion
+        };
+    }
+
+    UsersEntity IUserRepository.LoadUser(string userId)
+    {
+        var dbEntity = _db.UserEntities.AsNoTracking().FirstOrDefault(a => a.UserId == userId);
+        if (dbEntity == null) throw new Exception("Denne bruger findes ikke i db");
+
+        return dbEntity;
+    }
+
+    void IUserRepository.DeleteUser(UsersEntity user)
+    {
+        _db.Remove(user);
+        _db.SaveChanges();
     }
 }

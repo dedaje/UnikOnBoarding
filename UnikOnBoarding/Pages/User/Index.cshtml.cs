@@ -13,28 +13,30 @@ namespace UnikOnBoarding.Pages.User
             _unikService = unikService;
         }
 
-        [BindProperty] public List<UserViewModel> UserModel { get; set; } = new();
+        [BindProperty] public List<ProjectUsersIndexViewModel> ProjectUsersModel { get; set; } = new();
         [BindProperty] public int? _projectId { get; set; }
         [BindProperty] public string? _projectName { get; set; }
 
         public async Task OnGet(int? projectId, string? projectName)
         {
-            _projectId = projectId;
-            _projectName = projectName;
+            var projectUsers = await _unikService.
+            //_projectId = projectId;
+            //_projectName = projectName;
 
-            var businessModel = await _unikService.GetAllEditProjects(_projectId);
+            //var businessModel = await _unikService.GetAllUserProjects(_projectId);
 
-            if (businessModel == null) return;
+            //if (businessModel == null) return;
 
-            businessModel?.ToList().ForEach(dto => UserModel.Add(new UserViewModel
-            {
-                Id = dto.Id,
-                ProjectId = dto.ProjectId,
-                ProjectName = dto.ProjectName,
-                DateAdded = dto.DateAdded,
-                UserId = dto.UserId,
-                RowVersion = dto.RowVersion,
-            }));
+            //businessModel?.ToList().ForEach(dto => UserModel.Add(new UserViewModel
+            //{
+            //    Id = dto.Id,
+            //    ProjectId = dto.ProjectId,
+            //    ProjectName = dto.ProjectName,
+            //    DateAdded = dto.DateAdded,
+            //    UserId = dto.UserId,
+            //    RowVersion = dto.RowVersion,
+            //}));
+            throw new NotImplementedException();
         }
     }
 }

@@ -21,42 +21,46 @@ namespace UnikOnBoarding.Pages.Tasks
 
         public void OnGet(int? projectId)
         {
-            if (projectId == null) NotFound();
+            //if (projectId == null) NotFound();
 
-            TaskModel = new TaskCreateViewModel
-            {
-                ProjectId = projectId,
-                UserId = User.Identity?.Name ?? string.Empty
-            };
+            //TaskModel = new TaskCreateViewModel
+            //{
+            //    ProjectId = projectId,
+            //    UserId = User.Identity?.Name ?? string.Empty
+            //};
+
+            throw new NotImplementedException();
         }
 
-        public async Task<IActionResult> OnPost()
+        public /*async*/ Task<IActionResult> OnPost()
         {
            
-           if (!ModelState.IsValid) return Page();
+           //if (!ModelState.IsValid) return Page();
 
-            var dto = new TaskCreateRequestDto
-            {
+           // var dto = new TaskCreateRequestDto
+           // {
                
-                TaskName = TaskModel.TaskName,
-                TaskDescription = TaskModel.TaskDescription,
-                ProjectId = TaskModel.ProjectId,
-                RoleId = TaskModel.RoleId,
-                UserId = TaskModel.UserId
+           //     TaskName = TaskModel.TaskName,
+           //     TaskDescription = TaskModel.TaskDescription,
+           //     ProjectId = TaskModel.ProjectId,
+           //     RoleId = TaskModel.RoleId,
+           //     UserId = TaskModel.UserId
 
-            };
+           // };
 
-            try
-            {
-                await _unikService.CreateTask(dto);
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError(string.Empty, e.Message);
-                return Page();
-            }
+           // try
+           // {
+           //     await _unikService.CreateTask(dto);
+           // }
+           // catch (Exception e)
+           // {
+           //     ModelState.AddModelError(string.Empty, e.Message);
+           //     return Page();
+           // }
 
-            return new RedirectToPageResult("/Tasks/Index", "/Tasks/Index", TaskModel);
+           // return new RedirectToPageResult("/Tasks/Index", "/Tasks/Index", TaskModel);
+
+           throw new NotImplementedException();
         }
     }
 }

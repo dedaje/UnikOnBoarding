@@ -17,17 +17,15 @@ namespace UnikOnBoarding.Pages.Project
 
         public async Task OnGet()
         {
-            var businessModel = await _unikService.GetAllUserProjects(User.Identity?.Name ?? string.Empty); // User.Identity?.Name ?? String.Empty*
+            var businessModel = await _unikService.GetAllProjects();
 
             if (businessModel == null) return;
 
             businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new ProjectIndexViewModel
             {
-                Id = dto.Id,
                 ProjectId = dto.ProjectId,
-                DateAdded = dto.DateAdded,
                 ProjectName = dto.ProjectName,
-                UserId = dto.UserId,
+                DateCreated = dto.DateCreated,
                 RowVersion = dto.RowVersion,
             }));
         }
