@@ -14,6 +14,7 @@ using Unik.Onboarding.Domain.DomainServices;
 using Unik.Onboarding.Infrastructure.DomainServices;
 using Unik.Onboarding.Infrastructure.Repositories;
 using Unik.SqlServerContext;
+using Unik.Crosscut.TransactionHandling;
 
 //using UnikOnBoarding;
 
@@ -58,11 +59,13 @@ builder.Services.AddDbContext<UnikDbContext>(
         options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
             x => x.MigrationsAssembly("Unik.SqlServerContext.Migrations")));
 
+//builder til transactionlevels:
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(p =>
 {
     var db = p.GetService<UnikDbContext>();
     return new UnitOfWork(db);
 });
+//transactionlevels slut
 
 var app = builder.Build();
 
