@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Unik.SqlServerContext;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
+using UnikOnBoarding.Infrastructure.Contract.Dto.ProjectUsers;
 using UnikOnBoarding.Infrastructure.Contract.Dto.User;
 using UnikOnBoarding.Pages.User;
 

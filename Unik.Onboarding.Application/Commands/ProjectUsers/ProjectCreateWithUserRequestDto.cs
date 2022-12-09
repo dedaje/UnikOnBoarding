@@ -1,6 +1,7 @@
-﻿using UnikOnBoarding.Infrastructure.Contract.Dto.User;
+﻿using Unik.Onboarding.Application.Commands.Project;
+using Unik.Onboarding.Application.Queries.User;
 
-namespace UnikOnBoarding.Infrastructure.Contract.Dto.Project;
+namespace Unik.Onboarding.Application.Commands.ProjectUsers;
 
 public class ProjectCreateWithUserRequestDto
 {

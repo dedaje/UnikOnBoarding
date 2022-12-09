@@ -24,13 +24,13 @@ namespace Unik.SqlServerContext.Migrations.Migrations
 
             modelBuilder.Entity("ProjectEntityUsersEntity", b =>
                 {
-                    b.Property<int>("ProjectsProjectId")
+                    b.Property<int>("ProjectsId")
                         .HasColumnType("int");
 
                     b.Property<int>("UsersId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProjectsProjectId", "UsersId");
+                    b.HasKey("ProjectsId", "UsersId");
 
                     b.HasIndex("UsersId");
 
@@ -39,11 +39,11 @@ namespace Unik.SqlServerContext.Migrations.Migrations
 
             modelBuilder.Entity("Unik.Onboarding.Domain.Model.ProjectEntity", b =>
                 {
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -58,26 +58,23 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.HasKey("ProjectId");
+                    b.HasKey("Id");
 
                     b.ToTable("Project", "project");
                 });
 
             modelBuilder.Entity("Unik.Onboarding.Domain.Model.TaskEntity", b =>
                 {
-                    b.Property<int>("TaskId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjectsProjectId")
+                    b.Property<int>("ProjectsId")
                         .HasColumnType("int");
 
                     b.Property<int>("RoleId")
@@ -100,9 +97,9 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     b.Property<int>("UsersId")
                         .HasColumnType("int");
 
-                    b.HasKey("TaskId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ProjectsProjectId");
+                    b.HasIndex("ProjectsId");
 
                     b.HasIndex("UsersId");
 
@@ -136,7 +133,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 {
                     b.HasOne("Unik.Onboarding.Domain.Model.ProjectEntity", null)
                         .WithMany()
-                        .HasForeignKey("ProjectsProjectId")
+                        .HasForeignKey("ProjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -151,7 +148,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 {
                     b.HasOne("Unik.Onboarding.Domain.Model.ProjectEntity", "Projects")
                         .WithMany("Tasks")
-                        .HasForeignKey("ProjectsProjectId")
+                        .HasForeignKey("ProjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

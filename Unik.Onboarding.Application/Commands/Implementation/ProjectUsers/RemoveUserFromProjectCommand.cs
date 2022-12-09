@@ -1,7 +1,7 @@
-﻿using Unik.Onboarding.Application.Commands.Project;
+﻿using Unik.Onboarding.Application.Commands.ProjectUsers;
 using Unik.Onboarding.Application.Repositories;
 
-namespace Unik.Onboarding.Application.Commands.Implementation.Project;
+namespace Unik.Onboarding.Application.Commands.Implementation.ProjectUsers;
 
 public class RemoveUserFromProjectCommand : IRemoveUserFromProjectCommand
 {

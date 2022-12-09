@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik.WebApp.UserContext.Mig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik.Api", "Unik.Api\Unik.Api.csproj", "{FB3FB633-EE1F-4CA2-8C13-91737EA79909}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik.Crosscut", "Unik.Crosscut\Unik.Crosscut.csproj", "{0ACB43A1-710A-4861-AF64-4DACA3A9422B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik.Crosscut", "Unik.Crosscut\Unik.Crosscut.csproj", "{0ACB43A1-710A-4861-AF64-4DACA3A9422B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

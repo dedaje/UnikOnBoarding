@@ -18,6 +18,8 @@ using Unik.Onboarding.Application.Commands.User;
 using Unik.Onboarding.Application.Commands.Implementation.User;
 using Unik.Onboarding.Application.Queries.Implementation.User;
 using Unik.Onboarding.Application.Queries.User;
+using Unik.Onboarding.Application.Commands.ProjectUsers;
+using Unik.Onboarding.Application.Commands.Implementation.ProjectUsers;
 
 //using UnikOnBoarding;
 

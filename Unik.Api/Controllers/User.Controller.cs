@@ -54,7 +54,7 @@ namespace Unik.Api.Controllers
         }
 
         // POST api/<User>
-        [HttpPost("AddUser/")]
+        [HttpPost("CreateUser/")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

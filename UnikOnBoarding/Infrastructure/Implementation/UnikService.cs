@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
+using UnikOnBoarding.Infrastructure.Contract.Dto.ProjectUsers;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Task;
 using UnikOnBoarding.Infrastructure.Contract.Dto.User;
 
@@ -19,6 +20,7 @@ namespace UnikOnBoarding.Infrastructure.Implementation
         }
 
         // Project
+        #region Project
         async Task IUnikService.CreateProject(ProjectCreateWithUserRequestDto dto)
         {
            var response = await _httpClient.PostAsJsonAsync($"api/Project/CreateProject", dto);
@@ -32,16 +34,6 @@ namespace UnikOnBoarding.Infrastructure.Implementation
         async Task IUnikService.EditProject(ProjectEditRequestDto dto)
         {
             var response = await _httpClient.PutAsJsonAsync($"api/Project/EditProject", dto);
-
-            if (response.IsSuccessStatusCode) return;
-
-            var message = await response.Content.ReadAsStringAsync();
-            throw new Exception(message);
-        }
-
-        async Task IUnikService.RemoveUserFromProject(string userId, int? projectId)
-        {
-            var response = await _httpClient.DeleteAsync($"api/Project/RemoveUserFromProject/{userId}/{projectId}/");
 
             if (response.IsSuccessStatusCode) return;
 
@@ -64,20 +56,17 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             return await _httpClient.GetFromJsonAsync<ProjectQueryResultDto>($"api/Project/{projectId}/");
         }
 
-        async Task<IEnumerable<ProjectUsersQueryResultDto>?> IUnikService.GetAllUserProjects(int? projectId, int? userId)
-        {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectUsersQueryResultDto>>($"api/Project/{projectId}/{userId}/");
-        }
-
         async Task<IEnumerable<ProjectQueryResultDto>?> IUnikService.GetAllProjects()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Project/p/AllProjects/");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectQueryResultDto>>($"api/Project/AllProjects/");
         }
+        #endregion
 
-        // User
-        async Task IUnikService.CreateUser(AddUserRequestDto dto)
+        // ProjectUsers
+        #region ProjectUsers
+        async Task IUnikService.AddUserToProject(ProjectAddUserRequestDto dto) //TODO: Opret ProjectUsers.Controller
         {
-            var response = await _httpClient.PostAsJsonAsync($"api/User/AddUser", dto);
+            var response = await _httpClient.PostAsJsonAsync($"api/ProjectUsers/AddUserToProject", dto);
 
             if (response.IsSuccessStatusCode) return;
 
@@ -85,7 +74,33 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             throw new Exception(message);
         }
 
-        
+        async Task IUnikService.RemoveUserFromProject(string userId, int? projectId)
+        {
+            var response = await _httpClient.DeleteAsync($"api/ProjectUsers/RemoveUserFromProject/{userId}/{projectId}/");
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+
+        async Task<IEnumerable<ProjectUsersQueryResultDto>?> IUnikService.GetAllUserProjects(int? projectId, string? userId)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectUsersQueryResultDto>>($"api/ProjectUsers/{projectId}/{userId}/");
+        }
+        #endregion
+
+        // User
+        #region User
+        async Task IUnikService.CreateUser(UserCreateRequestDto dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"api/User/CreateUser", dto);
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
 
         async Task<UserQueryResultDto> IUnikService.GetUser(string userId)
         {
@@ -96,8 +111,10 @@ namespace UnikOnBoarding.Infrastructure.Implementation
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<UserQueryResultDto>>($"api/User/AllUsers/");
         }
+        #endregion
 
         // Task
+        #region Task
         async Task IUnikService.CreateTask(TaskCreateRequestDto dto)
         {
             var response = await _httpClient.PostAsJsonAsync($"api/Task/Create", dto);
@@ -114,8 +131,8 @@ namespace UnikOnBoarding.Infrastructure.Implementation
 
             if (response.IsSuccessStatusCode) return;
 
-            var messege = await response.Content.ReadAsStringAsync();
-            throw new Exception(messege);
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
         }
 
         async Task IUnikService.DeleteTask(int id)
@@ -142,7 +159,6 @@ namespace UnikOnBoarding.Infrastructure.Implementation
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<TaskQueryResultDto>>($"api/Task/u/{projectId}/{userId}/");
         }
-
-        
+        #endregion
     }
 }

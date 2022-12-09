@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Unik.WebApp.UserContext;
 
-public class WebAppUserDbContext : IdentityDbContext
+public class WebAppUserDbContext : IdentityDbContext<ApplicationUser>
 {
     public WebAppUserDbContext(DbContextOptions<WebAppUserDbContext> options)
         : base(options)

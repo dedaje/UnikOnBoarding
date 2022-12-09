@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Unik.SqlServerContext;
+//using Unik.SqlServerContext;
 using Unik.WebApp.UserContext;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Implementation;
@@ -14,7 +14,7 @@ builder.Services.AddDbContext<WebAppUserDbContext>(options =>
     options.UseSqlServer(connectionString,
         x=> x.MigrationsAssembly("Unik.WebApp.UserContext.Migrations")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     {
         options.Password.RequireDigit = false;
         options.Password.RequiredLength = 5;
@@ -26,10 +26,20 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     })
     .AddEntityFrameworkStores<WebAppUserDbContext>();
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policyBuilder => policyBuilder.RequireClaim("Admin"));
+});
+
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Project");
+    options.Conventions.AuthorizeFolder("/ProjectUsers");
+    options.Conventions.AuthorizeFolder("/Tasks");
+    options.Conventions.AuthorizeFolder("/User");
+
+    options.Conventions.AuthorizeFolder("/Areas/Identity/Pages/Admin", "AdminPolicy");
 });
 
 // IHttpClientFactory
@@ -40,10 +50,10 @@ builder.Services.AddHttpClient<IUnikService, UnikService>(
 // Database
 // Add-Migration InitialMigration -Context UnikDbContext -Project Unik.SqlServerContext.Migrations
 // Update-Database -Context UnikDbContext
-builder.Services.AddDbContext<UnikDbContext>(
-    options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
-            x => x.MigrationsAssembly("Unik.SqlServerContext.Migrations")));
+//builder.Services.AddDbContext<UnikDbContext>(
+//    options =>
+//        options.UseSqlServer(builder.Configuration.GetConnectionString("UnikDbConnection"),
+//            x => x.MigrationsAssembly("Unik.SqlServerContext.Migrations")));
 
 var app = builder.Build();
 

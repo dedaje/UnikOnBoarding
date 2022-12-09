@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Pages.Project;
+using UnikOnBoarding.Pages.ProjectUsers;
 
-namespace UnikOnBoarding.Pages.User
+namespace UnikOnBoarding.Pages.ProjectUsers
 {
     public class RemoveUserModel : PageModel
     {

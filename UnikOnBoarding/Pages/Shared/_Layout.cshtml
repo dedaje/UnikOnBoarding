@@ -28,9 +28,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Project/Index">Projekter</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Project/Index">@User.Identity?.Name</a>
-                        </li>
+                        @if (AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/Users">Users</a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial"/>
                 </div>

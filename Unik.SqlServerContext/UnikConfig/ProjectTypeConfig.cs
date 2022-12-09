@@ -9,6 +9,6 @@ public class ProjectTypeConfig : IEntityTypeConfiguration<ProjectEntity>
     public void Configure(EntityTypeBuilder<ProjectEntity> builder)
     {
         builder.ToTable("Project", "project");
-        builder.HasKey(x => x.ProjectId);
+        builder.HasKey(x => x.Id);
     }
 }

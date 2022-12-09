@@ -21,7 +21,7 @@ public class UsersEntity
 
     public int Id { get; private set; } // PK
     public List<ProjectEntity> Projects { get; private set; } // FK
-    public List<TaskEntity> Tasks { get; private set; } = new List<TaskEntity>();
+    public List<TaskEntity> Tasks { get; private set; } /*= new List<TaskEntity>();*/
     public string UserId { get; private set; }
 
     [Timestamp] public byte[] RowVersion { get; private set; }

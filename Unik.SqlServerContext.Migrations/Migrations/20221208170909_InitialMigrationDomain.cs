@@ -23,7 +23,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 schema: "project",
                 columns: table => new
                 {
-                    ProjectId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProjectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -31,7 +31,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Project", x => x.ProjectId);
+                    table.PrimaryKey("PK_Project", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,18 +53,18 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 name: "ProjectEntityUsersEntity",
                 columns: table => new
                 {
-                    ProjectsProjectId = table.Column<int>(type: "int", nullable: false),
+                    ProjectsId = table.Column<int>(type: "int", nullable: false),
                     UsersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectEntityUsersEntity", x => new { x.ProjectsProjectId, x.UsersId });
+                    table.PrimaryKey("PK_ProjectEntityUsersEntity", x => new { x.ProjectsId, x.UsersId });
                     table.ForeignKey(
-                        name: "FK_ProjectEntityUsersEntity_Project_ProjectsProjectId",
-                        column: x => x.ProjectsProjectId,
+                        name: "FK_ProjectEntityUsersEntity_Project_ProjectsId",
+                        column: x => x.ProjectsId,
                         principalSchema: "project",
                         principalTable: "Project",
-                        principalColumn: "ProjectId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProjectEntityUsersEntity_Users_UsersId",
@@ -80,26 +80,25 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 schema: "task",
                 columns: table => new
                 {
-                    TaskId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TaskName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TaskDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProjectId = table.Column<int>(type: "int", nullable: false),
-                    ProjectsProjectId = table.Column<int>(type: "int", nullable: false),
+                    ProjectsId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     UsersId = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Task", x => x.TaskId);
+                    table.PrimaryKey("PK_Task", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Task_Project_ProjectsProjectId",
-                        column: x => x.ProjectsProjectId,
+                        name: "FK_Task_Project_ProjectsId",
+                        column: x => x.ProjectsId,
                         principalSchema: "project",
                         principalTable: "Project",
-                        principalColumn: "ProjectId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Task_Users_UsersId",
@@ -116,10 +115,10 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 column: "UsersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_ProjectsProjectId",
+                name: "IX_Task_ProjectsId",
                 schema: "task",
                 table: "Task",
-                column: "ProjectsProjectId");
+                column: "ProjectsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Task_UsersId",

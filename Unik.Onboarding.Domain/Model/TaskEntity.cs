@@ -20,11 +20,11 @@ public class TaskEntity
         Users = users;
     }
 
-    public int TaskId { get; private set; }
+    public int Id { get; private set; }
     public string TaskName { get; private set; }
     public string TaskDescription { get; private set; }
     public DateTime DateCreated { get; private set; }
-    public int ProjectId { get; private set; }
+    public int ProjectsId { get; private set; }
     public ProjectEntity Projects { get; private set; } // FK
     public int RoleId { get; private set; } //TODO
     public int UsersId { get; private set; }

@@ -14,10 +14,13 @@ namespace UnikOnBoarding.Pages.Project
         }
 
         [BindProperty] public List<ProjectIndexViewModel> IndexViewModel { get; set; } = new();
+        [BindProperty] public string? _userId { get; set; }
 
         public async Task OnGet()
         {
             var businessModel = await _unikService.GetAllProjects();
+
+            _userId = _unikService.GetUser(User.Identity?.Name ?? string.Empty).Result.UserId;
 
             if (businessModel == null) return;
 

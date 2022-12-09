@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
@@ -24,9 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Unik.Onboarding.Application\Unik.Onboarding.Application.csproj" />
-    <ProjectReference Include="..\Unik.SqlServerContext.Migrations\Unik.SqlServerContext.Migrations.csproj" />
-    <ProjectReference Include="..\Unik.SqlServerContext\Unik.SqlServerContext.csproj" />
     <ProjectReference Include="..\Unik.WebApp.UserContext.Migrations\Unik.WebApp.UserContext.Migrations.csproj" />
     <ProjectReference Include="..\Unik.WebApp.UserContext\Unik.WebApp.UserContext.csproj" />
   </ItemGroup>

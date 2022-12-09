@@ -9,6 +9,6 @@ public class TaskTypeConfig : IEntityTypeConfiguration<TaskEntity>
     public void Configure(EntityTypeBuilder<TaskEntity> builder)
     {
         builder.ToTable("Task", "task");
-        builder.HasKey(x => x.TaskId);
+        builder.HasKey(x => x.Id);
     }
 }

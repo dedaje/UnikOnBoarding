@@ -13,6 +13,7 @@ public class UnikDbContext : DbContext
 
     public DbSet<ProjectEntity> ProjectEntities { get; set; }
     public DbSet<UsersEntity> UserEntities { get; set; }
+    public DbSet<BookingEntity> BookingEntities { get; set; }
     //public DbSet<RoleEntity> RoleEntities { get; set; }
     //public DbSet<SkillsEntity> SkillsEntities { get; set; }
     public DbSet<TaskEntity> TaskEntities { get; set; }
@@ -24,7 +25,15 @@ public class UnikDbContext : DbContext
         builder
             .ApplyConfiguration(new ProjectTypeConfig())
             .ApplyConfiguration(new UserTypeConfig())
+            .ApplyConfiguration(new BookingTypeConfig())
             .ApplyConfiguration(new TaskTypeConfig());
+
+        builder.Entity<ProjectEntity>()
+            .HasMany<UsersEntity>(u => u.Users)
+            .WithMany(p => p.Projects);
+
+        builder.Entity<BookingEntity>().HasData(new BookingEntity(DateTime.Parse("2 December 2023"), false, null));
+
         //builder.ApplyConfiguration(new UserTypeConfig());
         //builder.ApplyConfiguration(new RoleTypeConfig());
         //builder.ApplyConfiguration(new SkillTypeConfig());

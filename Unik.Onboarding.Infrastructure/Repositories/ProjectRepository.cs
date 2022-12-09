@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Application.Queries.Project;
+using Unik.Onboarding.Application.Queries.ProjectUsers;
 using Unik.Onboarding.Application.Queries.User;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
@@ -22,37 +23,38 @@ public class ProjectRepository : IProjectRepository
         _db.SaveChanges();
 
         var initialUser = _db.UserEntities.SingleOrDefault(x => x.Id == initialUserId.Id);
-        var project = _db.ProjectEntities.Include(x => x.Users).SingleOrDefault(x => x.ProjectId == projectId.ProjectId);
+        var project = _db.ProjectEntities.Include(x => x.Users).SingleOrDefault(x => x.Id == projectId.Id);
 
         project.Users.Add(initialUser);
         _db.SaveChanges();
     }
 
-    ProjectUsersQueryResultDto IProjectRepository.GetAllUserProjects(int? projectId, int? usersId)
+    void IProjectRepository.AddUserToProject(UsersEntity user, ProjectEntity project)
     {
-        var usersInProject = _db.ProjectEntities.AsNoTracking()
-            .Include(a => a.Users)
-            .FirstOrDefault(p => p.ProjectId == projectId);
+        var newUser = _db.UserEntities.SingleOrDefault(x => x.Id == user.Id);
+        var existingProject = _db.ProjectEntities.Include(x => x.Users).SingleOrDefault(x => x.Id == project.Id);
 
-        //return usersInProject;
+        existingProject.Users.Add(newUser);
+        _db.SaveChanges();
+    }
 
-        return new ProjectUsersQueryResultDto
-        {
-            ProjectQuery = new ProjectQueryResultDto
+    IEnumerable<ProjectUsersQueryResultDto> IProjectRepository.GetAllUserProjects(int? projectId, string? userId)
+    {
+        //var usersInProject = _db.ProjectEntities.AsNoTracking()
+        //    .Where(x => x.Id == projectId)
+        //    .Include(a => a.Users)
+        //    //.FirstOrDefaultAsync();
+        //    .FirstOrDefault(p => p.Id == projectId);
+        
+        foreach (var project in _db.UserEntities.Include(u => u.Projects))
+            yield return new ProjectUsersQueryResultDto
             {
-                ProjectId = usersInProject.ProjectId,
-                ProjectName = usersInProject.ProjectName,
-                DateCreated = usersInProject.DateCreated,
-                RowVersion = usersInProject.RowVersion,
-            },
-            //ProjectId = usersInProject.ProjectId,
-            Users = usersInProject.Users,
-            //ProjectName = usersInProject.ProjectName,
-            //DateCreated = usersInProject.DateCreated,
-            //RowVersion = usersInProject.RowVersion,
-        };
-
-        //throw new NotImplementedException();
+                UserId = project.UserId,
+                ProjectId = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).Id,
+                ProjectName = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).ProjectName,
+                DateCreated = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).DateCreated,
+                RowVersion = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).RowVersion
+            };
     }
 
     IEnumerable<ProjectQueryResultDto> IProjectRepository.GetAllProjects()
@@ -60,7 +62,7 @@ public class ProjectRepository : IProjectRepository
         foreach (var entity in _db.ProjectEntities.AsNoTracking().ToList())
             yield return new ProjectQueryResultDto
             {
-                ProjectId = entity.ProjectId,
+                ProjectId = entity.Id,
                 ProjectName = entity.ProjectName,
                 DateCreated = entity.DateCreated,
                 RowVersion = entity.RowVersion
@@ -69,12 +71,12 @@ public class ProjectRepository : IProjectRepository
 
     ProjectQueryResultDto IProjectRepository.GetProject(int projectId)
     {
-        var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId);
+        var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.Id == projectId);
         if (dbEntity == null) throw new Exception("Dette projekt findes ikke");
 
         return new ProjectQueryResultDto
         {
-            ProjectId = dbEntity.ProjectId,
+            ProjectId = dbEntity.Id,
             ProjectName = dbEntity.ProjectName,
             DateCreated = dbEntity.DateCreated,
             RowVersion = dbEntity.RowVersion
@@ -83,7 +85,7 @@ public class ProjectRepository : IProjectRepository
 
     ProjectEntity IProjectRepository.LoadProject(int projectId) 
     {
-        var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.ProjectId == projectId);
+        var dbEntity = _db.ProjectEntities.AsNoTracking().FirstOrDefault(a => a.Id == projectId);
         if (dbEntity == null) throw new Exception("Det projekt findes ikke i databasen");
 
         return dbEntity;
@@ -106,7 +108,7 @@ public class ProjectRepository : IProjectRepository
     void IProjectRepository.RemoveUserFromProject(UsersEntity userId, ProjectEntity projectId)
     {
         //var deleteUser = _db.UserEntities.SingleOrDefault(x => x.Id == userId.Id);
-        var project = _db.ProjectEntities.Include(x => x.Users).SingleOrDefault(x => x.ProjectId == projectId.ProjectId);
+        var project = _db.ProjectEntities.Include(x => x.Users).SingleOrDefault(x => x.Id == projectId.Id);
         var deleteUser = project.Users.SingleOrDefault(x => x.Id == userId.Id);
 
         project.Users.Remove(deleteUser);
