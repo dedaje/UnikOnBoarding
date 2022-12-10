@@ -10,6 +10,9 @@ namespace Unik.SqlServerContext.Migrations.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
+                name: "booking");
+
+            migrationBuilder.EnsureSchema(
                 name: "project");
 
             migrationBuilder.EnsureSchema(
@@ -17,6 +20,23 @@ namespace Unik.SqlServerContext.Migrations.Migrations
 
             migrationBuilder.EnsureSchema(
                 name: "users");
+
+            migrationBuilder.CreateTable(
+                name: "Booking",
+                schema: "booking",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsBooked = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Booking", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Project",
@@ -109,6 +129,12 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                schema: "booking",
+                table: "Booking",
+                columns: new[] { "Id", "Date", "IsBooked", "UserId" },
+                values: new object[] { 1, new DateTime(2023, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectEntityUsersEntity_UsersId",
                 table: "ProjectEntityUsersEntity",
@@ -129,6 +155,10 @@ namespace Unik.SqlServerContext.Migrations.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Booking",
+                schema: "booking");
+
             migrationBuilder.DropTable(
                 name: "ProjectEntityUsersEntity");
 

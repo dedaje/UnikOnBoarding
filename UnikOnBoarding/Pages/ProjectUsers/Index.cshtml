@@ -15,7 +15,7 @@
     <input type="hidden" asp-for="_userId" class="form-control" />
     <h2>Brugere tilmeldt Projekt nr: @Model._projectId | @Model._projectName</h2>
     <a asp-page="./AddUser" asp-route-projectId="@Model._projectId">Tilføj bruger</a>
-    <table class="table">
+    <table class="table table-sm table-striped table-bordered">
         <thead>
         <tr>
             <th>Projekt ID</th>
@@ -25,7 +25,7 @@
             <th></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
         @if (Model.ProjectUsersModel.Any())
         {
                 foreach (var user in Model.ProjectUsersModel)

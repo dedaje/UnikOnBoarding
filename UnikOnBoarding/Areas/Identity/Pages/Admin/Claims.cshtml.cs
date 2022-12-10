@@ -3,38 +3,42 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
+using Unik.WebApp.UserContext;
+using Microsoft.CodeAnalysis;
 
 namespace UnikOnBoarding.Areas.Identity.Pages.Admin
 {
     public class ClaimsModel : PageModel
     {
-        public ClaimsModel(UserManager<IdentityUser> mgr)
+        public ClaimsModel(UserManager<ApplicationUser> mgr)
         {
             UserManager = mgr;
         }
 
-        public UserManager<IdentityUser> UserManager { get; set; }
+        public UserManager<ApplicationUser> UserManager { get; set; }
 
-        [BindProperty(SupportsGet = true)]
-        public string Id { get; set; }
+        [BindProperty(SupportsGet = true)] public string Id { get; set; }
 
-        public IEnumerable<Claim> Claims { get; set; }
+        /*[BindProperty] */public IEnumerable<Claim> Claims { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(string id)
         {
+            Id = id;
+
             if (string.IsNullOrEmpty(Id))
             {
                 //Redirect to NotFound
                 return RedirectToPage("/");
             }
-            IdentityUser user = await UserManager.FindByIdAsync(Id);
+            ApplicationUser user = await UserManager.FindByIdAsync(Id);
             Claims = await UserManager.GetClaimsAsync(user);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAddClaimAsync([Required] string type, [Required] string value)
+        public async Task<IActionResult> OnPostAddClaimAsync([Required] string type, [Required] string value, string id)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(Id);
+            Id = id;
+            ApplicationUser user = await UserManager.FindByIdAsync(Id);
 
             if (ModelState.IsValid)
             {
@@ -54,7 +58,7 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Admin
 
         public async Task<IActionResult> OnPostEditClaimAsync([Required] string type, [Required] string value, [Required] string oldValue)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(Id);
+            ApplicationUser user = await UserManager.FindByIdAsync(Id);
             if (ModelState.IsValid)
             {
                 var claimNew = new Claim(type, value);
@@ -67,7 +71,7 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Admin
 
         public async Task<IActionResult> OnPostDeleteClaimAsync([Required] string type, [Required] string value)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(Id);
+            ApplicationUser user = await UserManager.FindByIdAsync(Id);
             if (ModelState.IsValid)
             {
                 var claim = new Claim(type, value);

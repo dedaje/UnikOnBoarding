@@ -9,26 +9,27 @@
 <link rel="stylesheet" href="~/css/homemadestyle.css" asp-append-version="true" />
 
 @*Tilføj "Registrer Bruger knap her og ændre OnPost metoden til at opdatere domain db efter bruger er registreret"*@
+<a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register" class="btn btn-success">Register</a>
 <form method="post">
     <table class="table table-sm table-striped table-bordered">
         <thead>
         <tr>
-            <th>Username</th>
-            <th>Normalized</th>
+            <th>Fulde navn</th>
+            <th>Email</th>
             <th></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
         @if (Model.Users.Any())
         {
             foreach (var user in Model.Users)
             {
                 <tr>
+                    <td>@(user.FirstName + " " + user.LastName)</td>
                     <td>@user.UserName</td>
-                    <td>@user.NormalizedUserName</td>
                     <td>
                         <!-- <snippet_Claims> -->
-                        <a asp-page="./Claims" asp-route-id="@user.Id">Manage Claims</a>
+                        <a asp-page="./Claims" asp-route-id="@user.Id" class="btn btn-warning">Håndter Claims</a>
                         <!-- </snippet_Claims> -->
                     </td>
                 </tr>

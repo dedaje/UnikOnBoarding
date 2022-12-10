@@ -9,7 +9,7 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Admin
     {
         private readonly WebAppUserDbContext _userDb;
 
-        [BindProperty] public IEnumerable<IdentityUser> Users { get; set; } = Enumerable.Empty<IdentityUser>();
+        [BindProperty] public IEnumerable<ApplicationUser> Users { get; set; } = Enumerable.Empty<ApplicationUser>();
 
         public UsersModel(WebAppUserDbContext userDb)
         {

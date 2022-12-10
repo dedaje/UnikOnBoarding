@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page "{id?}"
 @using UnikOnBoarding.Areas.Identity.Data
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model UnikOnBoarding.Areas.Identity.Pages.Admin.ClaimsModel
@@ -7,6 +7,8 @@
 }
 
 <div asp-validation-summary="All" class="text-danger m-2"></div>
+
+<input type="hidden" asp-for="@Model.Id" class="form-control" />
 
 <table class="table table-sm table-striped table-bordered">
     <thead><tr><th>Type</th><th>Value</th><th>Modify</th></tr></thead>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="~/css/homemadestyle.css" asp-append-version="true" />
 
 <form method="post">
-    <table class="table">
+    <table class="table table-sm table-striped table-bordered">
         <thead>
         <tr>
             <th>Projekt ID</th>
@@ -17,7 +17,7 @@
             <th></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
         @if (Model.IndexViewModel.Any())
         {
             foreach (var project in Model.IndexViewModel)
@@ -28,15 +28,15 @@
                     <td>@project.DateCreated</td>
                     <td>
                         <!-- <snippet_Edit> -->
-                        <a asp-page="./Edit" asp-route-projectId="@project.ProjectId">Rediger Projekt Navn</a>
+                        <a asp-page="./Edit" asp-route-projectId="@project.ProjectId" class="btn btn-warning">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        <a asp-page="./Delete" asp-route-projectId="@project.ProjectId">Slet Projekt</a>
+                        <a asp-page="./Delete" asp-route-projectId="@project.ProjectId" class="btn btn-danger">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
                     </td>
                     <td>
-                        <a asp-page="../User/Index" asp-route-projectId="@project.ProjectId" asp-route-userId="@Model._userId">Se Tilmeldte Brugere</a>
+                        <a asp-page="../User/Index" asp-route-projectId="@project.ProjectId" asp-route-userId="@Model._userId" class="btn btn-secondary">Se Tilmeldte Brugere</a>
                     </td>
                     <td>
                         <a asp-page="../Tasks/Index" asp-route-projectId="@project.ProjectId">Se Opgaver</a>

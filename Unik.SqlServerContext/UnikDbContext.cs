@@ -32,7 +32,7 @@ public class UnikDbContext : DbContext
             .HasMany<UsersEntity>(u => u.Users)
             .WithMany(p => p.Projects);
 
-        builder.Entity<BookingEntity>().HasData(new BookingEntity(DateTime.Parse("2 December 2023"), false, null));
+        builder.Entity<BookingEntity>().HasData(new BookingEntity(1, DateTime.Parse("2 December 2023"), false, null));
 
         //builder.ApplyConfiguration(new UserTypeConfig());
         //builder.ApplyConfiguration(new RoleTypeConfig());
