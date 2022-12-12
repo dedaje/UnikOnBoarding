@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
@@ -7,6 +8,7 @@ using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
 using UnikOnBoarding.Infrastructure.Contract.Dto.ProjectUsers;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Task;
 using UnikOnBoarding.Infrastructure.Contract.Dto.User;
+using UnikOnBoarding.Infrastructure.Contract.Dto.UserProjects;
 
 namespace UnikOnBoarding.Infrastructure.Implementation
 {
@@ -84,9 +86,17 @@ namespace UnikOnBoarding.Infrastructure.Implementation
             throw new Exception(message);
         }
 
-        async Task<IEnumerable<ProjectUsersQueryResultDto>?> IUnikService.GetAllUserProjects(int? projectId, string? userId)
+        async Task<IEnumerable<ProjectUsersQueryResultDto>?> IUnikService.GetAllProjectUsers(int? projectId)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectUsersQueryResultDto>>($"api/ProjectUsers/{projectId}/{userId}/");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<ProjectUsersQueryResultDto>>($"api/ProjectUsers/{projectId}/");
+        }
+        #endregion
+
+        // UserProjects
+        #region UserProjects
+        async Task<IEnumerable<UserProjectsQueryResultDto>?> IUnikService.GetAllUserProjects(string? userId)
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<UserProjectsQueryResultDto>>($"api/UserProjects/{userId}/");
         }
         #endregion
 

@@ -1,4 +1,5 @@
 ﻿using Unik.Onboarding.Application.Queries.User;
+using Unik.Onboarding.Application.Queries.UserProjects;
 using Unik.Onboarding.Application.Repositories;
 
 namespace Unik.Onboarding.Application.Queries.Implementation.User;
@@ -10,6 +11,11 @@ public class UserGetAllQuery : IUserGetAllQuery
     public UserGetAllQuery(IUserRepository repository)
     {
         _repository = repository;
+    }
+
+    IEnumerable<UserProjectsQueryResultDto> IUserGetAllQuery.GetAllUserProjects(string userId)
+    {
+        return _repository.GetAllUserProjects(userId);
     }
 
     IEnumerable<UserQueryResultDto> IUserGetAllQuery.GetAllUsers()

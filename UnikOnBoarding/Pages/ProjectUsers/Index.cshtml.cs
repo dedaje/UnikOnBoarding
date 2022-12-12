@@ -30,7 +30,7 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 
             if (userId == null) NotFound();
 
-            var projectUsers = await _unikService.GetAllUserProjects(projectId, userId);
+            var projectUsers = await _unikService.GetAllProjectUsers(projectId);
 
             if (projectUsers == null) return;
 

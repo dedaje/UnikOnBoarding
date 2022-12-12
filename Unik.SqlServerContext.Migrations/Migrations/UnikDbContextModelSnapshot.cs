@@ -163,6 +163,13 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users", "users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            UserId = "admin@unik.dk"
+                        });
                 });
 
             modelBuilder.Entity("ProjectEntityUsersEntity", b =>

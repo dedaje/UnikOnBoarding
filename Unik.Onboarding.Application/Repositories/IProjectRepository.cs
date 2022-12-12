@@ -10,7 +10,7 @@ public interface IProjectRepository
 
     void AddUserToProject(UsersEntity user, ProjectEntity project);
     //ProjectUsersQueryResultDto GetAllUserProjects(int? projectId, int? usersId);
-    IEnumerable<ProjectUsersQueryResultDto> GetAllUserProjects(int? projectId, string? userId);
+    IEnumerable<ProjectUsersQueryResultDto> GetAllProjectUsers(int? projectId);
     IEnumerable<ProjectQueryResultDto> GetAllProjects();
     ProjectQueryResultDto GetProject(int projectId);
     ProjectEntity LoadProject(int projectId);

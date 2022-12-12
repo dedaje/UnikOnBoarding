@@ -38,7 +38,7 @@ public class ProjectRepository : IProjectRepository
         _db.SaveChanges();
     }
 
-    IEnumerable<ProjectUsersQueryResultDto> IProjectRepository.GetAllUserProjects(int? projectId, string? userId)
+    IEnumerable<ProjectUsersQueryResultDto> IProjectRepository.GetAllProjectUsers(int? projectId)
     {
         //var usersInProject = _db.ProjectEntities.AsNoTracking()
         //    .Where(x => x.Id == projectId)
@@ -46,14 +46,17 @@ public class ProjectRepository : IProjectRepository
         //    //.FirstOrDefaultAsync();
         //    .FirstOrDefault(p => p.Id == projectId);
         
-        foreach (var project in _db.UserEntities.Include(u => u.Projects))
+        //Få den til at springe brugere over som er i domain db, men ikke del af et project
+
+        foreach (var project in _db.UserEntities.AsNoTracking().Include(u => u.Projects))
+            //if (project == null) yield break;
             yield return new ProjectUsersQueryResultDto
             {
                 UserId = project.UserId,
                 ProjectId = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).Id,
                 ProjectName = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).ProjectName,
                 DateCreated = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).DateCreated,
-                RowVersion = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).RowVersion
+                RowVersion = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).RowVersion,
             };
     }
 

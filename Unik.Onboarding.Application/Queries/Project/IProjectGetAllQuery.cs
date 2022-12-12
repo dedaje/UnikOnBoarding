@@ -1,10 +1,10 @@
 ﻿using Unik.Onboarding.Application.Queries.ProjectUsers;
+using Unik.Onboarding.Application.Queries.UserProjects;
 
 namespace Unik.Onboarding.Application.Queries.Project;
 
 public interface IProjectGetAllQuery
 {
-    IEnumerable<ProjectUsersQueryResultDto> GetAllUserProjects(int projectId, string userId); //Gets all the projects that the logged in user is assigned to
-    //ProjectUsersQueryResultDto GetAllUserProjects(int projectId, int usersId); //Gets all the projects that the logged in user is assigned to
+    IEnumerable<ProjectUsersQueryResultDto> GetAllProjectUsers(int projectId); // Gets all the users that is assigned to specific project
     IEnumerable<ProjectQueryResultDto> GetAllProjects();
 }

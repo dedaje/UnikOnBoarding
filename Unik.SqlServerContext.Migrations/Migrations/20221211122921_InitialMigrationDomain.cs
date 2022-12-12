@@ -135,6 +135,12 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                 columns: new[] { "Id", "Date", "IsBooked", "UserId" },
                 values: new object[] { 1, new DateTime(2023, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null });
 
+            migrationBuilder.InsertData(
+                schema: "users",
+                table: "Users",
+                columns: new[] { "Id", "UserId" },
+                values: new object[] { 1, "admin@unik.dk" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectEntityUsersEntity_UsersId",
                 table: "ProjectEntityUsersEntity",

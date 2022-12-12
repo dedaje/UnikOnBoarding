@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Application.Queries.User;
+using Unik.Onboarding.Application.Queries.UserProjects;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
@@ -19,6 +20,20 @@ public class UserRepository : IUserRepository
     {
         _db.Add(user);
         _db.SaveChanges();
+    }
+
+    IEnumerable<UserProjectsQueryResultDto> IUserRepository.GetAllUserProjects(string? userId)
+    {
+        foreach (var user in _db.ProjectEntities.Include(p => p.Users))
+            yield return new UserProjectsQueryResultDto
+            {
+                UserId = user.Users.FirstOrDefault(u => u.UserId == userId).UserId,
+
+                ProjectId = user.Id,
+                ProjectName = user.ProjectName,
+                DateCreated = user.DateCreated,
+                RowVersion = user.RowVersion
+            };
     }
 
     IEnumerable<UserQueryResultDto> IUserRepository.GetAllUsers()

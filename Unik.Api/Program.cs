@@ -38,12 +38,20 @@ builder.Services.AddScoped<IProjectDomainService, ProjectDomainService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<ICreateProjectCommand, CreateProjectCommand>();
 builder.Services.AddScoped<IEditProjectCommand, EditProjectCommand>();
-builder.Services.AddScoped<IRemoveUserFromProjectCommand, RemoveUserFromProjectCommand>();
+
 builder.Services.AddScoped<IDeleteProjectCommand, DeleteProjectCommand>();
 builder.Services.AddScoped<IProjectGetAllQuery, ProjectGetAllQuery>();
 builder.Services.AddScoped<IProjectGetQuery, ProjectGetQuery>();
 
+// ProjectUsers
+builder.Services.AddScoped<IAddUserToProjectCommand, AddUserToProjectCommand>();
+builder.Services.AddScoped<IRemoveUserFromProjectCommand, RemoveUserFromProjectCommand>();
+
+// UserProjects
+
+
 // User
+builder.Services.AddScoped<IUserDomainService, UserDomainService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICreateUserCommand, CreateUserCommand>();
 builder.Services.AddScoped<IDeleteUserCommand, DeleteUserCommand>();

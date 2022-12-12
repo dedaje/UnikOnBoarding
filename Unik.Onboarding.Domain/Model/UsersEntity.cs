@@ -11,6 +11,12 @@ public class UsersEntity
     {
     }
 
+    public UsersEntity(int id, string userId)
+    {
+        Id = id;
+        UserId = userId;
+    }
+
     public UsersEntity(string userId)
     {
         //_domainService = domainService;

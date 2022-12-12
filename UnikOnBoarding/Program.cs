@@ -29,12 +29,26 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminPolicy", policyBuilder => policyBuilder.RequireClaim("Admin"));
+    options.AddPolicy("SælgerPolicy", policyBuilder => policyBuilder.RequireClaim("Sælger"));
+    options.AddPolicy("TeknikkerPolicy", policyBuilder => policyBuilder.RequireClaim("Teknikker"));
+    options.AddPolicy("ConverterPolicy", policyBuilder => policyBuilder.RequireClaim("Converter"));
+    options.AddPolicy("KonsulentPolicy", policyBuilder => policyBuilder.RequireClaim("Konsulent"));
+    options.AddPolicy("KundePolicy", policyBuilder => policyBuilder.RequireClaim("Kunde"));
 });
 
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Project");
+    //options.Conventions.AuthorizeFolder("/Project", "AdminPolicy");
+    options.Conventions.AuthorizePage("/Project/Index/", "AdminPolicy");
+    options.Conventions.AuthorizePage("/Project/Index/", "SælgerPolicy");
+    options.Conventions.AuthorizePage("/Project/Create/", "AdminPolicy");
+    options.Conventions.AuthorizePage("/Project/Create/", "SælgerPolicy");
+    options.Conventions.AuthorizePage("/Project/Edit/", "AdminPolicy");
+    options.Conventions.AuthorizePage("/Project/Edit/", "SælgerPolicy");
+    options.Conventions.AuthorizePage("/Project/Delete/", "AdminPolicy");
+
     options.Conventions.AuthorizeFolder("/ProjectUsers");
     options.Conventions.AuthorizeFolder("/Tasks");
     options.Conventions.AuthorizeFolder("/User");

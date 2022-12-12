@@ -3,6 +3,7 @@ using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
 using UnikOnBoarding.Infrastructure.Contract.Dto.ProjectUsers;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Task;
 using UnikOnBoarding.Infrastructure.Contract.Dto.User;
+using UnikOnBoarding.Infrastructure.Contract.Dto.UserProjects;
 
 namespace UnikOnBoarding.Infrastructure.Contract
 {
@@ -19,7 +20,10 @@ namespace UnikOnBoarding.Infrastructure.Contract
         Task AddUserToProject(ProjectAddUserRequestDto dto);
         Task RemoveUserFromProject(string userId, int? projectId);
         //Task RemoveUserFromProject(ProjectRemoveUserRequestDto dto);
-        Task<IEnumerable<ProjectUsersQueryResultDto>?> GetAllUserProjects(int? projectId, string? userId);
+        Task<IEnumerable<ProjectUsersQueryResultDto>?> GetAllProjectUsers(int? projectId);
+
+        // UserProjects
+        Task<IEnumerable<UserProjectsQueryResultDto>?> GetAllUserProjects(string? userId);
 
         // User
         Task CreateUser(UserCreateRequestDto dto);

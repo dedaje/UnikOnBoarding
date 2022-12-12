@@ -24,12 +24,12 @@ namespace Unik.Api.Controllers
         }
 
         // GET: api/<ProjectUsers>
-        [HttpGet("{projectId}/{userId}/")] 
+        [HttpGet("{projectId}/")] 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<ProjectUsersQueryResultDto>> Get(int projectId, string userId) // GetAllUserProjects
+        public ActionResult<IEnumerable<ProjectUsersQueryResultDto>> Get(int projectId) // GetAllProjectUsers
         {
-            var result = _projectGetAllQuery.GetAllUserProjects(projectId, userId).ToList();
+            var result = _projectGetAllQuery.GetAllProjectUsers(projectId).ToList();
             if (!result.Any())
                 return NotFound();
 

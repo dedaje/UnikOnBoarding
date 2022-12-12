@@ -12,7 +12,7 @@ using Unik.SqlServerContext;
 namespace Unik.SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(UnikDbContext))]
-    [Migration("20221210000601_InitialMigrationDomain")]
+    [Migration("20221211122921_InitialMigrationDomain")]
     partial class InitialMigrationDomain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -165,6 +165,13 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users", "users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            UserId = "admin@unik.dk"
+                        });
                 });
 
             modelBuilder.Entity("ProjectEntityUsersEntity", b =>
