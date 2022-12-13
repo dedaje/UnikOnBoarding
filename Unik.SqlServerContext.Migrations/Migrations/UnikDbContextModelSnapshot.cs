@@ -48,9 +48,6 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsBooked")
-                        .HasColumnType("bit");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
@@ -58,6 +55,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                         .HasColumnType("rowversion");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -69,7 +67,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                         {
                             Id = 1,
                             Date = new DateTime(2023, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsBooked = false
+                            UserId = "admin@unik.dk"
                         });
                 });
 

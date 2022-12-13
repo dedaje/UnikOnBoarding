@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Unik.Crosscut.TransactionHandling.Implementation;
 using Unik.Crosscut.TransactionHandling;
+using Unik.Onboarding.Application.Commands.Booking;
+using Unik.Onboarding.Application.Commands.Implementation.Booking;
 using Unik.Onboarding.Application.Commands.Implementation.Project;
 using Unik.Onboarding.Application.Commands.Implementation.Task;
 using Unik.Onboarding.Application.Commands.Project;
@@ -20,6 +22,8 @@ using Unik.Onboarding.Application.Queries.Implementation.User;
 using Unik.Onboarding.Application.Queries.User;
 using Unik.Onboarding.Application.Commands.ProjectUsers;
 using Unik.Onboarding.Application.Commands.Implementation.ProjectUsers;
+using Unik.Onboarding.Application.Queries.Booking;
+using Unik.Onboarding.Application.Queries.Implementation.Booking;
 
 //using UnikOnBoarding;
 
@@ -33,12 +37,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Clean Architecture
+// Booking
+builder.Services.AddScoped<IBookingDomainService, BookingDomainService>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+builder.Services.AddScoped<ICreateBookingCommand, CreateBookingCommand>();
+builder.Services.AddScoped<IEditBookingCommand, EditBookingCommand>();
+builder.Services.AddScoped<IDeleteBookingCommand, DeleteBookingCommand>();
+builder.Services.AddScoped<IBookingGetAllQuery, BookingGetAllQuery>();
+builder.Services.AddScoped<IBookingGetQuery, BookingGetQuery>();
+
 // Project
 builder.Services.AddScoped<IProjectDomainService, ProjectDomainService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<ICreateProjectCommand, CreateProjectCommand>();
 builder.Services.AddScoped<IEditProjectCommand, EditProjectCommand>();
-
 builder.Services.AddScoped<IDeleteProjectCommand, DeleteProjectCommand>();
 builder.Services.AddScoped<IProjectGetAllQuery, ProjectGetAllQuery>();
 builder.Services.AddScoped<IProjectGetQuery, ProjectGetQuery>();

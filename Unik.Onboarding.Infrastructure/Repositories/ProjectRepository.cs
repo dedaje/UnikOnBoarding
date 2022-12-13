@@ -48,7 +48,7 @@ public class ProjectRepository : IProjectRepository
         
         //Få den til at springe brugere over som er i domain db, men ikke del af et project
 
-        foreach (var project in _db.UserEntities.AsNoTracking().Include(u => u.Projects))
+        foreach (var project in _db.UserEntities.AsNoTracking().Include(u => u.Projects.Select(t => t.Users)))
             //if (project == null) yield break;
             yield return new ProjectUsersQueryResultDto
             {

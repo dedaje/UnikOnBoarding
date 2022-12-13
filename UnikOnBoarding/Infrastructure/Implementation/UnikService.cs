@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
+using UnikOnBoarding.Infrastructure.Contract.Dto.Booking;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
 using UnikOnBoarding.Infrastructure.Contract.Dto.ProjectUsers;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Task;
@@ -20,6 +21,49 @@ namespace UnikOnBoarding.Infrastructure.Implementation
         {
             _httpClient = httpClient;
         }
+
+        // Booking
+        #region Booking
+        async Task IUnikService.CreateBooking(BookingCreateRequestDto dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"api/Booking/CreateBooking", dto);
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+
+        async Task IUnikService.EditBook(BookingEditRequestDto dto)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/Booking/EditBooking", dto);
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+
+        async Task<IEnumerable<BookingQueryResultDto>?> IUnikService.GetAllBookings()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<BookingQueryResultDto>>($"api/Booking/AllBookings");
+        }
+
+        async Task<BookingQueryResultDto> IUnikService.GetBooking(int? id)
+        {
+            return await _httpClient.GetFromJsonAsync<BookingQueryResultDto>($"api/Booking/{id}/");
+        }
+
+        async Task IUnikService.DeleteBooking(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/Booking/DeleteBooking/{id}/");
+
+            if (response.IsSuccessStatusCode) return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+        #endregion
 
         // Project
         #region Project

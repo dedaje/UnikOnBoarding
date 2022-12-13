@@ -1,4 +1,5 @@
 ﻿using UnikOnBoarding.Infrastructure.Contract.Dto;
+using UnikOnBoarding.Infrastructure.Contract.Dto.Booking;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
 using UnikOnBoarding.Infrastructure.Contract.Dto.ProjectUsers;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Task;
@@ -9,6 +10,13 @@ namespace UnikOnBoarding.Infrastructure.Contract
 {
     public interface IUnikService
     {
+        // Booking
+        Task CreateBooking(BookingCreateRequestDto dto);
+        Task EditBook(BookingEditRequestDto dto);
+        Task DeleteBooking(int id);
+        Task<IEnumerable<BookingQueryResultDto>?> GetAllBookings();
+        Task<BookingQueryResultDto> GetBooking(int? id);
+
         // Project
         Task CreateProject(ProjectCreateWithUserRequestDto dto);
         Task EditProject(ProjectEditRequestDto dto);

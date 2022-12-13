@@ -2,9 +2,9 @@
 {
     public static class ApplicationClaimTypes
     {
-        public static List<String> AppClaimTypes = new List<String>() 
-        {
-            "Admin","Sælger","Teknikker","Converter","Konsulent","Kunde"
-        };
+        //public static List<String> AppClaimTypes = new List<String>() 
+        //{
+        //    "Admin","Sælger","Teknikker","Converter","Konsulent","Kunde"
+        //};
     }
 }

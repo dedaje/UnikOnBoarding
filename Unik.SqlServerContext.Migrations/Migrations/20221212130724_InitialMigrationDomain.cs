@@ -29,8 +29,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsBooked = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -132,8 +131,8 @@ namespace Unik.SqlServerContext.Migrations.Migrations
             migrationBuilder.InsertData(
                 schema: "booking",
                 table: "Booking",
-                columns: new[] { "Id", "Date", "IsBooked", "UserId" },
-                values: new object[] { 1, new DateTime(2023, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null });
+                columns: new[] { "Id", "Date", "UserId" },
+                values: new object[] { 1, new DateTime(2023, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@unik.dk" });
 
             migrationBuilder.InsertData(
                 schema: "users",

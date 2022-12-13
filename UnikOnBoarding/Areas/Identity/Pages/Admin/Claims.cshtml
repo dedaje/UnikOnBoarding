@@ -50,7 +50,7 @@
     <div class="row">
         <div class="col">
             <select class="form-control" name="type">
-                @foreach (var claimType in ApplicationClaimTypes.AppClaimTypes)
+                @foreach (var claimType in Model.AppClaimTypes)
                 {
                     <option value="@claimType">
                         @claimType
@@ -66,11 +66,7 @@
         </div>
 
         <div class="col">
-            <button asp-page-handler="AddClaim" type="submit"
-                                        class="btn btn-sm btn-success">
-                Add
-            </button>
-
+            <button asp-page-handler="AddClaim" type="submit" class="btn btn-sm btn-success">Add</button>
         </div>
     </div>
 </form>
