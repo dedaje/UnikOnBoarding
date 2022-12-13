@@ -1,13 +1,9 @@
 ﻿using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
-using Unik.Onboarding.Application.Commands.Implementation.Project;
 using Unik.Onboarding.Application.Commands.Project;
 using Unik.Onboarding.Application.Commands.ProjectUsers;
-using Unik.Onboarding.Application.Commands.User;
-using Unik.Onboarding.Application.Queries.Implementation.Project;
 using Unik.Onboarding.Application.Queries.Project;
-using Unik.Onboarding.Application.Queries.ProjectUsers;
 
 namespace Unik.Api.Controllers;
 
@@ -34,19 +30,6 @@ public class Project : ControllerBase
         _removeUserFromProjectCommand = removeUserFromProjectCommand;
         _projectGetQuery = projectGetQuery;
     }
-
-    //// GET: api/<Project>
-    //[HttpGet("{projectId}/{userId}/")] //("api/Project/")
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //public ActionResult<IEnumerable<ProjectUsersQueryResultDto>> Get(int projectId, string userId) // GetAllUserProjects
-    //{
-    //    var result = _projectGetAllQuery.GetAllUserProjects(projectId, userId).ToList();
-    //    if (!result.Any())
-    //        return NotFound();
-
-    //    return result.ToList();
-    //}
 
     // GET: api/<Project>
     [HttpGet("AllProjects/")] //("api/Project/")
@@ -108,23 +91,6 @@ public class Project : ControllerBase
             return BadRequest(e.Message);
         }
     }
-
-    // DELETE api/<Project>/5
-    //[HttpDelete("RemoveUserFromProject/{userId}/{projectId}/")]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //public ActionResult<ProjectRemoveUserRequestDto> Delete(string userId, int projectId) // RemoveUserFromProject
-    //{
-    //    try
-    //    {
-    //        _removeUserFromProjectCommand.RemoveUserFromProject(userId, projectId);
-    //        return Ok();
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        return BadRequest(e.Message);
-    //    }
-    //}
 
     // DELETE api/<Project>/6
     [HttpDelete("DeleteProject/{projectId}/")]

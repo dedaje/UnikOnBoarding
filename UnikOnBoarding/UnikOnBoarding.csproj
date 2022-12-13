@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Unik.WebApp.UserContext\Unik.WebApp.UserContext.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Data\" />
+  </ItemGroup>
+
 </Project>

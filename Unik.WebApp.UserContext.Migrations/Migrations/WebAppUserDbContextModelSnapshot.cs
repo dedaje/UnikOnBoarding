@@ -245,7 +245,7 @@ namespace Unik.WebApp.UserContext.Migrations.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c80759d-4401-4a8e-b0a9-574d69acc43f",
+                            ConcurrencyStamp = "96887cff-0024-41b1-b69a-108d9949f483",
                             Email = "admin@unik.dk",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -253,10 +253,10 @@ namespace Unik.WebApp.UserContext.Migrations.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@UNIK.DK",
                             NormalizedUserName = "ADMIN@UNIK.DK",
-                            PasswordHash = "AQAAAAEAACcQAAAAELhVL6n0rIMDXJggROGNmX/IU4t1IzZoU7IPNo0ZJDRU8HEp3YfsU5Cep6H5bYLnUA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFdmZWK7yBXcJy7EMiF59IGeaDiQ7k4dFEfsfhckX4qqPFhUXb44MO4/b/7qdxKGQw==",
                             PhoneNumber = "12345678",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bc8fdf11-e7a0-41b1-8410-458096ee9703",
+                            SecurityStamp = "9834bb27-9335-4554-98e8-4b9219cd3d16",
                             TwoFactorEnabled = false,
                             UserName = "admin@unik.dk"
                         });

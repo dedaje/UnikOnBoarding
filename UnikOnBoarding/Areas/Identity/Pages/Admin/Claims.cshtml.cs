@@ -21,7 +21,7 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Admin
 
         public List<String> AppClaimTypes = new List<String>()
         {
-            "Admin","Sælger","Teknikker","Converter","Konsulent","Kunde"
+            "Admin", "Sælger", "Teknikker", "Converter", "Konsulent", "Kunde"
         };
 
         public IEnumerable<Claim> Claims { get; set; }
