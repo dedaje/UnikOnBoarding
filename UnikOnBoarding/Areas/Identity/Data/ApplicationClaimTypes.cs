@@ -1,6 +1,8 @@
-﻿namespace UnikOnBoarding.Areas.Identity.Data
+﻿using Enum = System.Enum;
+
+namespace UnikOnBoarding.Areas.Identity.Data
 {
-    public class ApplicationClaimTypes
+    public static class ApplicationClaimTypes
     {
         public enum claims
         {
@@ -20,6 +22,16 @@
             ConverterPolicy,
             KonsulentPolicy,
             KundePolicy
+        }
+
+        public static List<string> ClaimsList()
+        {
+            return Enum.GetNames<claims>().ToList();
+        }
+
+        public static List<string> PolicyList()
+        {
+            return Enum.GetNames<policy>().ToList();
         }
     }
 }

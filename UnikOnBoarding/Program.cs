@@ -51,6 +51,9 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizePage("/Project/Delete/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
 
     options.Conventions.AuthorizeFolder("/ProjectUsers");
+    options.Conventions.AuthorizePage("/ProjectUsers/AddUser/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
+    options.Conventions.AuthorizePage("/ProjectUsers/AddUser/", ApplicationClaimTypes.policy.SælgerPolicy.ToString());
+
     options.Conventions.AuthorizeFolder("/Tasks");
     options.Conventions.AuthorizeFolder("/User");
 

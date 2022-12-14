@@ -29,13 +29,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/UserProjects/Index">Mine Projekter</a>
                         </li>
                         
-                        @if ((AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded) || (AuthService.AuthorizeAsync(User, "SælgerPolicy").Result.Succeeded))
+                        @if ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded) || (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.SælgerPolicy.ToString()).Result.Succeeded))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Project/Index">Administrer Projekter</a>
                             </li>
                         }
-                        @if (AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded)
+                        @if (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/Users">Users</a>

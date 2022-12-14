@@ -19,11 +19,6 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Admin
 
         [BindProperty(SupportsGet = true)] public string Id { get; set; }
 
-        public List<String> AppClaimTypes = new List<String>()
-        {
-            "Admin", "Sælger", "Teknikker", "Converter", "Konsulent", "Kunde"
-        };
-
         public IEnumerable<Claim> Claims { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)

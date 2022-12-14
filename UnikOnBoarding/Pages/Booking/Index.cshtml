@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="~/css/homemadestyle.css" asp-append-version="true" />
 
 <form method="post">
-    @if (AuthService.AuthorizeAsync(User, "KundePolicy").Result.Succeeded)
+    @if (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.KundePolicy.ToString()).Result.Succeeded)
     {
         <a asp-page="./Create">Book en Tid</a>
     }
@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody class="table-group-divider">
-        @if ((Model.IndexViewModel.Any()) && ((AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded) || (AuthService.AuthorizeAsync(User, "SælgerPolicy").Result.Succeeded)))
+            @if ((Model.IndexViewModel.Any()) && ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded) || (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.SælgerPolicy.ToString()).Result.Succeeded)))
         {
             foreach (var booking in Model.IndexViewModel)
             {
@@ -32,14 +32,14 @@
                     <td>@booking.UserId</td>
                     <td>
                         <!-- <snippet_Edit> -->
-                        @if ((AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded))
+                            @if ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded))
                         {
                             <a asp-page="./Edit" asp-route-id="@booking.Id">Rediger Booking</a>
                         }
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        @if ((AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded) || ((AuthService.AuthorizeAsync(User, "SælgerPolicy").Result.Succeeded) && (@booking.Date.Date < DateTime.Now.Date)))
+                        @if ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded) || ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.SælgerPolicy.ToString()).Result.Succeeded) && (@booking.Date.Date < DateTime.Now.Date)))
                         {
                             <a asp-page="./Delete" asp-route-id="@booking.Id">Slet Booking</a>
                         }
@@ -48,7 +48,7 @@
                 </tr>
             }
         }
-        else if ((Model.IndexViewModel.Any()) && (AuthService.AuthorizeAsync(User, "KundePolicy").Result.Succeeded))
+            else if ((Model.IndexViewModel.Any()) && (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.KundePolicy.ToString()).Result.Succeeded))
         {
             foreach (var booking in Model.IndexViewModel.FindAll(k => k.UserId == (User.Identity?.Name ?? string.Empty)))
             {
@@ -56,7 +56,7 @@
                     <td> @booking.Id </td>
                     <td>@booking.Date</td>
                     <td>@booking.UserId</td>
-                    @if ((AuthService.AuthorizeAsync(User, "KundePolicy").Result.Succeeded))
+                        @if ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.KundePolicy.ToString()).Result.Succeeded))
                     {
                         <td>
                             <!-- <snippet_Edit> -->
