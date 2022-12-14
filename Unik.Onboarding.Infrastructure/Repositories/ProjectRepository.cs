@@ -38,26 +38,33 @@ public class ProjectRepository : IProjectRepository
         _db.SaveChanges();
     }
 
+    private ProjectUsersQueryResultDto ProjectUsersDto { get; set; } = new();
+
     IEnumerable<ProjectUsersQueryResultDto> IProjectRepository.GetAllProjectUsers(int? projectId)
     {
-        //var usersInProject = _db.ProjectEntities.AsNoTracking()
-        //    .Where(x => x.Id == projectId)
-        //    .Include(a => a.Users)
-        //    //.FirstOrDefaultAsync();
-        //    .FirstOrDefault(p => p.Id == projectId);
-        
-        //Få den til at springe brugere over som er i domain db, men ikke del af et project
+        //var projectUsers = _db.UserEntities.AsNoTracking().Include(u => u.Projects.Where(p => p.Id == projectId));
 
-        foreach (var project in _db.UserEntities.AsNoTracking().Include(u => u.Projects.Select(t => t.Users)))
-            //if (project == null) yield break;
-            yield return new ProjectUsersQueryResultDto
+        foreach (var users in _db.UserEntities.AsNoTracking().Include(u => u.Projects.Where(p => p.Id == projectId)))
+        {
+            ProjectUsersDto.UserId = users.UserId;
+
+            foreach (var project in users.Projects)
             {
-                UserId = project.UserId,
-                ProjectId = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).Id,
-                ProjectName = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).ProjectName,
-                DateCreated = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).DateCreated,
-                RowVersion = project.Projects.FirstOrDefault(p => p.Id == projectId.Value).RowVersion,
-            };
+                ProjectUsersDto.ProjectId = project.Id;
+                ProjectUsersDto.ProjectName = project.ProjectName;
+                ProjectUsersDto.DateCreated = project.DateCreated;
+                ProjectUsersDto.RowVersion = project.RowVersion;
+
+                yield return new ProjectUsersQueryResultDto
+                {
+                    ProjectId = ProjectUsersDto.ProjectId,
+                    ProjectName = ProjectUsersDto.ProjectName,
+                    DateCreated = ProjectUsersDto.DateCreated,
+                    RowVersion = ProjectUsersDto.RowVersion,
+                    UserId = ProjectUsersDto.UserId
+                };
+            }
+        }
     }
 
     IEnumerable<ProjectQueryResultDto> IProjectRepository.GetAllProjects()

@@ -7,7 +7,7 @@ namespace Unik.Onboarding.Application.Repositories;
 public interface IUserRepository
 {
     void CreateUser(UsersEntity user);
-    IEnumerable<UserProjectsQueryResultDto> GetAllUserProjects(string? userId);
+    IEnumerable<UserProjectsQueryResultDto> GetAllUserProjects(int? usersId);
     IEnumerable<UserQueryResultDto> GetAllUsers();
     UserQueryResultDto GetUser(string userId);
     UsersEntity LoadUser(string userId);

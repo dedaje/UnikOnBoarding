@@ -53,9 +53,11 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizeFolder("/ProjectUsers");
     options.Conventions.AuthorizePage("/ProjectUsers/AddUser/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
     options.Conventions.AuthorizePage("/ProjectUsers/AddUser/", ApplicationClaimTypes.policy.SælgerPolicy.ToString());
+    options.Conventions.AuthorizePage("/ProjectUsers/RemoveUser/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
+    options.Conventions.AuthorizePage("/ProjectUsers/RemoveUser/", ApplicationClaimTypes.policy.SælgerPolicy.ToString());
 
     options.Conventions.AuthorizeFolder("/Tasks");
-    options.Conventions.AuthorizeFolder("/User");
+    options.Conventions.AuthorizeFolder("/User", ApplicationClaimTypes.policy.AdminPolicy.ToString());
 
     options.Conventions.AuthorizeFolder("/Areas/Identity/Pages/Admin", ApplicationClaimTypes.policy.AdminPolicy.ToString());
 });

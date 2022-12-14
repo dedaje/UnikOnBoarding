@@ -22,18 +22,33 @@ public class UserRepository : IUserRepository
         _db.SaveChanges();
     }
 
-    IEnumerable<UserProjectsQueryResultDto> IUserRepository.GetAllUserProjects(string? userId)
-    {
-        foreach (var user in _db.ProjectEntities.Include(p => p.Users))
-            yield return new UserProjectsQueryResultDto
-            {
-                UserId = user.Users.FirstOrDefault(u => u.UserId == userId).UserId,
+    private UserProjectsQueryResultDto UserProjectsDto { get; set; } = new();
 
-                ProjectId = user.Id,
-                ProjectName = user.ProjectName,
-                DateCreated = user.DateCreated,
-                RowVersion = user.RowVersion
-            };
+    IEnumerable<UserProjectsQueryResultDto> IUserRepository.GetAllUserProjects(int? usersId)
+    {
+        //var userProjects = _db.ProjectEntities.AsNoTracking().Include(p => p.Users.Where(u => u.Id == usersId));
+
+        foreach (var projects in _db.ProjectEntities.AsNoTracking().Include(p => p.Users.Where(u => u.Id == usersId)))
+        {
+            UserProjectsDto.ProjectId = projects.Id;
+            UserProjectsDto.ProjectName = projects.ProjectName;
+            UserProjectsDto.DateCreated = projects.DateCreated;
+            UserProjectsDto.RowVersion = projects.RowVersion;
+
+            foreach (var user in projects.Users)
+            {
+                UserProjectsDto.UserId = user.UserId;
+
+                yield return new UserProjectsQueryResultDto
+                {
+                    ProjectId = UserProjectsDto.ProjectId,
+                    ProjectName = UserProjectsDto.ProjectName,
+                    DateCreated = UserProjectsDto.DateCreated,
+                    RowVersion = UserProjectsDto.RowVersion,
+                    UserId = UserProjectsDto.UserId
+                };
+            }
+        }
     }
 
     IEnumerable<UserQueryResultDto> IUserRepository.GetAllUsers()

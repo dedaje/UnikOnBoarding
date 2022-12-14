@@ -21,9 +21,9 @@ namespace Unik.Api.Controllers
         [HttpGet("{userId}/")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<UserProjectsQueryResultDto>> Get(string userId) // GetAllProjectUsers
+        public ActionResult<IEnumerable<UserProjectsQueryResultDto>> Get(int usersId) // GetAllProjectUsers
         {
-            var result = _userGetAllQuery.GetAllUserProjects(userId).ToList();
+            var result = _userGetAllQuery.GetAllUserProjects(usersId).ToList();
             if (!result.Any())
                 return NotFound();
 
@@ -31,28 +31,28 @@ namespace Unik.Api.Controllers
         }
 
         // GET api/<UserProjects>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/<UserProjects>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
         // PUT api/<UserProjects>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         // DELETE api/<UserProjects>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

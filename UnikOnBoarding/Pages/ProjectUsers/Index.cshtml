@@ -14,7 +14,7 @@
     <input type="hidden" asp-for="ProjectIndexModel.RowVersion" class="form-control" />
     <input type="hidden" asp-for="_userId" class="form-control" />
     <h2>Brugere tilmeldt Projekt nr: @Model._projectId | @Model._projectName</h2>
-    @if ((AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded) || (AuthService.AuthorizeAsync(User, "SælgerPolicy").Result.Succeeded))
+    @if ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded) || (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.SælgerPolicy.ToString()).Result.Succeeded))
     {
         <a asp-page="./AddUser" asp-route-projectId="@Model._projectId">Tilføj bruger</a>
     }
@@ -25,7 +25,7 @@
             <th>Projekt Navn</th>
             
             <th>Email</th>
-            @if ((AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded) || (AuthService.AuthorizeAsync(User, "SælgerPolicy").Result.Succeeded))
+                @if ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded) || (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.SælgerPolicy.ToString()).Result.Succeeded))
             {
                 <th></th>
             }
@@ -42,7 +42,7 @@
                     <td>@user.ProjectName</td>
                     
                     <td>@user.UserId</td>
-                    @if ((AuthService.AuthorizeAsync(User, "AdminPolicy").Result.Succeeded) || (AuthService.AuthorizeAsync(User, "SælgerPolicy").Result.Succeeded))
+                        @if ((AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.AdminPolicy.ToString()).Result.Succeeded) || (AuthService.AuthorizeAsync(User, ApplicationClaimTypes.policy.SælgerPolicy.ToString()).Result.Succeeded))
                     {
                         <td>
                             <!-- <snippet_Delete> -->

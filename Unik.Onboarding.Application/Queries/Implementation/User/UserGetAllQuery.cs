@@ -13,9 +13,9 @@ public class UserGetAllQuery : IUserGetAllQuery
         _repository = repository;
     }
 
-    IEnumerable<UserProjectsQueryResultDto> IUserGetAllQuery.GetAllUserProjects(string userId)
+    IEnumerable<UserProjectsQueryResultDto> IUserGetAllQuery.GetAllUserProjects(int? usersId)
     {
-        return _repository.GetAllUserProjects(userId);
+        return _repository.GetAllUserProjects(usersId);
     }
 
     IEnumerable<UserQueryResultDto> IUserGetAllQuery.GetAllUsers()
