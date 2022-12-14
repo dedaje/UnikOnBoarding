@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 //using Unik.SqlServerContext;
 using Unik.WebApp.UserContext;
+using UnikOnBoarding.Areas.Identity.Data;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Implementation;
 
@@ -28,32 +29,32 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("AdminPolicy", policyBuilder => policyBuilder.RequireClaim("Admin"));
-    options.AddPolicy("SælgerPolicy", policyBuilder => policyBuilder.RequireClaim("Sælger"));
-    options.AddPolicy("TeknikkerPolicy", policyBuilder => policyBuilder.RequireClaim("Teknikker"));
-    options.AddPolicy("ConverterPolicy", policyBuilder => policyBuilder.RequireClaim("Converter"));
-    options.AddPolicy("KonsulentPolicy", policyBuilder => policyBuilder.RequireClaim("Konsulent"));
-    options.AddPolicy("KundePolicy", policyBuilder => policyBuilder.RequireClaim("Kunde"));
+    options.AddPolicy(ApplicationClaimTypes.policy.AdminPolicy.ToString(), policyBuilder => policyBuilder.RequireClaim(ApplicationClaimTypes.claims.Admin.ToString()));
+    options.AddPolicy(ApplicationClaimTypes.policy.SælgerPolicy.ToString(), policyBuilder => policyBuilder.RequireClaim(ApplicationClaimTypes.claims.Sælger.ToString()));
+    options.AddPolicy(ApplicationClaimTypes.policy.TeknikkerPolicy.ToString(), policyBuilder => policyBuilder.RequireClaim(ApplicationClaimTypes.claims.Teknikker.ToString()));
+    options.AddPolicy(ApplicationClaimTypes.policy.ConverterPolicy.ToString(), policyBuilder => policyBuilder.RequireClaim(ApplicationClaimTypes.claims.Converter.ToString()));
+    options.AddPolicy(ApplicationClaimTypes.policy.KonsulentPolicy.ToString(), policyBuilder => policyBuilder.RequireClaim(ApplicationClaimTypes.claims.Konsulent.ToString()));
+    options.AddPolicy(ApplicationClaimTypes.policy.KundePolicy.ToString(), policyBuilder => policyBuilder.RequireClaim(ApplicationClaimTypes.claims.Kunde.ToString()));
 });
 
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Project");
-    //options.Conventions.AuthorizeFolder("/Project", "AdminPolicy");
-    options.Conventions.AuthorizePage("/Project/Index/", "AdminPolicy");
-    options.Conventions.AuthorizePage("/Project/Index/", "SælgerPolicy");
-    options.Conventions.AuthorizePage("/Project/Create/", "AdminPolicy");
-    options.Conventions.AuthorizePage("/Project/Create/", "SælgerPolicy");
-    options.Conventions.AuthorizePage("/Project/Edit/", "AdminPolicy");
-    options.Conventions.AuthorizePage("/Project/Edit/", "SælgerPolicy");
-    options.Conventions.AuthorizePage("/Project/Delete/", "AdminPolicy");
+    //options.Conventions.AuthorizeFolder("/Project", ApplicationClaimTypes.policy.AdminPolicy.ToString());
+    options.Conventions.AuthorizePage("/Project/Index/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
+    options.Conventions.AuthorizePage("/Project/Index/", ApplicationClaimTypes.policy.SælgerPolicy.ToString());
+    options.Conventions.AuthorizePage("/Project/Create/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
+    options.Conventions.AuthorizePage("/Project/Create/", ApplicationClaimTypes.policy.SælgerPolicy.ToString());
+    options.Conventions.AuthorizePage("/Project/Edit/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
+    options.Conventions.AuthorizePage("/Project/Edit/", ApplicationClaimTypes.policy.SælgerPolicy.ToString());
+    options.Conventions.AuthorizePage("/Project/Delete/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
 
     options.Conventions.AuthorizeFolder("/ProjectUsers");
     options.Conventions.AuthorizeFolder("/Tasks");
     options.Conventions.AuthorizeFolder("/User");
 
-    options.Conventions.AuthorizeFolder("/Areas/Identity/Pages/Admin", "AdminPolicy");
+    options.Conventions.AuthorizeFolder("/Areas/Identity/Pages/Admin", ApplicationClaimTypes.policy.AdminPolicy.ToString());
 });
 
 // IHttpClientFactory
