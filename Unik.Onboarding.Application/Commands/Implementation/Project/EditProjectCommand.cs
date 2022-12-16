@@ -15,7 +15,7 @@ public class EditProjectCommand : IEditProjectCommand
     void IEditProjectCommand.Edit(ProjectEditRequestDto requestDto)
     {
         //Read
-        var model = _repository.LoadProject(requestDto.ProjectId);
+        var model = _repository.LoadProject(requestDto.Id);
 
         //DoIt
         model.Edit(requestDto.ProjectName, requestDto.RowVersion);

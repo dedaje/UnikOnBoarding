@@ -4,7 +4,6 @@ namespace Unik.Onboarding.Domain.Model;
 
 public class UsersEntity
 {
-    //private readonly IUserDomainService _domainService;
 
     // For Entity Framework only!!!
     internal UsersEntity()
@@ -19,10 +18,7 @@ public class UsersEntity
 
     public UsersEntity(string userId)
     {
-        //_domainService = domainService;
         UserId = userId;
-
-        //if (_domainService.UserExistsInProject(userId)) throw new ArgumentException("Denne bruger er allerede medlem af dette project");
     }
 
     public int Id { get; private set; } // PK

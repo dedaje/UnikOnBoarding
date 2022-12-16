@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="~/css/homemadestyle.css" asp-append-version="true" />
 
 <form method="post">
-    <input type="hidden" asp-for="ProjectIndexModel.ProjectId" class="form-control" />
+    <input type="hidden" asp-for="ProjectIndexModel.Id" class="form-control" />
     <input type="hidden" asp-for="ProjectIndexModel.ProjectName" class="form-control" />
     <input type="hidden" asp-for="ProjectIndexModel.DateCreated" class="form-control" />
     <input type="hidden" asp-for="ProjectIndexModel.RowVersion" class="form-control" />
@@ -38,7 +38,7 @@
                 foreach (var user in Model.ProjectUsersModel)
             {
                 <tr>
-                    <td> @user.ProjectId </td>
+                    <td> @user.Id </td>
                     <td>@user.ProjectName</td>
                     
                     <td>@user.UserId</td>
@@ -46,7 +46,7 @@
                     {
                         <td>
                             <!-- <snippet_Delete> -->
-                            <a asp-page="./RemoveUser" asp-route-userId="@user.UserId" asp-route-projectId="@user.ProjectId">Fjern Bruger</a>
+                            <a asp-page="./RemoveUser" asp-route-userId="@user.UserId" asp-route-projectId="@user.Id">Fjern Bruger</a>
                             <!-- </snippet_Delete> -->
                         </td>
                     }

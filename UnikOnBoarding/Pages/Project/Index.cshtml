@@ -23,25 +23,25 @@
             foreach (var project in Model.IndexViewModel)
             {
                 <tr>
-                    <td> @project.ProjectId </td>
+                    <td> @project.Id </td>
                     <td>@project.ProjectName</td>
                     <td>@project.DateCreated</td>
                     <td>
                         <!-- <snippet_Edit> -->
-                        <a asp-page="./Edit" asp-route-projectId="@project.ProjectId" class="btn btn-warning">Rediger Projekt Navn</a>
+                        <a asp-page="./Edit" asp-route-projectId="@project.Id" class="btn btn-warning">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        <a asp-page="./Delete" asp-route-projectId="@project.ProjectId" class="btn btn-danger">Slet Projekt</a>
+                        <a asp-page="./Delete" asp-route-projectId="@project.Id" class="btn btn-danger">Slet Projekt</a>
                         <!-- </snippet_Delete> -->
                     </td>
                     <td>
-                        <a asp-page="../ProjectUsers/Index" asp-route-projectId="@project.ProjectId" asp-route-userId="@Model._userId" class="btn btn-secondary">Se Tilmeldte Brugere</a>
+                        <a asp-page="../ProjectUsers/Index" asp-route-projectId="@project.Id" asp-route-userId="@Model._userId" class="btn btn-secondary">Se Tilmeldte Brugere</a>
                     </td>
                     <td>
-                        <a asp-page="../Tasks/Index" asp-route-projectId="@project.ProjectId">Se Opgaver</a>
+                        <a asp-page="../Tasks/Index" asp-route-projectId="@project.Id">Se Opgaver</a>
                         |
-                        <a asp-page="../Tasks/Create" asp-route-projectId="@project.ProjectId">Tilføj Opgave</a>
+                        <a asp-page="../Tasks/Create" asp-route-projectId="@project.Id">Tilføj Opgave</a>
                     </td>    
                 </tr>
             }

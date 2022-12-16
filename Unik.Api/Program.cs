@@ -29,8 +29,6 @@ using Unik.Onboarding.Application.Queries.Implementation.UserProjects;
 using Unik.Onboarding.Application.Queries.ProjectUsers;
 using Unik.Onboarding.Application.Queries.UserProjects;
 
-//using UnikOnBoarding;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

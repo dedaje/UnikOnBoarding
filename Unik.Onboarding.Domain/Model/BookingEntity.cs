@@ -30,7 +30,6 @@ public class BookingEntity
 
     public int Id { get; private set; } // PK
     public DateTime Date { get; private set; }
-    //public bool IsBooked { get; private set; }
     public string UserId { get; private set; }
     [Timestamp]
     public byte[] RowVersion { get; private set; }

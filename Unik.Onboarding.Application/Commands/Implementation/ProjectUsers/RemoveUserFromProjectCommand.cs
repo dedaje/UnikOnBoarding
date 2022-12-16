@@ -14,7 +14,7 @@ public class RemoveUserFromProjectCommand : IRemoveUserFromProjectCommand
         _userRepository = userRepository;
     }
 
-    void IRemoveUserFromProjectCommand.RemoveUserFromProject(string userId, int projectId /*ProjectRemoveUserRequestDto request*/)
+    void IRemoveUserFromProjectCommand.RemoveUserFromProject(string userId, int projectId)
     {
         var project = _repository.LoadProject(projectId);
         var user = _userRepository.LoadUser(userId);

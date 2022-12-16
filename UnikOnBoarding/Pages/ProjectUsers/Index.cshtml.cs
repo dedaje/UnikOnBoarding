@@ -36,7 +36,7 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 
             projectUsers?.ToList().ForEach(dto => ProjectUsersModel.Add(new ProjectUsersIndexViewModel
             {
-                ProjectId = dto.ProjectId,
+                Id = dto.Id,
                 ProjectName = dto.ProjectName,
                 DateCreated = dto.DateCreated,
                 RowVersion = dto.RowVersion,

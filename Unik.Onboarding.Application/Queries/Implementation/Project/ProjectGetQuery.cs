@@ -15,7 +15,5 @@ public class ProjectGetQuery : IProjectGetQuery
     ProjectQueryResultDto IProjectGetQuery.GetProject(int projectId)
     {
         return _repository.GetProject(projectId);
-
-        //throw new NotImplementedException();
     }
 }

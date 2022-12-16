@@ -7,9 +7,7 @@ namespace Unik.Onboarding.Application.Repositories;
 public interface IProjectRepository
 {
     void CreateWithInitialUser(UsersEntity initialUserId, ProjectEntity project);
-
     void AddUserToProject(UsersEntity user, ProjectEntity project);
-    //ProjectUsersQueryResultDto GetAllUserProjects(int? projectId, int? usersId);
     IEnumerable<ProjectUsersQueryResultDto> GetAllProjectUsers(int? projectId);
     IEnumerable<ProjectQueryResultDto> GetAllProjects();
     ProjectQueryResultDto GetProject(int projectId);

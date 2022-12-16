@@ -26,7 +26,7 @@ namespace UnikOnBoarding.Pages.Project
 
             businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new ProjectIndexViewModel
             {
-                ProjectId = dto.ProjectId,
+                Id = dto.Id,
                 ProjectName = dto.ProjectName,
                 DateCreated = dto.DateCreated,
                 RowVersion = dto.RowVersion,

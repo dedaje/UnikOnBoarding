@@ -26,7 +26,7 @@ namespace UnikOnBoarding.Pages.Project
 
             ProjectEditModel = new ProjectEditViewModel
             {
-                ProjectId = dto.ProjectId,
+                Id = dto.Id,
                 ProjectName = dto.ProjectName,
                 DateCreated = dto.DateCreated,
                 RowVersion = dto.RowVersion,
@@ -43,7 +43,7 @@ namespace UnikOnBoarding.Pages.Project
             {
                 await _unikService.EditProject(new ProjectEditRequestDto
                 {
-                    ProjectId = ProjectEditModel.ProjectId,
+                    Id = ProjectEditModel.Id,
                     ProjectName = ProjectEditModel.ProjectName,
                     DateCreated = ProjectEditModel.DateCreated,
                     RowVersion = ProjectEditModel.RowVersion,

@@ -11,6 +11,5 @@ public interface IUserRepository
     IEnumerable<UserQueryResultDto> GetAllUsers();
     UserQueryResultDto GetUser(string userId);
     UsersEntity LoadUser(string userId);
-    //void UpdateUser(ProjectEntity model);
     void DeleteUser(UsersEntity user);
 }

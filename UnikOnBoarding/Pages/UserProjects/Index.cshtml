@@ -30,12 +30,12 @@
                 foreach (var project in Model.UserProjectsModel)
                 {
                     <tr>
-                        <td> @project.ProjectId </td>
+                        <td> @project.Id </td>
                         <td>@project.ProjectName</td>
                         <td>
-                            <a asp-page="../Tasks/Index" asp-route-projectId="@project.ProjectId">Se Alle Opgaver</a>
+                            <a asp-page="../Tasks/Index" asp-route-projectId="@project.Id">Se Alle Opgaver</a>
                             |
-                            <a asp-page="../Tasks/MyTasks" asp-route-projectId="@project.ProjectId">Se Mine Opgaver</a>
+                            <a asp-page="../Tasks/MyTasks" asp-route-projectId="@project.Id">Se Mine Opgaver</a>
                         </td>
                         <td></td>
                     </tr>

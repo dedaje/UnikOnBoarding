@@ -28,7 +28,7 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 
             AddUser.ProjectViewModel = new ProjectIndexViewModel
             {
-                ProjectId = project.ProjectId, 
+                Id = project.Id, 
                 ProjectName = project.ProjectName, 
                 DateCreated = project.DateCreated, 
                 RowVersion = project.RowVersion
@@ -54,7 +54,7 @@ namespace UnikOnBoarding.Pages.ProjectUsers
             {
                 ProjectQueryDto = new ProjectQueryResultDto
                 {
-                    ProjectId = AddUser.ProjectViewModel.ProjectId,
+                    Id = AddUser.ProjectViewModel.Id,
                     ProjectName = AddUser.ProjectViewModel.ProjectName,
                     DateCreated = AddUser.ProjectViewModel.DateCreated,
                     RowVersion = AddUser.ProjectViewModel.RowVersion,

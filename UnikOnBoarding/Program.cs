@@ -41,7 +41,6 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Project");
-    //options.Conventions.AuthorizeFolder("/Project", ApplicationClaimTypes.policy.AdminPolicy.ToString());
     options.Conventions.AuthorizePage("/Project/Index/", ApplicationClaimTypes.policy.AdminPolicy.ToString());
     options.Conventions.AuthorizePage("/Project/Index/", ApplicationClaimTypes.policy.SælgerPolicy.ToString());
     options.Conventions.AuthorizePage("/Project/Create/", ApplicationClaimTypes.policy.AdminPolicy.ToString());

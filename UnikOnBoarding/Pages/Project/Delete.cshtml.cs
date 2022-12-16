@@ -26,7 +26,7 @@ namespace UnikOnBoarding.Pages.Project
 
             DeleteViewModel = new ProjectDeleteViewModel
             {
-                ProjectId = dto.ProjectId,
+                Id = dto.Id,
                 ProjectName = dto.ProjectName,
             };
 
@@ -39,7 +39,7 @@ namespace UnikOnBoarding.Pages.Project
 
             try
             {
-                await _unikService.DeleteProject(DeleteViewModel.ProjectId);
+                await _unikService.DeleteProject(DeleteViewModel.Id);
             }
             catch (Exception e)
             {

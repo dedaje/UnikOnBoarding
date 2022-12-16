@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik.Onboarding.Application.Queries.Project;
 using Unik.Onboarding.Application.Queries.ProjectUsers;
-using Unik.Onboarding.Application.Queries.User;
 using Unik.Onboarding.Application.Repositories;
 using Unik.Onboarding.Domain.DomainServices;
 using Unik.Onboarding.Domain.Model;
@@ -53,14 +52,14 @@ public class ProjectRepository : IProjectRepository
 
             foreach (var project in users.Projects)
             {
-                ProjectUsersDto.ProjectId = project.Id;
+                ProjectUsersDto.Id = project.Id;
                 ProjectUsersDto.ProjectName = project.ProjectName;
                 ProjectUsersDto.DateCreated = project.DateCreated;
                 ProjectUsersDto.RowVersion = project.RowVersion;
 
                 yield return new ProjectUsersQueryResultDto
                 {
-                    ProjectId = ProjectUsersDto.ProjectId,
+                    Id = ProjectUsersDto.Id,
                     ProjectName = ProjectUsersDto.ProjectName,
                     DateCreated = ProjectUsersDto.DateCreated,
                     RowVersion = ProjectUsersDto.RowVersion,
@@ -75,7 +74,7 @@ public class ProjectRepository : IProjectRepository
         foreach (var entity in _db.ProjectEntities.AsNoTracking().ToList())
             yield return new ProjectQueryResultDto
             {
-                ProjectId = entity.Id,
+                Id = entity.Id,
                 ProjectName = entity.ProjectName,
                 DateCreated = entity.DateCreated,
                 RowVersion = entity.RowVersion
@@ -89,7 +88,7 @@ public class ProjectRepository : IProjectRepository
 
         return new ProjectQueryResultDto
         {
-            ProjectId = dbEntity.Id,
+            Id = dbEntity.Id,
             ProjectName = dbEntity.ProjectName,
             DateCreated = dbEntity.DateCreated,
             RowVersion = dbEntity.RowVersion
@@ -118,13 +117,10 @@ public class ProjectRepository : IProjectRepository
 
     void IProjectRepository.RemoveUserFromProject(UsersEntity userId, ProjectEntity projectId)
     {
-        //var deleteUser = _db.UserEntities.SingleOrDefault(x => x.Id == userId.Id);
         var project = _db.ProjectEntities.Include(x => x.Users).SingleOrDefault(x => x.Id == projectId.Id);
         var deleteUser = project.Users.SingleOrDefault(x => x.Id == userId.Id);
 
         project.Users.Remove(deleteUser);
         _db.SaveChanges();
-
-        //throw new NotImplementedException();
     }
 }

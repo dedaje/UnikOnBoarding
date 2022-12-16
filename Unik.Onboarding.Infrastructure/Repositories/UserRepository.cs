@@ -30,7 +30,7 @@ public class UserRepository : IUserRepository
 
         foreach (var projects in _db.ProjectEntities.AsNoTracking().Include(p => p.Users.Where(u => u.Id == usersId)))
         {
-            UserProjectsDto.ProjectId = projects.Id;
+            UserProjectsDto.Id = projects.Id;
             UserProjectsDto.ProjectName = projects.ProjectName;
             UserProjectsDto.DateCreated = projects.DateCreated;
             UserProjectsDto.RowVersion = projects.RowVersion;
@@ -41,7 +41,7 @@ public class UserRepository : IUserRepository
 
                 yield return new UserProjectsQueryResultDto
                 {
-                    ProjectId = UserProjectsDto.ProjectId,
+                    Id = UserProjectsDto.Id,
                     ProjectName = UserProjectsDto.ProjectName,
                     DateCreated = UserProjectsDto.DateCreated,
                     RowVersion = UserProjectsDto.RowVersion,

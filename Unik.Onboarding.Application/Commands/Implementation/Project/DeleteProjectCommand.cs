@@ -12,10 +12,9 @@ public class DeleteProjectCommand : IDeleteProjectCommand
         _repository = repository;
     }
 
-    void IDeleteProjectCommand.Delete(int projectId /*ProjectDeleteRequestDto request*/)
+    void IDeleteProjectCommand.Delete(int projectId)
     {
         var model = _repository.LoadProject(projectId);
-        //var model = _repository.LoadProject(request.ProjectId);
 
         _repository.DeleteProject(model);
     }

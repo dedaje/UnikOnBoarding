@@ -19,7 +19,7 @@ public class AddUserToProjectCommand : IAddUserToProjectCommand
 
     void IAddUserToProjectCommand.AddUser(ProjectAddUserRequestDto request)
     {
-        var project = _projectRepository.LoadProject(request.ProjectQueryDto.ProjectId);
+        var project = _projectRepository.LoadProject(request.ProjectQueryDto.Id);
         var user = _userRepository.LoadUser(request.UserQueryDto.UserId);
 
         _projectRepository.AddUserToProject(user, project);
