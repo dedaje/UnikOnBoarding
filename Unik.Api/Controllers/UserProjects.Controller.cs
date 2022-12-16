@@ -10,11 +10,11 @@ namespace Unik.Api.Controllers
     [ApiController]
     public class UserProjects : ControllerBase
     {
-        private readonly IUserGetAllQuery _userGetAllQuery;
+        private readonly IUserProjectsGetAllQuery _userProjectsGetAllQuery;
 
-        public UserProjects(IUserGetAllQuery userGetAllQuery)
+        public UserProjects(IUserProjectsGetAllQuery userProjectsGetAllQuery)
         {
-            _userGetAllQuery = userGetAllQuery;
+            _userProjectsGetAllQuery = userProjectsGetAllQuery;
         }
 
         // GET: api/<UserProjects>
@@ -23,7 +23,7 @@ namespace Unik.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<UserProjectsQueryResultDto>> Get(int usersId) // GetAllProjectUsers
         {
-            var result = _userGetAllQuery.GetAllUserProjects(usersId).ToList();
+            var result = _userProjectsGetAllQuery.GetAllUserProjects(usersId).ToList();
             if (!result.Any())
                 return NotFound();
 

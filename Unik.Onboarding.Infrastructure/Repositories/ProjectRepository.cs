@@ -3,6 +3,7 @@ using Unik.Onboarding.Application.Queries.Project;
 using Unik.Onboarding.Application.Queries.ProjectUsers;
 using Unik.Onboarding.Application.Queries.User;
 using Unik.Onboarding.Application.Repositories;
+using Unik.Onboarding.Domain.DomainServices;
 using Unik.Onboarding.Domain.Model;
 using Unik.SqlServerContext;
 
@@ -11,10 +12,12 @@ namespace Unik.Onboarding.Infrastructure.Repositories;
 public class ProjectRepository : IProjectRepository
 {
     private readonly UnikDbContext _db;
+    private readonly IUserDomainService _userDomainService;
 
-    public ProjectRepository(UnikDbContext db)
+    public ProjectRepository(UnikDbContext db, IUserDomainService userDomainService)
     {
         _db = db;
+        _userDomainService = userDomainService;
     }
 
     void IProjectRepository.CreateWithInitialUser(UsersEntity initialUserId, ProjectEntity projectId)
@@ -103,10 +106,8 @@ public class ProjectRepository : IProjectRepository
 
     void IProjectRepository.UpdateProject(ProjectEntity model)
     {
-        //_db.Update(model);
-        //_db.SaveChanges();
-
-        throw new NotImplementedException();
+        _db.Update(model);
+        _db.SaveChanges();
     }
 
     void IProjectRepository.DeleteProject(ProjectEntity model)

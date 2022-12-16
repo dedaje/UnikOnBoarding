@@ -13,8 +13,8 @@ public class ProjectDomainService : IProjectDomainService
         _db = db;
     }
 
-    bool IProjectDomainService.projectAlreadyExists(string projectName)
+    bool IProjectDomainService.ProjectAlreadyExists(string projectName)
     {
-        return _db.ProjectEntities.AsNoTracking().ToList().Any(a => a.ProjectName == projectName);
+        return _db.ProjectEntities.AsNoTracking().ToList().Any(a => a.ProjectName.ToLower() == projectName.ToLower());
     }
 }

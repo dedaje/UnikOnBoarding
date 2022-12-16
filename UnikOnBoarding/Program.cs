@@ -63,7 +63,6 @@ builder.Services.AddRazorPages(options =>
 });
 
 // IHttpClientFactory
-//ops find ud af hvordan man fixer at api ikke peger p� WebApp alts� semesterproject for os og istedet peger p� det rigtige
 builder.Services.AddHttpClient<IUnikService, UnikService>(
     client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
 

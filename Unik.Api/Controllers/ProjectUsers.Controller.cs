@@ -14,13 +14,13 @@ namespace Unik.Api.Controllers
     {
         private readonly IAddUserToProjectCommand _addUserToProjectCommand;
         private readonly IRemoveUserFromProjectCommand _removeUserFromProjectCommand;
-        private readonly IProjectGetAllQuery _projectGetAllQuery;
+        private readonly IProjectUsersGetAllQuery _projectUsersGetAllQuery;
 
-        public ProjectUsers(IAddUserToProjectCommand addUserToProjectCommand, IRemoveUserFromProjectCommand removeUserFromProjectCommand, IProjectGetAllQuery projectGetAllQuery)
+        public ProjectUsers(IAddUserToProjectCommand addUserToProjectCommand, IRemoveUserFromProjectCommand removeUserFromProjectCommand, IProjectUsersGetAllQuery projectUsersGetAllQuery)
         {
             _addUserToProjectCommand = addUserToProjectCommand;
             _removeUserFromProjectCommand = removeUserFromProjectCommand;
-            _projectGetAllQuery = projectGetAllQuery;
+            _projectUsersGetAllQuery = projectUsersGetAllQuery;
         }
 
         // GET: api/<ProjectUsers>
@@ -29,7 +29,7 @@ namespace Unik.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<ProjectUsersQueryResultDto>> Get(int projectId) // GetAllProjectUsers
         {
-            var result = _projectGetAllQuery.GetAllProjectUsers(projectId).ToList();
+            var result = _projectUsersGetAllQuery.GetAllProjectUsers(projectId).ToList();
             if (!result.Any())
                 return NotFound();
 

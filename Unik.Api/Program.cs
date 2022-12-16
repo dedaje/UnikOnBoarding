@@ -24,6 +24,10 @@ using Unik.Onboarding.Application.Commands.ProjectUsers;
 using Unik.Onboarding.Application.Commands.Implementation.ProjectUsers;
 using Unik.Onboarding.Application.Queries.Booking;
 using Unik.Onboarding.Application.Queries.Implementation.Booking;
+using Unik.Onboarding.Application.Queries.Implementation.ProjectUsers;
+using Unik.Onboarding.Application.Queries.Implementation.UserProjects;
+using Unik.Onboarding.Application.Queries.ProjectUsers;
+using Unik.Onboarding.Application.Queries.UserProjects;
 
 //using UnikOnBoarding;
 
@@ -58,9 +62,10 @@ builder.Services.AddScoped<IProjectGetQuery, ProjectGetQuery>();
 // ProjectUsers
 builder.Services.AddScoped<IAddUserToProjectCommand, AddUserToProjectCommand>();
 builder.Services.AddScoped<IRemoveUserFromProjectCommand, RemoveUserFromProjectCommand>();
+builder.Services.AddScoped<IProjectUsersGetAllQuery, ProjectUsersGetAllQuery>();
 
 // UserProjects
-
+builder.Services.AddScoped<IUserProjectsGetAllQuery, UserProjectsGetAllQuery>();
 
 // User
 builder.Services.AddScoped<IUserDomainService, UserDomainService>();

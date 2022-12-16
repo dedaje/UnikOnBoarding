@@ -14,20 +14,17 @@ public class Project : ControllerBase
     private readonly ICreateProjectCommand _createProjectCommand;
     private readonly IEditProjectCommand _editProjectCommand;
     private readonly IDeleteProjectCommand _deleteProjectCommand;
-    private readonly IRemoveUserFromProjectCommand _removeUserFromProjectCommand;
     private readonly IProjectGetAllQuery _projectGetAllQuery;
     private readonly IProjectGetQuery _projectGetQuery;
 
     // constructor
     public Project(ICreateProjectCommand createProjectCommand, IEditProjectCommand editProjectCommand, 
-        IDeleteProjectCommand deleteProjectCommand, IRemoveUserFromProjectCommand removeUserFromProjectCommand, 
-        IProjectGetAllQuery projectGetAllQuery, IProjectGetQuery projectGetQuery)
+        IDeleteProjectCommand deleteProjectCommand, IProjectGetAllQuery projectGetAllQuery, IProjectGetQuery projectGetQuery)
     {
         _projectGetAllQuery = projectGetAllQuery;
         _createProjectCommand = createProjectCommand;
         _editProjectCommand = editProjectCommand;
         _deleteProjectCommand = deleteProjectCommand;
-        _removeUserFromProjectCommand = removeUserFromProjectCommand;
         _projectGetQuery = projectGetQuery;
     }
 

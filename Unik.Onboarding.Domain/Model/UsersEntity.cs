@@ -22,12 +22,12 @@ public class UsersEntity
         //_domainService = domainService;
         UserId = userId;
 
-        //if (_domainService.userExistsInProject(userId)) throw new ArgumentException("Denne bruger er allerede medlem af dette project");
+        //if (_domainService.UserExistsInProject(userId)) throw new ArgumentException("Denne bruger er allerede medlem af dette project");
     }
 
     public int Id { get; private set; } // PK
-    public List<ProjectEntity> Projects { get; private set; } // FK
-    public List<TaskEntity> Tasks { get; private set; } /*= new List<TaskEntity>();*/
+    public List<ProjectEntity> Projects { get; private set; } 
+    public List<TaskEntity> Tasks { get; private set; }
     public string UserId { get; private set; }
 
     [Timestamp] public byte[] RowVersion { get; private set; }

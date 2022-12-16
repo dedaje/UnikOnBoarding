@@ -14,15 +14,8 @@ public class ProjectGetAllQuery : IProjectGetAllQuery
         _repository = repository;
     }
 
-    IEnumerable<ProjectUsersQueryResultDto> IProjectGetAllQuery.GetAllProjectUsers(int projectId)
-    {
-        return _repository.GetAllProjectUsers(projectId);
-        //throw new NotImplementedException();
-    }
-
     IEnumerable<ProjectQueryResultDto> IProjectGetAllQuery.GetAllProjects()
     {
         return _repository.GetAllProjects();
-        //throw new NotImplementedException();
     }
 }

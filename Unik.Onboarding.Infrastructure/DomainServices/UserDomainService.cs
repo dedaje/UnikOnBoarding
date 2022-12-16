@@ -13,8 +13,9 @@ public class UserDomainService : IUserDomainService
         _db = db;
     }
 
-    //bool IUserDomainService.userExistsInProject(int projectId, string userId)
+    //bool IUserDomainService.UserExistsInProject(int projectId, int usersId)
     //{
-    //    return _db.ProjectEntities.AsNoTracking().ToList().Any(a => a.ProjectId == projectId && a.UserId == userId);
+    //    //return _db.ProjectEntities.AsNoTracking().ToList().Any(a => a.ProjectId == projectId && a.UsersId == usersId);
+    //    //var projectUsers = _db.UserEntities.AsNoTracking().Include(u => u.Projects.Where(p => p.Id == projectId));
     //}
 }
