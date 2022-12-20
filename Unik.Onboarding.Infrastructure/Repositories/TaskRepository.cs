@@ -15,95 +15,76 @@ public class TaskRepository : ITaskRepository
         _db = db;
     }
 
-    void ITaskRepository.Add(TaskEntity task)
+    void ITaskRepository.AddTask(TaskEntity task)
     {
-        //_db.Add(task);
-        //_db.SaveChanges();
+        _db.Add(task);
+        _db.SaveChanges();
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
-    IEnumerable<TaskQueryResultDto> ITaskRepository.GetAllTasksByRole(int projectId, int roleId)
+    IEnumerable<TaskQueryResultDto> ITaskRepository.GetAllTasks(int projectId)
     {
-        //foreach (var entity in _db.TaskEntities.AsNoTracking()
-        //             .Where(a => a.ProjectId == projectId && a.RoleId == roleId).ToList())
-        //    yield return new TaskQueryResultDto
-        //    {
-        //        TaskId = entity.TaskId,
-        //        TaskName = entity.TaskName,
-        //        TaskDescription = entity.TaskDescription,
-        //        DateCreated = entity.DateCreated,
-        //        ProjectId = entity.ProjectId,
-        //        RoleId = entity.RoleId,
-        //        UserId = entity.UserId,
-        //        RowVersion = entity.RowVersion
-        //    };
+        foreach (var entity in _db.TaskEntities.AsNoTracking()
+                     .Where(a => a.ProjectsId == projectId).ToList())
+            yield return new TaskQueryResultDto
+            {
+                Id = entity.Id,
+                TaskName = entity.TaskName,
+                TaskDescription = entity.TaskDescription,
+                DateCreated = entity.DateCreated,
+                ProjectsId = entity.ProjectsId,
+                Section = entity.Section,
+                UsersId = entity.UsersId,
+                RowVersion = entity.RowVersion
+            };
 
-        throw new NotImplementedException();
-    }
-
-    IEnumerable<TaskQueryResultDto> ITaskRepository.GetAllTasksByUser(int projectId, string userId)
-    {
-        //foreach (var entity in _db.TaskEntities.AsNoTracking()
-        //             .Where(a => a.ProjectId == projectId && a.UserId == userId).ToList())
-        //    yield return new TaskQueryResultDto
-        //    {
-        //        TaskId = entity.TaskId,
-        //        TaskName = entity.TaskName,
-        //        TaskDescription = entity.TaskDescription,
-        //        DateCreated = entity.DateCreated,
-        //        ProjectId = entity.ProjectId,
-        //        RoleId = entity.RoleId,
-        //        UserId = entity.UserId,
-        //        RowVersion = entity.RowVersion
-        //    };
-
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     TaskQueryResultDto ITaskRepository.GetTask(int taskId)
     {
-        //var dbEntity = _db.TaskEntities.AsNoTracking().FirstOrDefault(a => a.TaskId == taskId);
-        //if (dbEntity == null) throw new Exception("Denne opgave findes ikke i dette projekt");
+        var dbEntity = _db.TaskEntities.AsNoTracking().FirstOrDefault(a => a.Id == taskId);
+        if (dbEntity == null) throw new Exception("Denne opgave findes ikke");
 
-        //return new TaskQueryResultDto
-        //{
-        //    TaskId = dbEntity.TaskId,
-        //    TaskName = dbEntity.TaskName,
-        //    TaskDescription = dbEntity.TaskDescription,
-        //    DateCreated = dbEntity.DateCreated,
-        //    ProjectId = dbEntity.ProjectId,
-        //    RoleId = dbEntity.RoleId,
-        //    UserId = dbEntity.UserId,
-        //    RowVersion = dbEntity.RowVersion
-        //};
+        return new TaskQueryResultDto
+        {
+            Id = dbEntity.Id,
+            TaskName = dbEntity.TaskName,
+            TaskDescription = dbEntity.TaskDescription,
+            DateCreated = dbEntity.DateCreated,
+            ProjectsId = dbEntity.ProjectsId,
+            Section = dbEntity.Section,
+            UsersId = dbEntity.UsersId,
+            RowVersion = dbEntity.RowVersion
+        };
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
-    TaskEntity ITaskRepository.Load(int taskId)
+    TaskEntity ITaskRepository.LoadTask(int taskId)
     {
-        //var dbEntity = _db.TaskEntities.AsNoTracking().FirstOrDefault(a => a.TaskId == taskId);
-        //if (dbEntity == null) throw new Exception("Den opgave findes ikke i databasen");
+        var dbEntity = _db.TaskEntities.AsNoTracking().FirstOrDefault(a => a.Id == taskId);
+        if (dbEntity == null) throw new Exception("Den opgave findes ikke i databasen");
 
-        //return dbEntity;
+        return dbEntity;
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
-    void ITaskRepository.Update(TaskEntity model)
+    void ITaskRepository.UpdateTask(TaskEntity model)
     {
-        //_db.Update(model);
-        //_db.SaveChanges();
+        _db.Update(model);
+        _db.SaveChanges();
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
-    void ITaskRepository.Delete(TaskEntity model)
+    void ITaskRepository.DeleteTask(TaskEntity model)
     {
-        //_db.Remove(model);
-        //_db.SaveChanges();
+        _db.Remove(model);
+        _db.SaveChanges();
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

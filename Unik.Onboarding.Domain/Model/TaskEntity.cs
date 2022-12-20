@@ -10,23 +10,23 @@ public class TaskEntity
     {
     }
 
-    public TaskEntity(string taskName, string taskDescription, ProjectEntity projects, int roleId, UsersEntity users)
+    public TaskEntity(string taskName, string taskDescription, int projectsId, string section, int usersId)
     {
         TaskName = taskName;
         TaskDescription = taskDescription;
         DateCreated = DateTime.Now;
-        Projects = projects;
-        RoleId = roleId;
-        Users = users;
+        ProjectsId = projectsId;
+        Section = section;
+        UsersId = usersId;
     }
 
-    public int Id { get; private set; }
+    public int Id { get; private set; } // PK
     public string TaskName { get; private set; }
     public string TaskDescription { get; private set; }
     public DateTime DateCreated { get; private set; }
     public int ProjectsId { get; private set; }
     public ProjectEntity Projects { get; private set; } // FK
-    public int RoleId { get; private set; } //TODO
+    public string Section { get; private set; } //TODO
     public int UsersId { get; private set; }
     public UsersEntity Users { get; private set; } // FK
     [Timestamp]

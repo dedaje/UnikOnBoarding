@@ -2,6 +2,5 @@
 
 public interface ITaskGetAllQuery
 {
-    IEnumerable<TaskQueryResultDto> GetAllTasksByRole(int projectId, int roleId);
-    IEnumerable<TaskQueryResultDto> GetAllTasksByUser(int projectId, string userId);
+    IEnumerable<TaskQueryResultDto> GetAllTasks(int projectId);
 }

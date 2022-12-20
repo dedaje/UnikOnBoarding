@@ -2,5 +2,5 @@
 
 public class TaskDeleteRequestDto
 {
-    public int TaskId { get; set; }
+    public int Id { get; set; }
 }

@@ -14,10 +14,10 @@ public class DeleteTaskCommand : IDeleteTaskCommand
 
     void IDeleteTaskCommand.Delete(int id)
     {
-        //var model = _repository.Load(id);
+        var model = _repository.LoadTask(id);
 
-        //_repository.Delete(model);
+        _repository.DeleteTask(model);
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

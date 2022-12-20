@@ -27,10 +27,7 @@ namespace UnikOnBoarding.Infrastructure.Contract
         // ProjectUsers
         Task AddUserToProject(ProjectAddUserRequestDto dto);
         Task RemoveUserFromProject(string userId, int? projectId);
-        //Task RemoveUserFromProject(ProjectRemoveUserRequestDto dto);
         Task<IEnumerable<ProjectUsersQueryResultDto>?> GetAllProjectUsers(int? projectId);
-
-        // UserProjects
         Task<IEnumerable<UserProjectsQueryResultDto>?> GetAllUserProjects(string? userId);
 
         // User

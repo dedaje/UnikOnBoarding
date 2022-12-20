@@ -110,7 +110,7 @@ namespace UnikOnBoarding.Infrastructure.Implementation
 
         // ProjectUsers
         #region ProjectUsers
-        async Task IUnikService.AddUserToProject(ProjectAddUserRequestDto dto) //TODO: Opret ProjectUsers.Controller
+        async Task IUnikService.AddUserToProject(ProjectAddUserRequestDto dto) 
         {
             var response = await _httpClient.PostAsJsonAsync($"api/ProjectUsers/AddUserToProject", dto);
 
