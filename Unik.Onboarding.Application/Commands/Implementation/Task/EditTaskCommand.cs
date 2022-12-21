@@ -22,7 +22,5 @@ public class EditTaskCommand : IEditTaskCommand
 
         //Save
         _repository.UpdateTask(model);
-
-        //throw new NotImplementedException();
     }
 }

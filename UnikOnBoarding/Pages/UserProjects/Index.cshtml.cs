@@ -6,11 +6,11 @@ namespace UnikOnBoarding.Pages.UserProjects
 {
     public class IndexModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IUserService _userService;
 
-        public IndexModel(IUnikService unikService)
+        public IndexModel(IUserService userService)
         {
-            _unikService = unikService;
+            _userService = userService;
         }
 
         [BindProperty] public List<UserProjectsIndexViewModel> UserProjectsModel { get; set; } = new();
@@ -18,7 +18,7 @@ namespace UnikOnBoarding.Pages.UserProjects
 
         public async Task OnGet()
         {
-            _userId = _unikService.GetUser(User.Identity?.Name ?? string.Empty).Result.UserId;
+            _userId = _userService.GetUser(User.Identity?.Name ?? string.Empty).Result.UserId;
 
             if (_userId == null) NotFound();
         }

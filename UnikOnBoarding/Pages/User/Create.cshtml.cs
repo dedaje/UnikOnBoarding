@@ -9,13 +9,11 @@ namespace UnikOnBoarding.Pages.User
 {
     public class CreateModel : PageModel
     {
-        private readonly IUnikService _unikService;
-        private readonly WebAppUserDbContext _userDbContext;
+        private readonly IUserService _userService;
 
-        public CreateModel(IUnikService unikService, WebAppUserDbContext userDbContext)
+        public CreateModel(IUserService userService)
         {
-            _unikService = unikService;
-            _userDbContext = userDbContext;
+            _userService = userService;
         }
 
         [BindProperty] public CreateUserViewModel CreateUserModel { get; set; } = new();
@@ -34,7 +32,7 @@ namespace UnikOnBoarding.Pages.User
 
             try
             {
-                await _unikService.CreateUser(dto);
+                await _userService.CreateUser(dto);
             }
             catch (Exception e)
             {

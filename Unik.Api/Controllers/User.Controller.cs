@@ -11,14 +11,15 @@ namespace Unik.Api.Controllers
     [ApiController]
     public class User : ControllerBase
     {
-        private readonly ICreateUserCommand _addUserCommand;
+        private readonly ICreateUserCommand _createUserCommand;
         private readonly IDeleteUserCommand _deleteUserCommand;
         private readonly IUserGetAllQuery _userGetAllQuery;
         private readonly IUserGetQuery _userGetQuery;
 
-        public User(ICreateUserCommand addUserCommand, IDeleteUserCommand deleteUserCommand, IUserGetAllQuery userGetAllQuery, IUserGetQuery userGetQuery)
+        public User(ICreateUserCommand createUserCommand, IDeleteUserCommand deleteUserCommand,
+            IUserGetAllQuery userGetAllQuery, IUserGetQuery userGetQuery)
         {
-            _addUserCommand = addUserCommand;
+            _createUserCommand = createUserCommand;
             _deleteUserCommand = deleteUserCommand;
             _userGetAllQuery = userGetAllQuery;
             _userGetQuery = userGetQuery;
@@ -59,7 +60,7 @@ namespace Unik.Api.Controllers
         {
             try
             {
-                _addUserCommand.CreateUser(request);
+                _createUserCommand.CreateUser(request);
                 return Ok();
             }
             catch (Exception e)

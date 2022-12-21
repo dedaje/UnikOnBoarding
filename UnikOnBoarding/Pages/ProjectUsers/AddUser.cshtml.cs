@@ -11,18 +11,22 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 {
     public class AddUserModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IProjectService _projectService;
+        private readonly IProjectUsersService _projectUsersService;
+        private readonly IUserService _userService;
 
-        public AddUserModel(IUnikService unikService)
+        public AddUserModel(IProjectService projectService, IProjectUsersService projectUsersService, IUserService userService)
         {
-            _unikService = unikService;
+            _projectService = projectService;
+            _projectUsersService = projectUsersService;
+            _userService = userService;
         }
 
         [BindProperty] public AddUserViewModel AddUser { get; set; } = new();
 
         public async Task<IActionResult> OnGet(int projectId)
         {
-            var project = await _unikService.GetProject(projectId);
+            var project = await _projectService.GetProject(projectId);
 
             if (project == null) return NotFound();
 
@@ -39,7 +43,7 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 
         public async Task<IActionResult> OnPost()
         {
-            var user = await _unikService.GetUser(AddUser.UserViewModel.UserId);
+            var user = await _userService.GetUser(AddUser.UserViewModel.UserId);
 
             if (user == null) return NotFound();
 
@@ -72,7 +76,7 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 
             try
             {
-                await _unikService.AddUserToProject(dto);
+                await _projectUsersService.AddUserToProject(dto);
             }
             catch (Exception e)
             {

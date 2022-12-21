@@ -10,11 +10,13 @@ namespace UnikOnBoarding.Pages.Tasks
 {
     public class CreateModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly ITaskService _taskService;
+        private readonly IUserService _userService;
 
-        public CreateModel(IUnikService unikService)
+        public CreateModel(ITaskService taskService, IUserService userService)
         {
-            _unikService = unikService;
+            _taskService = taskService;
+            _userService = userService;
         }
         
         [BindProperty] public TaskCreateViewModel TaskModel { get; set; } = new();

@@ -7,6 +7,6 @@ namespace UnikOnBoarding.Infrastructure.Contract
         Task CreateUser(UserCreateRequestDto dto);
         Task<IEnumerable<UserQueryResultDto>?> GetAllUsers();
         Task<UserQueryResultDto> GetUser(string userId);
-        Task DeleteUser(int id);
+        Task DeleteUser(string userId);
     }
 }

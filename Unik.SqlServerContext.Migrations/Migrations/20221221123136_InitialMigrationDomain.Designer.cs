@@ -12,8 +12,8 @@ using Unik.SqlServerContext;
 namespace Unik.SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(UnikDbContext))]
-    [Migration("20221213183136_InitialMigrationDomainLocal")]
-    partial class InitialMigrationDomainLocal
+    [Migration("20221221123136_InitialMigrationDomain")]
+    partial class InitialMigrationDomain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,14 +113,15 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     b.Property<int>("ProjectsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
+
+                    b.Property<string>("Section")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaskDescription")
                         .IsRequired()

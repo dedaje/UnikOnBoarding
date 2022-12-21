@@ -8,11 +8,15 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 {
     public class IndexModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IProjectService _projectService;
+        private readonly IProjectUsersService _projectUsersService;
+        private readonly IUserService _userService;
 
-        public IndexModel(IUnikService unikService)
+        public IndexModel(IProjectService projectService, IProjectUsersService projectUsersService, IUserService userService)
         {
-            _unikService = unikService;
+            _projectService = projectService;
+            _projectUsersService = projectUsersService;
+            _userService = userService;
         }
 
         [BindProperty] public ProjectIndexViewModel ProjectIndexModel { get; set; } = new();
@@ -24,13 +28,13 @@ namespace UnikOnBoarding.Pages.ProjectUsers
         public async Task OnGet(int? projectId, string? userId)
         {
             _projectId = projectId;
-            _projectName = _unikService.GetProject(_projectId).Result.ProjectName;
-            _userId = _unikService.GetUser(User.Identity?.Name ?? string.Empty).Result.UserId;
+            _projectName = _projectService.GetProject(_projectId).Result.ProjectName;
+            _userId = _userService.GetUser(User.Identity?.Name ?? string.Empty).Result.UserId;
             userId = _userId;
 
             if (userId == null) NotFound();
 
-            var projectUsers = await _unikService.GetAllProjectUsers(projectId);
+            var projectUsers = await _projectUsersService.GetAllProjectUsers(projectId);
 
             if (projectUsers == null) return;
 

@@ -105,7 +105,7 @@ namespace Unik.SqlServerContext.Migrations.Migrations
                     TaskDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProjectsId = table.Column<int>(type: "int", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    Section = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UsersId = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },

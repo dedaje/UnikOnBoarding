@@ -7,11 +7,11 @@ namespace UnikOnBoarding.Pages.Tasks
 {
     public class EditModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly ITaskService _taskService;
 
-        public EditModel(IUnikService unikService)
+        public EditModel(ITaskService taskService)
         {
-            _unikService = unikService;
+            _taskService = taskService;
         }
 
         [BindProperty] public TaskEditViewModel TaskModel { get; set; } = new();
