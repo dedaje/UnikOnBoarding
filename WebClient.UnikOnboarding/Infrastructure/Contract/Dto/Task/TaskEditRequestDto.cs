@@ -1,6 +1,6 @@
-﻿namespace UnikOnBoarding.Infrastructure.Contract.Dto.Task
+﻿namespace WebClient.UnikOnBoarding.Infrastructure.Contract.Dto.Task
 {
-    public class TaskQueryResultDto
+    public class TaskEditRequestDto
     {
         public int Id { get; set; }
         public string TaskName { get; set; }

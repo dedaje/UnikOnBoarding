@@ -1,4 +1,4 @@
-﻿namespace UnikOnBoarding.Infrastructure.Contract.Dto.Task
+﻿namespace WebClient.UnikOnBoarding.Infrastructure.Contract.Dto.Task
 {
     public class TaskDeleteRequestDto
     {

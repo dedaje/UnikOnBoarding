@@ -1,7 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis;
-using System.Drawing.Printing;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
 
@@ -34,7 +34,7 @@ namespace UnikOnBoarding.Pages.Tasks
             throw new NotImplementedException();
         }
 
-        public /*async*/ Task<IActionResult> OnPost()
+        public /*async*/ Task<IActionResult> OnPost([Required] string type)
         {
            
            //if (!ModelState.IsValid) return Page();

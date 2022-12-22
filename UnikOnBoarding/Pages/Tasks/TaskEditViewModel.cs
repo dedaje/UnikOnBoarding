@@ -2,13 +2,13 @@
 {
     public class TaskEditViewModel
     {
-        public int TaskId { get; set; }
+        public int Id { get; set; }
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
         public DateTime DateCreated { get; set; }
-        public int ProjectId { get; set; }
-        public int RoleId { get; set; }
-        public string UserId { get; set; } // Email
-        //public byte[] RowVersion { get; set; }
+        public int ProjectsId { get; set; }
+        public string Section { get; set; }
+        public int UsersId { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

@@ -11,7 +11,13 @@
 <input type="hidden" asp-for="@Model.Id" class="form-control" />
 
 <table class="table table-sm table-striped table-bordered">
-    <thead><tr><th>Type</th><th>Value</th><th>Modify</th></tr></thead>
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Modify</th>
+    </tr>
+    </thead>
     <tbody>
 
         @foreach (var c in Model.Claims)

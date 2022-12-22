@@ -24,18 +24,18 @@
             foreach (var task in Model.IndexViewModel)
             {
                 <tr>
-                    <td> @task.TaskId</td>
-                    <td> @task.ProjectId </td>
+                    <td> @task.Id</td>
+                    <td> @task.ProjectsId </td>
                     <td>@task.DateCreated</td>
                     <td>@task.TaskName</td>
                     <td>@task.TaskDescription</td>
                     <td>
                         <!-- <snippet_Edit> -->
-                        <a asp-page="./Edit" asp-route-taskId="@task.TaskId">Rediger Projekt Navn</a>
+                        <a asp-page="./Edit" asp-route-taskId="@task.Id">Rediger Projekt Navn</a>
                         <!-- </snippet_Edit> -->
                         |
                         <!-- <snippet_Delete> -->
-                        <a asp-page="./Delete" asp-route-taskId="@task.TaskId">Slet Opgave</a>
+                        <a asp-page="./Delete" asp-route-taskId="@task.Id">Slet Opgave</a>
                         <!-- </snippet_Delete> -->
                     </td>
                 </tr>

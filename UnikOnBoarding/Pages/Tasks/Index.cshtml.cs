@@ -21,13 +21,13 @@ namespace UnikOnBoarding.Pages.Tasks
 
             businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new TaskIndexViewModel
             {
-                TaskId = dto.TaskId,
+                Id = dto.Id,
                 TaskName = dto.TaskName,
                 TaskDescription = dto.TaskDescription,
                 DateCreated = dto.DateCreated,
-                ProjectId = dto.ProjectId,
-                RoleId = dto.RoleId,
-                UserId = dto.UserId,
+                ProjectsId = dto.ProjectsId,
+                Section = dto.Section,
+                UsersId = dto.UsersId,
                 RowVersion = dto.RowVersion,
             }));
         }

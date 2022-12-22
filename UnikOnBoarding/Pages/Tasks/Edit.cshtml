@@ -13,11 +13,11 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input type="hidden" asp-for="TaskModel.TaskId" class="form-control" />
+            <input type="hidden" asp-for="TaskModel.Id" class="form-control" />
             <input type="hidden" asp-for="TaskModel.DateCreated" class="form-control" />
-            <input type="hidden" asp-for="TaskModel.ProjectId" class="form-control" />
-            <input type="hidden" asp-for="TaskModel.RoleId" class="form-control" />
-            <input type="hidden" asp-for="TaskModel.UserId" class="form-control" />
+            <input type="hidden" asp-for="TaskModel.ProjectsId" class="form-control" />
+            <input type="hidden" asp-for="TaskModel.Section" class="form-control" />
+            <input type="hidden" asp-for="TaskModel.UsersId" class="form-control" />
             <div class="form-group">
                 <label asp-for="TaskModel.TaskName"></label>
                 <input asp-for="TaskModel.TaskName" class="form-control" />
