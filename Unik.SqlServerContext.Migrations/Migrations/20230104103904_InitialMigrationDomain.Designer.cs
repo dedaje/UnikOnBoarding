@@ -12,11 +12,7 @@ using Unik.SqlServerContext;
 namespace Unik.SqlServerContext.Migrations.Migrations
 {
     [DbContext(typeof(UnikDbContext))]
-<<<<<<<< HEAD:Unik.SqlServerContext.Migrations/Migrations/20221228193315_InitialMigrationDomain.Designer.cs
-    [Migration("20221228193315_InitialMigrationDomain")]
-========
-    [Migration("20230104084748_InitialMigrationDomain")]
->>>>>>>> Task:Unik.SqlServerContext.Migrations/Migrations/20230104084748_InitialMigrationDomain.Designer.cs
+    [Migration("20230104103904_InitialMigrationDomain")]
     partial class InitialMigrationDomain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

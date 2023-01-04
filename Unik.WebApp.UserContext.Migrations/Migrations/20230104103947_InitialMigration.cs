@@ -159,11 +159,7 @@ namespace Unik.WebApp.UserContext.Migrations.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-<<<<<<<< HEAD:Unik.WebApp.UserContext.Migrations/Migrations/20221228193219_InitialMigration.cs
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "fbc06cd4-5b0a-4960-abba-7434d9946424", "admin@unik.dk", false, "John", "Doe", false, null, "ADMIN@UNIK.DK", "ADMIN@UNIK.DK", "AQAAAAEAACcQAAAAEIU/wfEpKua7isPtfxh67xt6ymyeOJXQWNllS8vIpTD6+llzsNwax4nTYiXVZSuwSA==", "12345678", false, "500073a7-9531-4945-a18c-e857b7c60d29", false, "admin@unik.dk" });
-========
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "7cd34852-83e5-46b1-b97b-9a529842a323", "admin@unik.dk", false, "John", "Doe", false, null, "ADMIN@UNIK.DK", "ADMIN@UNIK.DK", "AQAAAAEAACcQAAAAEP7xr/pGh/zxgd91jxS8lT4JrlPA4p9Smd+IiFRB0hZXaJZbtZZdL5t5lVlf6tjTDw==", "12345678", false, "47568300-e6b7-4d9a-a9b9-ed92f6837434", false, "admin@unik.dk" });
->>>>>>>> Task:Unik.WebApp.UserContext.Migrations/Migrations/20230104084839_InitialMigration.cs
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "56853dde-d5ee-4b8e-add7-e3866a265e5d", "admin@unik.dk", false, "John", "Doe", false, null, "ADMIN@UNIK.DK", "ADMIN@UNIK.DK", "AQAAAAEAACcQAAAAEBJtb3eD+wucH+jnWbS1B0vvOda5h8wBwZuxAMAZF5itcUoZJXyAgOF01Z/QKcXN7g==", "12345678", false, "32132445-6313-4a51-bcc5-99b3f9b8cc00", false, "admin@unik.dk" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserClaims",
