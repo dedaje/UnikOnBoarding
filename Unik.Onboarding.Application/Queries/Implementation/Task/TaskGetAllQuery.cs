@@ -12,17 +12,10 @@ public class TaskGetAllQuery : ITaskGetAllQuery
         _repository = repository;
     }
 
-    IEnumerable<TaskQueryResultDto> ITaskGetAllQuery.GetAllTasksByRole(int projectId, int roleId)
+    IEnumerable<TaskQueryResultDto> ITaskGetAllQuery.GetAllTasks(int projectId)
     {
-        //return _repository.GetAllTasksByRole(projectId, roleId);
+        return _repository.GetAllTasks(projectId);
 
-        throw new NotImplementedException();
-    }
-
-    IEnumerable<TaskQueryResultDto> ITaskGetAllQuery.GetAllTasksByUser(int projectId, string userId)
-    {
-        //return _repository.GetAllTasksByUser(projectId, userId);
-
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UnikOnBoarding.Infrastructure.Contract;
-using UnikOnBoarding.Infrastructure.Contract.Dto;
 using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
 using UnikOnBoarding.Infrastructure.Contract.Dto.ProjectUsers;
 using UnikOnBoarding.Infrastructure.Contract.Dto.User;
@@ -11,18 +10,20 @@ namespace UnikOnBoarding.Pages.Project;
 
 public class CreateModel : PageModel
 {
-    private readonly IUnikService _unikService;
+    private readonly IProjectService _projectService;
+    private readonly IUserService _userService;
 
-    public CreateModel(IUnikService unikService)
+    public CreateModel(IProjectService projectService, IUserService userService)
     {
-        _unikService = unikService;
+        _projectService = projectService;
+        _userService = userService;
     }
 
     [BindProperty] public ProjectCreateWithUserViewModel ProjectWithUserModel { get; set; } = new();
 
     public async Task<IActionResult> OnGet()
     {
-        var user = await _unikService.GetUser(User.Identity?.Name ?? string.Empty);
+        var user = await _userService.GetUser(User.Identity?.Name ?? string.Empty);
 
         if (user == null) return NotFound();
 
@@ -50,7 +51,7 @@ public class CreateModel : PageModel
 
         try
         {
-            await _unikService.CreateProject(dto);
+            await _projectService.CreateProject(dto);
         }
         catch (Exception e)
         {

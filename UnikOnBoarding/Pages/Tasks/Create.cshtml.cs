@@ -1,7 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis;
-using System.Drawing.Printing;
 using UnikOnBoarding.Infrastructure.Contract;
 using UnikOnBoarding.Infrastructure.Contract.Dto;
 
@@ -10,11 +10,13 @@ namespace UnikOnBoarding.Pages.Tasks
 {
     public class CreateModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly ITaskService _taskService;
+        private readonly IUserService _userService;
 
-        public CreateModel(IUnikService unikService)
+        public CreateModel(ITaskService taskService, IUserService userService)
         {
-            _unikService = unikService;
+            _taskService = taskService;
+            _userService = userService;
         }
         
         [BindProperty] public TaskCreateViewModel TaskModel { get; set; } = new();
@@ -32,7 +34,7 @@ namespace UnikOnBoarding.Pages.Tasks
             throw new NotImplementedException();
         }
 
-        public /*async*/ Task<IActionResult> OnPost()
+        public /*async*/ Task<IActionResult> OnPost([Required] string type)
         {
            
            //if (!ModelState.IsValid) return Page();

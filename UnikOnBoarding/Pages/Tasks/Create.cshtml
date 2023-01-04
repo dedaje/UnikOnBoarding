@@ -12,9 +12,9 @@
         <form method="post">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="TaskModel.ProjectId" class="form-control" />
+            <input type="hidden" asp-for="TaskModel.ProjectsId" class="form-control" />
             @*<input type="hidden" asp-for="TaskModel.RoleId" class="form-control" />*@
-            <input type="hidden" asp-for="TaskModel.UserId" class="form-control" />
+            <input type="hidden" asp-for="TaskModel.UsersId" class="form-control" />
             
             <div class="form-group">
                 <label asp-for="TaskModel.TaskName"></label>
@@ -25,9 +25,17 @@
                 <input asp-for="TaskModel.TaskDescription" class="form-control" />
                 <span asp-validation-for="TaskModel.TaskDescription" class="text-danger"></span>
 
-                <label asp-for="TaskModel.RoleId"></label>
-                <input asp-for="TaskModel.RoleId" class="form-control" />
-                <span asp-validation-for="TaskModel.RoleId" class="text-danger"></span>
+                <label asp-for="TaskModel.Section"></label>
+                @*<input asp-for="TaskModel.RoleId" class="form-control" />
+                <span asp-validation-for="TaskModel.RoleId" class="text-danger"></span>*@
+                <select class="form-control" name="type">
+                    @foreach (var claimType in ApplicationClaimTypes.ClaimsList())
+                    {
+                        <option value="@claimType">
+                            @claimType
+                        </option>
+                    }
+                </select>
 
             </div>
 

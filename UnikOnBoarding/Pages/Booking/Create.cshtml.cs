@@ -8,11 +8,11 @@ namespace UnikOnBoarding.Pages.Booking
 {
     public class CreateModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IBookingService _bookingService;
 
-        public CreateModel(IUnikService unikService)
+        public CreateModel(IBookingService bookingService)
         {
-            _unikService = unikService;
+            _bookingService = bookingService;
         }
 
         [BindProperty] public BookingCreateViewModel CreateViewModel { get; set; } = new();
@@ -39,7 +39,7 @@ namespace UnikOnBoarding.Pages.Booking
 
             try
             {
-                await _unikService.CreateBooking(dto);
+                await _bookingService.CreateBooking(dto);
             }
             catch (Exception e)
             {

@@ -1,25 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UnikOnBoarding.Infrastructure.Contract;
-using UnikOnBoarding.Pages.Project;
 
 namespace UnikOnBoarding.Pages.Booking
 {
     public class IndexModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IBookingService _bookingService;
 
-        public IndexModel(IUnikService unikService)
+        public IndexModel(IBookingService bookingService)
         {
-            _unikService = unikService;
+            _bookingService = bookingService;
         }
 
         [BindProperty] public List<BookingIndexViewModel> IndexViewModel { get; set; } = new();
-        //private string _userId;
 
         public async Task OnGet()
         {
-            var businessModel = await _unikService.GetAllBookings();
+            var businessModel = await _bookingService.GetAllBookings();
 
             //_userId = _unikService.GetUser(User.Identity?.Name ?? string.Empty).Result.UserId;
 

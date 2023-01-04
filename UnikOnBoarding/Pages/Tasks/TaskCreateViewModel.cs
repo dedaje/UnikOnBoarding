@@ -5,8 +5,8 @@
 
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
-        public int? ProjectId { get; set; }
-        public int RoleId { get; set; }
-        public string UserId { get; set; } // Email
+        public int ProjectsId { get; set; }
+        public string Section { get; set; }
+        public int UsersId { get; set; }
     }
 }

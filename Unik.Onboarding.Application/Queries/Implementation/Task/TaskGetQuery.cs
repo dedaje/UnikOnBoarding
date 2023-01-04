@@ -14,8 +14,6 @@ public class TaskGetQuery : ITaskGetQuery
 
     TaskQueryResultDto ITaskGetQuery.GetTask(int taskId)
     {
-        //return _repository.GetTask(taskId);
-
-        throw new NotImplementedException();
+        return _repository.GetTask(taskId);
     }
 }

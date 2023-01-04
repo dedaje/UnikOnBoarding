@@ -28,26 +28,12 @@ namespace Unik.Api.Controllers
         }
 
         // GET: api/<Task>
-        [HttpGet("r/{projectId}/{roleId}")]
+        [HttpGet("AllTasks/{projectId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<TaskQueryResultDto>> Get(int projectId, int roleId) //GetAllByRole
+        public ActionResult<IEnumerable<TaskQueryResultDto>> GetAll(int projectId) //GetAllByRole
         {
-            var result = _taskGetAllQuery.GetAllTasksByRole(projectId, roleId).ToList();
-            if (!result.Any())
-
-                return NotFound();
-
-            return result.ToList();
-        }
-
-        // GET: api/<Task>
-        [HttpGet("u/{projectId}/{userId}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<TaskQueryResultDto>> Get(int projectId, string userId) //GetAllByUser
-        {
-            var result = _taskGetAllQuery.GetAllTasksByUser(projectId, userId).ToList();
+            var result = _taskGetAllQuery.GetAllTasks(projectId).ToList();
             if (!result.Any())
 
                 return NotFound();
@@ -68,7 +54,7 @@ namespace Unik.Api.Controllers
         }
 
         // POST api/<Task>
-        [HttpPost("Create/")]
+        [HttpPost("CreateTask/")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -86,7 +72,7 @@ namespace Unik.Api.Controllers
         }
 
         // PUT api/<Task>/5
-        [HttpPut("Edit/")]
+        [HttpPut("EditTask/")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

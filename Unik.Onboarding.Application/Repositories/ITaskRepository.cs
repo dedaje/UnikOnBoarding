@@ -5,11 +5,10 @@ namespace Unik.Onboarding.Application.Repositories;
 
 public interface ITaskRepository
 {
-    void Add(TaskEntity task);
-    IEnumerable<TaskQueryResultDto> GetAllTasksByRole(int projectId, int roleId);
-    IEnumerable<TaskQueryResultDto> GetAllTasksByUser(int projectId, string userId);
+    void AddTask(TaskEntity task);
+    IEnumerable<TaskQueryResultDto> GetAllTasks(int projectId);
     TaskQueryResultDto GetTask(int taskId);
-    TaskEntity Load(int taskId);
-    void Update(TaskEntity model);
-    void Delete(TaskEntity model);
+    TaskEntity LoadTask(int taskId);
+    void UpdateTask(TaskEntity model);
+    void DeleteTask(TaskEntity model);
 }

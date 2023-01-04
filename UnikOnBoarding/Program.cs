@@ -59,10 +59,23 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizeFolder("/User", ApplicationClaimTypes.policy.AdminPolicy.ToString());
 
     options.Conventions.AuthorizeFolder("/Areas/Identity/Pages/Admin", ApplicationClaimTypes.policy.AdminPolicy.ToString());
+    options.Conventions.AuthorizeFolder("/Areas/Identity/Pages/Account", ApplicationClaimTypes.policy.AdminPolicy.ToString());
 });
 
 // IHttpClientFactory
-builder.Services.AddHttpClient<IUnikService, UnikService>(
+builder.Services.AddHttpClient<IBookingService, BookingService>(
+    client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<IProjectService, ProjectService>(
+    client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<IProjectUsersService, ProjectUsersService>(
+    client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<ITaskService, TaskService>(
+    client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<IUserService, UserService>(
     client => client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
 
 // Database

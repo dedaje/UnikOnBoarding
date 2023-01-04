@@ -7,11 +7,11 @@ namespace UnikOnBoarding.Pages.Project
 {
     public class EditModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IProjectService _projectService;
 
-        public EditModel(IUnikService unikService)
+        public EditModel(IProjectService projectService)
         {
-            _unikService = unikService;
+            _projectService = projectService;
         }
 
         [BindProperty] public ProjectEditViewModel ProjectEditModel { get; set; }
@@ -20,7 +20,7 @@ namespace UnikOnBoarding.Pages.Project
         {
             if (projectId == null) return NotFound();
 
-            var dto = await _unikService.GetProject(projectId);
+            var dto = await _projectService.GetProject(projectId);
 
             if (dto == null) return NotFound();
 
@@ -41,7 +41,7 @@ namespace UnikOnBoarding.Pages.Project
 
             try
             {
-                await _unikService.EditProject(new ProjectEditRequestDto
+                await _projectService.EditProject(new ProjectEditRequestDto
                 {
                     Id = ProjectEditModel.Id,
                     ProjectName = ProjectEditModel.ProjectName,

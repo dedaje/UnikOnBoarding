@@ -6,28 +6,28 @@ namespace UnikOnBoarding.Pages.Tasks
 {
     public class IndexModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly ITaskService _taskService;
 
-        public IndexModel(IUnikService unikService)
+        public IndexModel(ITaskService taskService)
         {
-            _unikService = unikService;
+            _taskService = taskService;
         }
 
         [BindProperty] public List<TaskIndexViewModel> IndexViewModel { get; set; } = new();
 
         public async Task OnGet(int projectId)
         {
-            var businessModel = await _unikService.GetAllTasksByUser(projectId, User.Identity?.Name ?? string.Empty);
+            var businessModel = await _taskService.GetAllTasks(projectId);
 
             businessModel?.ToList().ForEach(dto => IndexViewModel.Add(new TaskIndexViewModel
             {
-                TaskId = dto.TaskId,
+                Id = dto.Id,
                 TaskName = dto.TaskName,
                 TaskDescription = dto.TaskDescription,
                 DateCreated = dto.DateCreated,
-                ProjectId = dto.ProjectId,
-                RoleId = dto.RoleId,
-                UserId = dto.UserId,
+                ProjectsId = dto.ProjectsId,
+                Section = dto.Section,
+                UsersId = dto.UsersId,
                 RowVersion = dto.RowVersion,
             }));
         }

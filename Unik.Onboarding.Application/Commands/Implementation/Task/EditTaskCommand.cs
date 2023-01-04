@@ -14,15 +14,13 @@ public class EditTaskCommand : IEditTaskCommand
 
     void IEditTaskCommand.Edit(TaskEditRequestDto request)
     {
-        ////Read
-        //var model = _repository.Load(request.TaskId);
+        //Read
+        var model = _repository.LoadTask(request.Id);
 
-        ////DoIt
-        //model.Edit(request.TaskName, request.TaskDescription/*, request.RowVersion*/);
+        //DoIt
+        model.Edit(request.TaskName, request.TaskDescription, request.RowVersion);
 
-        ////Save
-        //_repository.Update(model);
-
-        throw new NotImplementedException();
+        //Save
+        _repository.UpdateTask(model);
     }
 }

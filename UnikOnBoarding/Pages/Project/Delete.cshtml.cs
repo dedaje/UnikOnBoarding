@@ -1,17 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UnikOnBoarding.Infrastructure.Contract;
-using UnikOnBoarding.Infrastructure.Contract.Dto.Project;
 
 namespace UnikOnBoarding.Pages.Project
 {
     public class DeleteModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IProjectService _projectService;
 
-        public DeleteModel(IUnikService unikService)
+        public DeleteModel(IProjectService projectService)
         {
-            _unikService = unikService;
+            _projectService = projectService;
         }
 
         [BindProperty] public ProjectDeleteViewModel DeleteViewModel { get; set; } = new();
@@ -20,7 +19,7 @@ namespace UnikOnBoarding.Pages.Project
         {
             if (projectId == null) return NotFound();
 
-            var dto = await _unikService.GetProject(projectId);
+            var dto = await _projectService.GetProject(projectId);
 
             if (dto == null) return NotFound();
 
@@ -39,7 +38,7 @@ namespace UnikOnBoarding.Pages.Project
 
             try
             {
-                await _unikService.DeleteProject(DeleteViewModel.Id);
+                await _projectService.DeleteProject(DeleteViewModel.Id);
             }
             catch (Exception e)
             {

@@ -8,11 +8,13 @@ namespace UnikOnBoarding.Pages.ProjectUsers
 {
     public class RemoveUserModel : PageModel
     {
-        private readonly IUnikService _unikService;
+        private readonly IProjectService _projectService;
+        private readonly IProjectUsersService _projectUsersService;
 
-        public RemoveUserModel(IUnikService unikService)
+        public RemoveUserModel(IProjectService projectService, IProjectUsersService projectUsersService)
         {
-            _unikService = unikService;
+            _projectService = projectService;
+            _projectUsersService = projectUsersService;
         }
 
         [BindProperty] public RemoveUserViewModel RemoveViewModel { get; set; } = new();

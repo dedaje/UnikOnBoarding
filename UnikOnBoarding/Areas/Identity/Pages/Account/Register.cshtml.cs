@@ -37,14 +37,14 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly WebAppUserDbContext _userDbContext;
-        private readonly IUnikService _unikService;
+        private readonly IUserService _userService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender, WebAppUserDbContext userDbContext, IUnikService unikService)
+            IEmailSender emailSender, WebAppUserDbContext userDbContext, IUserService userService)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -53,7 +53,7 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _userDbContext = userDbContext;
-            _unikService = unikService;
+            _userService = userService;
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace UnikOnBoarding.Areas.Identity.Pages.Account
 
                     try
                     {
-                        await _unikService.CreateUser(dto);
+                        await _userService.CreateUser(dto);
                     }
                     catch (Exception e)
                     {
