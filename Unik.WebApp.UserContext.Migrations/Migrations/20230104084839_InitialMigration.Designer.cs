@@ -12,7 +12,7 @@ using Unik.WebApp.UserContext;
 namespace Unik.WebApp.UserContext.Migrations.Migrations
 {
     [DbContext(typeof(WebAppUserDbContext))]
-    [Migration("20221221123403_InitialMigration")]
+    [Migration("20230104084839_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -247,7 +247,7 @@ namespace Unik.WebApp.UserContext.Migrations.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b974dc60-8665-4266-89dd-ab47827c9c82",
+                            ConcurrencyStamp = "7cd34852-83e5-46b1-b97b-9a529842a323",
                             Email = "admin@unik.dk",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -255,10 +255,10 @@ namespace Unik.WebApp.UserContext.Migrations.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@UNIK.DK",
                             NormalizedUserName = "ADMIN@UNIK.DK",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOhXiXSfkVccd7T+nchUVyAz/FzN2Cu3nwCtC2MszDAEBj76w8nkv8Rkner4w5pwiA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP7xr/pGh/zxgd91jxS8lT4JrlPA4p9Smd+IiFRB0hZXaJZbtZZdL5t5lVlf6tjTDw==",
                             PhoneNumber = "12345678",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "89d23b0d-5ac1-4da8-97d7-e727c2ea2e7d",
+                            SecurityStamp = "47568300-e6b7-4d9a-a9b9-ed92f6837434",
                             TwoFactorEnabled = false,
                             UserName = "admin@unik.dk"
                         });

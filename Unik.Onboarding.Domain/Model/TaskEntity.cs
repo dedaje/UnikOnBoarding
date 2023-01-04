@@ -26,7 +26,7 @@ public class TaskEntity
     public DateTime DateCreated { get; private set; }
     public int ProjectsId { get; private set; }
     public ProjectEntity Projects { get; private set; } // FK
-    public string Section { get; private set; } //TODO
+    public string Section { get; private set; }
     public int UsersId { get; private set; }
     public UsersEntity Users { get; private set; } // FK
     [Timestamp]
