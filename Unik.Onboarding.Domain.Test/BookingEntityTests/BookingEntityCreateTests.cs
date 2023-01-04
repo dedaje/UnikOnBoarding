@@ -17,7 +17,7 @@ public class BookingEntityCreateTests
         mock.Setup(m => m.BookingDateIsTaken(It.IsAny<DateTime>())).Returns(false);
 
         // Act
-        var sut = new BookingEntity(mock.Object, DateTime.Parse("2 December 2023"), "");
+        var sut = new BookingEntity(mock.Object, DateTime.Parse("1 December 2023"), "");
 
         // Assert
 
