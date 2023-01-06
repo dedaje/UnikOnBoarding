@@ -2,10 +2,11 @@ services:
  Unik.Api:
     ports:
       - "32330:80"
+      - "33330:443"
     image: ${DOCKER_REGISTRY-}unikapi
     build:
       context: .
       dockerfile: ./Unik.Api/Dockerfile
     environment:
          "ASPNETCORE_ENVIRONMENT": "Development"
-         "ConnectionStrings:UnikDbConnection": "Server=192.168.0.206,1433;Database=UnikOnboardingDomain;Trusted_Connection=True;user id=SA; password=XLv92k2zG9;Integrated security=false;MultipleActiveResultSets=true"
+         "ConnectionStrings:UnikDbConnection": "Server=10.228.17.37,1433;Database=UnikOnboardingDomain;Trusted_Connection=True;user id=SA; password=XLv92k2zG9;Integrated security=false;MultipleActiveResultSets=true"

@@ -62,7 +62,7 @@ namespace WebClient.UnikOnBoarding
             //}
             // Sync:
 
-            string url = "https://localhost:7208/api/User/AllUsers";
+            string url = "http://10.228.17.37:32330/api/User/AllUsers";
 
             //System.Net.WebClient w = new System.Net.WebClient();
 
